@@ -2,6 +2,7 @@ package com.gabilheri.insuringmylife;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,6 +23,10 @@ public class InitialActivity extends Activity {
             @Override
             public void onClick(View view) {
 
+                SharedPreferences loginPref = getSharedPreferences("loginPref", 0);
+                SharedPreferences.Editor loginEditor = loginPref.edit();
+                loginEditor.clear();
+                loginEditor.commit();
 
                 Intent i = new Intent(InitialActivity.this, LoginActivity.class);
                 startActivity(i);

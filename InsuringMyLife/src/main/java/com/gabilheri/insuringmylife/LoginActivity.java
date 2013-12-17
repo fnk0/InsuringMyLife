@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -47,7 +46,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(LoginActivity.this);
+        SharedPreferences sp = getSharedPreferences("loginPref", 0);
 
         /*
         File usernamePref = new File("/data/data/" + getPackageName() + "/shared_prefs/email.xml");
@@ -120,11 +119,10 @@ public class LoginActivity extends Activity implements View.OnClickListener {
             String password;
 
             if(userAlreadyLoggedIn) {
-                SharedPreferences spUser = PreferenceManager.getDefaultSharedPreferences(LoginActivity.this);
-                SharedPreferences spPass = PreferenceManager.getDefaultSharedPreferences(LoginActivity.this);
 
-                email = spUser.getString("email", "annonymous");
-                password = spPass.getString("password", "pass");
+                SharedPreferences loginPref = getSharedPreferences("loginPref", 0);
+                email = loginPref.getString("email", "");
+                password = loginPref.getString("password", "");
 
             } else {
                 email = userEmail.getText().toString();
@@ -152,15 +150,11 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                     Log.d("Login succesfull!", json.toString());
 
                     // Save user data
-                    SharedPreferences spUsername = PreferenceManager.getDefaultSharedPreferences(LoginActivity.this);
-                    SharedPreferences.Editor editUsername = spUsername.edit();
-                    editUsername.putString("email", email);
-                    editUsername.commit();
-
-                    SharedPreferences spPassword = PreferenceManager.getDefaultSharedPreferences(LoginActivity.this);
-                    SharedPreferences.Editor editPassword = spPassword.edit();
-                    editPassword.putString("password", password);
-                    editPassword.commit();
+                    SharedPreferences loginPref = getSharedPreferences("loginPref", 0);
+                    SharedPreferences.Editor loginEditor = loginPref.edit();
+                    loginEditor.putString("email", email);
+                    loginEditor.putString("password", password);
+                    loginEditor.commit();
 
                     Intent i = new Intent(LoginActivity.this, InitialActivity.class);
                     finish();
