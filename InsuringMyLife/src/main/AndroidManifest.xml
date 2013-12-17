@@ -22,6 +22,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.gabilheri.insuringmylife.RegisterActivity"
+            android:label="@string/title_activity_register" >
+        </activity>
+        <activity
+            android:name="com.gabilheri.insuringmylife.InitialActivity"
+            android:label="@string/title_activity_initial" >
+        </activity>
     </application>
 
 </manifest>
