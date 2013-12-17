@@ -20,6 +20,7 @@ import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,15 +37,24 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 
     // PHP login script location
 
-    private static final String LOGIN_URL = "http://162.243.225.173/CloudTaskManager/improved/login.php";
+    private static final String LOGIN_URL = "http://162.243.225.173/InsuringMyLife/login.php";
 
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_MESSAGE = "message";
+    private boolean userAlreadyLoggedIn = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+
+        File usernamePref = new File("/data/data/com.gabilheri.insuringmylife/shared_prefs/username.xml");
+        File passwordPref = new File("/data/data/com.gabilheri.insuringmylife/shared_prefs/password.xml");
+
+        if(usernamePref.exists() && passwordPref.exists()) {
+            userAlreadyLoggedIn = true;
+        }
 
         // Setup input fields
 
@@ -103,8 +113,21 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         protected String doInBackground(String... args) {
             // Check for success tag
             int success;
-            String username = user.getText().toString();
-            String password = pass.getText().toString();
+            String username;
+            String password;
+
+            if(userAlreadyLoggedIn) {
+
+                SharedPreferences spUser = PreferenceManager.getDefaultSharedPreferences(LoginActivity.this);
+                SharedPreferences spPass = PreferenceManager.getDefaultSharedPreferences(LoginActivity.this);
+
+                username = spUser.getString("username", "annonymous");
+                password = spPass.getString("password", "pass");
+
+            } else {
+                username = user.getText().toString();
+                password = pass.getText().toString();
+            }
 
             try {
                 // Building Parameters
@@ -127,10 +150,16 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                     Log.d("Login succesfull!", json.toString());
 
                     // Save user data
-                    SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(LoginActivity.this);
-                    SharedPreferences.Editor edit = sp.edit();
-                    edit.putString("username", username);
-                    edit.commit();
+                    SharedPreferences spUsername = PreferenceManager.getDefaultSharedPreferences(LoginActivity.this);
+                    SharedPreferences.Editor editUsername = spUsername.edit();
+                    editUsername.putString("username", username);
+                    editUsername.commit();
+
+                    SharedPreferences spPassword = PreferenceManager.getDefaultSharedPreferences(LoginActivity.this);
+                    SharedPreferences.Editor editPassword = spPassword.edit();
+                    editPassword.putString("password", password);
+                    editPassword.commit();
+
                     Intent i = new Intent(LoginActivity.this, InitialActivity.class);
                     finish();
                     startActivity(i);

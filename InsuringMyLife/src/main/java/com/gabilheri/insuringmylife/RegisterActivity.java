@@ -30,7 +30,7 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
 
     JSONParser jsonParser = new JSONParser();
 
-    private static final String REGISTER_URL = "http://162.243.225.173/CloudTaskManager/improved/new_user.php";
+    private static final String REGISTER_URL = "http://162.243.225.173/InsuringMyLife/new_user.php";
     private static final String TAG_MESSAGE = "message";
     private static final String TAG_SUCCESS = "success";
 
