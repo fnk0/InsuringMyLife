@@ -23,7 +23,7 @@ import java.util.List;
 public class RegisterActivity extends Activity implements View.OnClickListener {
 
     // Declaring variables and constants
-    private EditText user, pass, email;
+    private EditText firstNameField, lastNameField, passwordField, emailField;
     private Button mRegister;
 
     private ProgressDialog pDialog;
@@ -41,9 +41,10 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        user = (EditText) findViewById(R.id.username);
-        pass = (EditText) findViewById(R.id.password);
-        email = (EditText) findViewById(R.id.email);
+        firstNameField = (EditText) findViewById(R.id.firstName);
+        lastNameField = (EditText) findViewById(R.id.lastName);
+        passwordField = (EditText) findViewById(R.id.password);
+        emailField = (EditText) findViewById(R.id.email);
 
         mRegister = (Button) findViewById(R.id.register);
         mRegister.setOnClickListener(this);
@@ -73,14 +74,16 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
         protected String doInBackground(String... args) {
 
             int success;
-            String username = user.getText().toString();
-            String password = user.getText().toString();
-            String email = user.getText().toString();
+            String firstName = firstNameField.getText().toString();
+            String lastName = lastNameField.getText().toString();
+            String password = passwordField.getText().toString();
+            String email = emailField.getText().toString();
 
             try {
 
                 List<NameValuePair> params = new ArrayList<NameValuePair>();
-                params.add(new BasicNameValuePair("username", username));
+                params.add(new BasicNameValuePair("name", firstName));
+                params.add(new BasicNameValuePair("last_name", lastName));
                 params.add(new BasicNameValuePair("password", password));
                 params.add(new BasicNameValuePair("email", email));
 

@@ -20,13 +20,12 @@ import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 public class LoginActivity extends Activity implements View.OnClickListener {
 
-    public EditText user, pass;
+    public EditText userEmail, pass;
     public Button mSubmit, mRegister;
 
     // Progress Dialog
@@ -41,24 +40,28 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_MESSAGE = "message";
-    private boolean userAlreadyLoggedIn = false;
+    public boolean userAlreadyLoggedIn = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(LoginActivity.this);
 
-        File usernamePref = new File("/data/data/com.gabilheri.insuringmylife/shared_prefs/username.xml");
-        File passwordPref = new File("/data/data/com.gabilheri.insuringmylife/shared_prefs/password.xml");
-
-        if(usernamePref.exists() && passwordPref.exists()) {
+        /*
+        File usernamePref = new File("/data/data/" + getPackageName() + "/shared_prefs/email.xml");
+        File passwordPref = new File("/data/data/" + getPackageName() + "/shared_prefs/password.xml");
+        */
+        if(sp.contains("email") && sp.contains("password")) {
             userAlreadyLoggedIn = true;
+            new AttemptLogin().execute();
         }
+
 
         // Setup input fields
 
-        user = (EditText) findViewById(R.id.username);
+        userEmail = (EditText) findViewById(R.id.email);
         pass = (EditText) findViewById(R.id.password);
 
         // Setup buttons
@@ -113,26 +116,25 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         protected String doInBackground(String... args) {
             // Check for success tag
             int success;
-            String username;
+            String email;
             String password;
 
             if(userAlreadyLoggedIn) {
-
                 SharedPreferences spUser = PreferenceManager.getDefaultSharedPreferences(LoginActivity.this);
                 SharedPreferences spPass = PreferenceManager.getDefaultSharedPreferences(LoginActivity.this);
 
-                username = spUser.getString("username", "annonymous");
+                email = spUser.getString("email", "annonymous");
                 password = spPass.getString("password", "pass");
 
             } else {
-                username = user.getText().toString();
+                email = userEmail.getText().toString();
                 password = pass.getText().toString();
             }
 
             try {
                 // Building Parameters
                 List<NameValuePair> params = new ArrayList<NameValuePair>();
-                params.add(new BasicNameValuePair("username", username));
+                params.add(new BasicNameValuePair("email", email));
                 params.add(new BasicNameValuePair("password", password));
 
                 Log.d("request!", "starting");
@@ -152,7 +154,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                     // Save user data
                     SharedPreferences spUsername = PreferenceManager.getDefaultSharedPreferences(LoginActivity.this);
                     SharedPreferences.Editor editUsername = spUsername.edit();
-                    editUsername.putString("username", username);
+                    editUsername.putString("email", email);
                     editUsername.commit();
 
                     SharedPreferences spPassword = PreferenceManager.getDefaultSharedPreferences(LoginActivity.this);
