@@ -6,40 +6,23 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 
 public class InitialActivity extends Activity {
 
-    private Button logout;
+    private static final int MENU_LOGOUT = 300;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_initial);
 
-        logout = (Button) findViewById(R.id.logout);
-
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                SharedPreferences loginPref = getSharedPreferences("loginPref", 0);
-                SharedPreferences.Editor loginEditor = loginPref.edit();
-                loginEditor.clear();
-                loginEditor.commit();
-
-                Intent i = new Intent(InitialActivity.this, LoginActivity.class);
-                startActivity(i);
-            }
-        });
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.initial, menu);
+        menu.add(0, MENU_LOGOUT, 0, getString(R.string.logout));
         return true;
     }
 
@@ -49,8 +32,16 @@ public class InitialActivity extends Activity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
+        switch (id) {
+            case MENU_LOGOUT:
+                SharedPreferences loginPref = getSharedPreferences("loginPref", 0);
+                SharedPreferences.Editor loginEditor = loginPref.edit();
+                loginEditor.clear();
+                loginEditor.commit();
+
+                Intent i = new Intent(InitialActivity.this, LoginActivity.class);
+                startActivity(i);
+                break;
         }
         return super.onOptionsItemSelected(item);
     }

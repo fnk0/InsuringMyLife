@@ -11,5 +11,6 @@
     <string name="register">Register</string>
     <string name="title_activity_register">RegisterActivity</string>
     <string name="title_activity_initial">InitialActivity</string>
+    <string name="logout">Logout</string>
 
 </resources>
