@@ -13,4 +13,12 @@
     <string name="title_activity_initial">InitialActivity</string>
     <string name="logout">Logout</string>
 
+    <array name="drawer_options">
+        <item name="item1"> Option 1</item>
+        <item name="item2"> Option 2</item>
+        <item name="item3"> Option 3</item>
+        <item name="item4"> Option 4</item>
+        <item name="logout"> Logout</item>
+    </array>
+
 </resources>
