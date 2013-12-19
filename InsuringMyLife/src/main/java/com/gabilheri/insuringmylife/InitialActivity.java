@@ -14,9 +14,11 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import java.util.ArrayList;
+
 public class InitialActivity extends Activity {
 
-    private String[] drawerOptions;
+    private ArrayList<String> drawerOptions;
     private DrawerLayout optionsDrawerLayout;
     private ListView drawerList;
     private ActionBarDrawerToggle drawerToggle;
@@ -52,7 +54,16 @@ public class InitialActivity extends Activity {
         getActionBar().setDisplayHomeAsUpEnabled(true);
         getActionBar().setHomeButtonEnabled(true);
 
-        drawerOptions = getResources().getStringArray(R.array.drawer_options);
+        drawerOptions = new ArrayList<String>();
+        drawerOptions.add("Profile 1");
+        drawerOptions.add("Profile 2");
+        drawerOptions.add("Profile 3");
+        drawerOptions.add("Profile 4");
+        drawerOptions.add("Profile 5");
+        drawerOptions.add("Profile 6");
+        drawerOptions.add("Profile 7");
+        drawerOptions.add("New Profile");
+        drawerOptions.add("Logout");
         optionsDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawerList = (ListView) findViewById(R.id.left_drawer);
 
@@ -106,7 +117,7 @@ public class InitialActivity extends Activity {
 
     private void selectItem(int position) {
 
-        if(drawerOptions[position].equals("Logout")) {
+        if(drawerOptions.get(position).equals("Logout")) {
             SharedPreferences loginPref = getSharedPreferences("loginPref", 0);
             SharedPreferences.Editor loginEditor = loginPref.edit();
             loginEditor.clear();

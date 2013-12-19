@@ -16,10 +16,10 @@
     <string name="drawer_open"> Drawer open</string>
     <string name="drawer_close"> Drawer Close</string>
     <array name="drawer_options">
-        <item name="item1"> Option 1</item>
-        <item name="item2"> Option 2</item>
-        <item name="item3"> Option 3</item>
-        <item name="item4"> Option 4</item>
+        <item name="item1"> Profile 1</item>
+        <item name="item2"> Profile 2</item>
+        <item name="item3"> Profile 3</item>
+        <item name="add_profile"> New Profile</item>
         <item name="logout"> Logout</item>
     </array>
 
