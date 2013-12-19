@@ -3,7 +3,9 @@ package com.gabilheri.insuringmylife;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,11 +19,38 @@ public class InitialActivity extends Activity {
     private String[] drawerOptions;
     private DrawerLayout optionsDrawerLayout;
     private ListView drawerList;
+    private ActionBarDrawerToggle drawerToggle;
+    private CharSequence drawerTitle;
+    private CharSequence title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_initial);
+
+        title = drawerTitle = getTitle();
+
+        optionsDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawerToggle = new ActionBarDrawerToggle(this, optionsDrawerLayout,
+                R.drawable.ic_drawer, R.string.drawer_open, R.string.drawer_close) {
+
+            /** Called when a Drawer has settled in a completely closed state. */
+
+            public void onDrawerClosed(View view) {
+                getActionBar().setTitle(title);
+                invalidateOptionsMenu();
+            }
+
+            public void onDrawerOpened(View drawerView) {
+                getActionBar().setTitle(drawerTitle);
+                invalidateOptionsMenu();
+            }
+        };
+
+        optionsDrawerLayout.setDrawerListener(drawerToggle);
+
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+        getActionBar().setHomeButtonEnabled(true);
 
         drawerOptions = getResources().getStringArray(R.array.drawer_options);
         optionsDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -32,6 +61,20 @@ public class InitialActivity extends Activity {
         drawerList.setOnItemClickListener(new DrawerItemClickListener());
 
     }
+
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        drawerToggle.syncState();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        drawerToggle.onConfigurationChanged(newConfig);
+    }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -45,6 +88,9 @@ public class InitialActivity extends Activity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
 
+        if(drawerToggle.onOptionsItemSelected(item)) {
+            return true;
+        }
         return super.onOptionsItemSelected(item);
     }
 

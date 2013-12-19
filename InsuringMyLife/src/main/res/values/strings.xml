@@ -13,6 +13,8 @@
     <string name="title_activity_initial">InitialActivity</string>
     <string name="logout">Logout</string>
 
+    <string name="drawer_open"> Drawer open</string>
+    <string name="drawer_close"> Drawer Close</string>
     <array name="drawer_options">
         <item name="item1"> Option 1</item>
         <item name="item2"> Option 2</item>
