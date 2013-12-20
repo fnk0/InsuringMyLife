@@ -12,9 +12,9 @@
     <string name="title_activity_register">RegisterActivity</string>
     <string name="title_activity_initial">InitialActivity</string>
     <string name="logout">Logout</string>
-
     <string name="drawer_open"> Drawer open</string>
     <string name="drawer_close"> Drawer Close</string>
+
     <array name="drawer_options">
         <item name="item1"> Profile 1</item>
         <item name="item2"> Profile 2</item>
@@ -22,5 +22,8 @@
         <item name="add_profile"> New Profile</item>
         <item name="logout"> Logout</item>
     </array>
+
+    <string name="title_activity_new_profile">NewProfileActivity</string>
+    <string name="repeat_password">Repeat Password</string>
 
 </resources>

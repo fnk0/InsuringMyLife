@@ -35,6 +35,10 @@
             android:name="com.gabilheri.insuringmylife.InitialActivity"
             android:label="@string/title_activity_initial" >
         </activity>
+        <activity
+            android:name="com.gabilheri.insuringmylife.NewProfileActivity"
+            android:label="@string/title_activity_new_profile" >
+        </activity>
     </application>
 
 </manifest>

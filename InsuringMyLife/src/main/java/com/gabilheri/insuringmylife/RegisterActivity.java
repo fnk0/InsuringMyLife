@@ -23,7 +23,7 @@ import java.util.List;
 public class RegisterActivity extends Activity implements View.OnClickListener {
 
     // Declaring variables and constants
-    private EditText firstNameField, lastNameField, passwordField, emailField;
+    private EditText firstNameField, lastNameField, passwordField, repeatPasswordField, emailField;
     private Button mRegister;
 
     private ProgressDialog pDialog;
@@ -44,6 +44,7 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
         firstNameField = (EditText) findViewById(R.id.firstName);
         lastNameField = (EditText) findViewById(R.id.lastName);
         passwordField = (EditText) findViewById(R.id.password);
+        repeatPasswordField = (EditText) findViewById(R.id.repeatPassword);
         emailField = (EditText) findViewById(R.id.email);
 
         mRegister = (Button) findViewById(R.id.register);
@@ -53,7 +54,28 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        new CreateUser().execute();
+        String password = passwordField.getText().toString();
+        String repeatPassword = repeatPasswordField.getText().toString();
+        String email = emailField.getText().toString();
+
+        int counter = 0;
+
+        for(int i = 0; i < email.length(); i++) {
+            if(email.charAt(i) == '@') {
+                counter++;
+            }
+        }
+
+        if(!password.equals(repeatPassword)) {
+            Toast.makeText(RegisterActivity.this, "Passwords don't match!", Toast.LENGTH_LONG).show();
+        } else if(password.length() < 6) {
+            Toast.makeText(RegisterActivity.this, "Password should be at least 6 chars long!", Toast.LENGTH_LONG).show();
+        } else if(counter != 1) {
+            Toast.makeText(RegisterActivity.this, "The e-mail does not seen valid!", Toast.LENGTH_LONG).show();
+        } else {
+            new CreateUser().execute();
+        }
+
     }
 
     class CreateUser extends AsyncTask<String, String, String> {
