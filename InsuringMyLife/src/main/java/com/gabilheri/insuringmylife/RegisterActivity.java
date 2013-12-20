@@ -80,8 +80,6 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
 
     class CreateUser extends AsyncTask<String, String, String> {
 
-        boolean failure = false;
-
         @Override
         protected void onPreExecute() {
             super.onPreExecute();

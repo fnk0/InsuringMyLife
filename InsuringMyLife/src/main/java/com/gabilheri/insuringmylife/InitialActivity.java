@@ -125,7 +125,9 @@ public class InitialActivity extends Activity {
 
             Intent i = new Intent(InitialActivity.this, LoginActivity.class);
             startActivity(i);
+        } else if(drawerOptions.get(position).equals("New Profile")) {
+            Intent i = new Intent(InitialActivity.this, NewProfileActivity.class);
+            startActivity(i);
         }
     }
-
 }

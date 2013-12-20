@@ -23,7 +23,37 @@
         <item name="logout"> Logout</item>
     </array>
 
+    <array name="months">
+        <item name="jan">January</item>
+        <item name="feb">February</item>
+        <item name="mar">March</item>
+        <item name="apr">April</item>
+        <item name="may">May</item>
+        <item name="jun">June</item>
+        <item name="jul">July</item>
+        <item name="aug">August</item>
+        <item name="sep">September</item>
+        <item name="oct">October</item>
+        <item name="nov">November</item>
+        <item name="dec">December</item>
+    </array>
+
+    <array name="cc_companies">
+        <item name="visa">Visa</item>
+        <item name="master">Mastercard</item>
+        <item name="amer">American Express</item>
+    </array>
     <string name="title_activity_new_profile">NewProfileActivity</string>
     <string name="repeat_password">Repeat Password</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="cvc">CVC</string>
+    <string name="cc_num">Credit Card Number</string>
+    <string name="birthday">Birthday</string>
+    <string name="exp_date">Expiration Date</string>
+    <string name="cc_info">Credit Card Information</string>
+    <string name="personal_info">Personal Information</string>
+    <string name="cc_owner">Credit Card Owner Name</string>
+    <string name="new_profile">Add New Profile</string>
 
 </resources>

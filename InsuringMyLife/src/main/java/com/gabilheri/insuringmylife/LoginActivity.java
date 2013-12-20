@@ -45,17 +45,10 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         setContentView(R.layout.activity_login);
 
         SharedPreferences sp = getSharedPreferences("loginPref", 0);
-
-        /*
-        File usernamePref = new File("/data/data/" + getPackageName() + "/shared_prefs/email.xml");
-        File passwordPref = new File("/data/data/" + getPackageName() + "/shared_prefs/password.xml");
-        */
         if(sp.contains("email") && sp.contains("password")) {
             userAlreadyLoggedIn = true;
             new AttemptLogin().execute();
         }
-
-
         // Setup input fields
 
         userEmail = (EditText) findViewById(R.id.email);
