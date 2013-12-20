@@ -7,19 +7,24 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-public class NewProfileActivity extends Activity {
+public class NewProfileActivity extends Activity implements View.OnClickListener {
+
 
     private Spinner monthSpinner;
     private Spinner daySpinner;
@@ -31,7 +36,13 @@ public class NewProfileActivity extends Activity {
     private ArrayList<Integer> yearBirthdayNumbers = new ArrayList<Integer>();
     private ArrayList<Integer> yearExpirationNumbers = new ArrayList<Integer>();
     private ProgressDialog pDialog;
-    private EditText firstNameField, lastNameField, ccNumberField, cvcField;
+    private EditText firstNameField, lastNameField, ccNameField, ccNumberField, cvcField;
+    private Button newProfileButton;
+
+    JSONParser jsonParser = new JSONParser();
+    private static final String PROFILE_URL = "http://162.243.225.173/InsuringMyLife/new_profile.php";
+    private static final String TAG_MESSAGE = "message";
+    private static final String TAG_SUCCESS = "success";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,8 +58,10 @@ public class NewProfileActivity extends Activity {
         ccCompaniesSpinner = (Spinner) findViewById(R.id.ccCompany);
         firstNameField = (EditText) findViewById(R.id.firstName);
         lastNameField = (EditText) findViewById(R.id.lastName);
+        ccNameField = (EditText) findViewById(R.id.ccName);
         ccNumberField = (EditText) findViewById(R.id.ccNumber);
         cvcField = (EditText) findViewById(R.id.cvc);
+        newProfileButton = (Button) findViewById(R.id.addNewProfile);
 
         dayNumbers = new Integer[31];
         for(int i = 0; i < 31; i++) {
@@ -80,6 +93,8 @@ public class NewProfileActivity extends Activity {
         ArrayAdapter<Integer> yearExpSpinnerAdapter = new ArrayAdapter<Integer>(this,   android.R.layout.simple_spinner_item, yearExpirationNumbers);
         yearExpSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // The drop down view
         yearExpSpinner.setAdapter(yearExpSpinnerAdapter);
+
+        newProfileButton.setOnClickListener(this);
     }
 
 
@@ -87,7 +102,6 @@ public class NewProfileActivity extends Activity {
     public boolean onCreateOptionsMenu(Menu menu) {
         
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.new_profile, menu);
         return true;
     }
 
@@ -96,11 +110,12 @@ public class NewProfileActivity extends Activity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onClick(View view) {
+        new createProfile().execute();
     }
 
     class createProfile extends AsyncTask<String, String, String> {
@@ -124,16 +139,21 @@ public class NewProfileActivity extends Activity {
             String lastName = lastNameField.getText().toString();
             String ccNumber = ccNumberField.getText().toString();
             String cvcNum = cvcField.getText().toString();
-            int monthBirthday = monthSpinner.getSelectedItemPosition();
+            int monthBirthday = monthSpinner.getSelectedItemPosition() + 1;
             String dayBirthday = daySpinner.getSelectedItem().toString();
             String yearBirthday = yearSpinner.getSelectedItem().toString();
-            int expMonth = monthExpSpinner.getSelectedItemPosition();
+            int expMonth = monthExpSpinner.getSelectedItemPosition() + 1;
             String expYear = yearExpSpinner.getSelectedItem().toString();
             String ccCompany = ccCompaniesSpinner.getSelectedItem().toString();
+            String ccName = ccNameField.getText().toString();
             String email;
-
+            String expDate;
             String birthday = "" + yearBirthday + "-" + monthBirthday + "-" + dayBirthday;
-
+            if(expMonth < 10) {
+                expDate = "0" + expMonth + "-" + expYear;
+            } else {
+                expDate = "" + expMonth + "-" + expYear;
+            }
             try {
                 SharedPreferences loginPref = getSharedPreferences("loginPref", 0);
                 email = loginPref.getString("email", "");
@@ -143,10 +163,26 @@ public class NewProfileActivity extends Activity {
                 params.add(new BasicNameValuePair("birthday", birthday));
                 params.add(new BasicNameValuePair("email", email));
                 params.add(new BasicNameValuePair("cc_number", ccNumber));
+                params.add(new BasicNameValuePair("cc_name", ccName));
+                params.add(new BasicNameValuePair("cc_expiration", expDate));
+                params.add(new BasicNameValuePair("cc_company",ccCompany));
+                params.add(new BasicNameValuePair("cc_cvc", cvcNum));
 
+                // Posting data to script
 
-            } catch (Exception e) {
+                JSONObject json = jsonParser.makeHttpRequest(PROFILE_URL, "POST", params);
 
+                success = json.getInt(TAG_SUCCESS);
+
+                if(success == 1) {
+                    finish();
+                    return json.getString(TAG_MESSAGE);
+                } else {
+                    return json.getString(TAG_MESSAGE);
+                }
+
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
             return null;
         }
