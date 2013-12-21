@@ -22,7 +22,6 @@
         <item name="add_profile"> New Profile</item>
         <item name="logout"> Logout</item>
     </array>
-
     <array name="months">
         <item name="jan">January</item>
         <item name="feb">February</item>
@@ -37,12 +36,12 @@
         <item name="nov">November</item>
         <item name="dec">December</item>
     </array>
-
     <array name="cc_companies">
         <item name="visa">Visa</item>
         <item name="master">Mastercard</item>
         <item name="amer">American Express</item>
     </array>
+
     <string name="title_activity_new_profile">NewProfileActivity</string>
     <string name="repeat_password">Repeat Password</string>
     <string name="first_name">First Name</string>
@@ -55,5 +54,6 @@
     <string name="personal_info">Personal Information</string>
     <string name="cc_owner">Credit Card Owner Name</string>
     <string name="new_profile">Add New Profile</string>
+    <string name="title_activity_car">CarActivity</string>
 
 </resources>

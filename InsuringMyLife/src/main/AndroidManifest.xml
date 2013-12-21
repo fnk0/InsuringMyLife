@@ -17,13 +17,11 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme"
-        >
+        android:theme="@style/AppTheme" >
         <activity
             android:name="com.gabilheri.insuringmylife.LoginActivity"
             android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            >
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -33,20 +31,21 @@
         <activity
             android:name="com.gabilheri.insuringmylife.RegisterActivity"
             android:label="@string/title_activity_register"
-            android:screenOrientation="portrait"
-            >
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="com.gabilheri.insuringmylife.InitialActivity"
             android:label="@string/title_activity_initial"
-            android:screenOrientation="portrait"
-            >
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="com.gabilheri.insuringmylife.NewProfileActivity"
             android:label="@string/title_activity_new_profile"
-            android:screenOrientation="portrait"
-            >
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.gabilheri.insuringmylife.CarActivity"
+            android:label="@string/title_activity_car" >
         </activity>
     </application>
 

@@ -12,11 +12,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 
-public class InitialActivity extends Activity {
+public class InitialActivity extends Activity implements View.OnClickListener {
 
     private ArrayList<String> drawerOptions;
     private DrawerLayout optionsDrawerLayout;
@@ -24,6 +25,7 @@ public class InitialActivity extends Activity {
     private ActionBarDrawerToggle drawerToggle;
     private CharSequence drawerTitle;
     private CharSequence title;
+    private Button lifeButton, carButton, houseButton, accidentButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,13 +57,16 @@ public class InitialActivity extends Activity {
         getActionBar().setHomeButtonEnabled(true);
 
         drawerOptions = new ArrayList<String>();
-        drawerOptions.add("Profile 1");
-        drawerOptions.add("Profile 2");
-        drawerOptions.add("Profile 3");
-        drawerOptions.add("Profile 4");
-        drawerOptions.add("Profile 5");
-        drawerOptions.add("Profile 6");
-        drawerOptions.add("Profile 7");
+
+
+        SharedPreferences profileCounter = getSharedPreferences("numProfiles", MODE_PRIVATE);
+        int counter = profileCounter.getInt("numProfiles", 0);
+
+        for(int x = 0; x < counter; x++) {
+            SharedPreferences profiles = getSharedPreferences("profilesPref" + x, MODE_PRIVATE);
+            drawerOptions.add(profiles.getString("fullName", "name"));
+        }
+
         drawerOptions.add("New Profile");
         drawerOptions.add("Logout");
         optionsDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -71,6 +76,35 @@ public class InitialActivity extends Activity {
         drawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.drawer_list_item, drawerOptions));
         drawerList.setOnItemClickListener(new DrawerItemClickListener());
 
+        lifeButton = (Button) findViewById(R.id.lifeButton);
+        carButton = (Button) findViewById(R.id.carButton);
+        houseButton = (Button) findViewById(R.id.houseButton);
+        accidentButton = (Button) findViewById(R.id.accidentButton);
+
+        carButton.setOnClickListener(this);
+        lifeButton.setOnClickListener(this);
+        houseButton.setOnClickListener(this);
+        accidentButton.setOnClickListener(this);
+
+    }
+
+    @Override
+    public void onClick(View view) {
+
+        int id = view.getId();
+
+        switch (id) {
+            case R.id.lifeButton:
+                break;
+            case R.id.carButton:
+                Intent i = new Intent(InitialActivity.this, CarActivity.class);
+                startActivity(i);
+                break;
+            case R.id.accidentButton:
+                break;
+            case R.id.houseButton:
+                break;
+        }
     }
 
     @Override
@@ -117,17 +151,35 @@ public class InitialActivity extends Activity {
 
     private void selectItem(int position) {
 
+        String selectedProfileName;
+
         if(drawerOptions.get(position).equals("Logout")) {
             SharedPreferences loginPref = getSharedPreferences("loginPref", 0);
             SharedPreferences.Editor loginEditor = loginPref.edit();
             loginEditor.clear();
             loginEditor.commit();
 
+            SharedPreferences profileCounter = getSharedPreferences("numProfiles", MODE_PRIVATE);
+            int counter = profileCounter.getInt("numProfiles", 0);
+
+            for(int x = 0; x < counter; x++) {
+                SharedPreferences profiles = getSharedPreferences("profilesPref" + x, MODE_PRIVATE);
+                SharedPreferences.Editor profilesEditor = profiles.edit();
+                profilesEditor.clear();
+                profilesEditor.commit();
+            }
+
             Intent i = new Intent(InitialActivity.this, LoginActivity.class);
             startActivity(i);
         } else if(drawerOptions.get(position).equals("New Profile")) {
             Intent i = new Intent(InitialActivity.this, NewProfileActivity.class);
             startActivity(i);
+        } else {
+            selectedProfileName = drawerOptions.get(position).toString();
+            SharedPreferences selectedProfile = getSharedPreferences("selectedProfile", MODE_PRIVATE);
+            SharedPreferences.Editor selectedProfileEditor = selectedProfile.edit();
+            selectedProfileEditor.putString("selectedProfile", selectedProfileName);
+            selectedProfileEditor.commit();
         }
     }
 }

@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -30,6 +31,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 
     // JSON parser class
     public JSONParser jsonParser = new JSONParser();
+    public JSONArray userProfiles = null;
 
     // PHP login script location
 
@@ -44,7 +46,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        SharedPreferences sp = getSharedPreferences("loginPref", 0);
+        SharedPreferences sp = getSharedPreferences("loginPref", MODE_PRIVATE);
         if(sp.contains("email") && sp.contains("password")) {
             userAlreadyLoggedIn = true;
             new AttemptLogin().execute();
@@ -111,7 +113,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 
             if(userAlreadyLoggedIn) {
 
-                SharedPreferences loginPref = getSharedPreferences("loginPref", 0);
+                SharedPreferences loginPref = getSharedPreferences("loginPref", MODE_PRIVATE);
                 email = loginPref.getString("email", "");
                 password = loginPref.getString("password", "");
 
@@ -136,16 +138,37 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 
                 // json success tag
                 success = json.getInt(TAG_SUCCESS);
+                userProfiles = json.getJSONArray("profiles");
 
                 if(success == 1) {
                     Log.d("Login succesfull!", json.toString());
 
                     // Save user data
-                    SharedPreferences loginPref = getSharedPreferences("loginPref", 0);
+                    SharedPreferences loginPref = getSharedPreferences("loginPref", MODE_PRIVATE);
                     SharedPreferences.Editor loginEditor = loginPref.edit();
                     loginEditor.putString("email", email);
                     loginEditor.putString("password", password);
                     loginEditor.commit();
+
+
+                    int counter = 0;
+                    for(int x = 0; x < userProfiles.length(); x++) {
+                        JSONObject obj = userProfiles.getJSONObject(x);
+
+                        String profileName = obj.getString("name");
+                        String profileLastName = obj.getString("last_name");
+                        String fullName = "" + profileName + " " + profileLastName;
+                        SharedPreferences profilesPref = getSharedPreferences("profilesPref" + x, MODE_PRIVATE);
+                        SharedPreferences.Editor profileEditor = profilesPref.edit();
+                        profileEditor.putString("fullName", fullName);
+                        profileEditor.commit();
+                        counter++;
+                    }
+
+                    SharedPreferences profilesNumber = getSharedPreferences("numProfiles", MODE_PRIVATE);
+                    SharedPreferences.Editor profilesNumberEditor = profilesNumber.edit();
+                    profilesNumberEditor.putInt("numProfiles", counter);
+                    profilesNumberEditor.commit();
 
                     Intent i = new Intent(LoginActivity.this, InitialActivity.class);
                     finish();

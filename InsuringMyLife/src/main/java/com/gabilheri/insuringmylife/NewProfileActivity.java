@@ -2,6 +2,7 @@ package com.gabilheri.insuringmylife;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -175,7 +176,8 @@ public class NewProfileActivity extends Activity implements View.OnClickListener
                 success = json.getInt(TAG_SUCCESS);
 
                 if(success == 1) {
-                    finish();
+                    Intent i = new Intent(NewProfileActivity.this, LoginActivity.class);
+                    startActivity(i);
                     return json.getString(TAG_MESSAGE);
                 } else {
                     return json.getString(TAG_MESSAGE);
