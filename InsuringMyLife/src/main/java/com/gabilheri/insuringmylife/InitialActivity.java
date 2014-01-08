@@ -97,12 +97,14 @@ public class InitialActivity extends Activity implements View.OnClickListener {
             case R.id.lifeButton:
                 break;
             case R.id.carButton:
-                Intent i = new Intent(InitialActivity.this, CarActivity.class);
-                startActivity(i);
+                Intent carActivity = new Intent(InitialActivity.this, CarActivity.class);
+                startActivity(carActivity);
                 break;
             case R.id.accidentButton:
                 break;
             case R.id.houseButton:
+                Intent houseActivity = new Intent(InitialActivity.this, HouseActivity.class);
+                startActivity(houseActivity);
                 break;
         }
     }
@@ -144,10 +146,9 @@ public class InitialActivity extends Activity implements View.OnClickListener {
         @Override
         public void onItemClick(AdapterView parent, View view, int position, long id) {
             selectItem(position);
+            optionsDrawerLayout.closeDrawer(drawerList);
         }
     }
-
-    /** Swaps fragments in the main content view */
 
     private void selectItem(int position) {
 

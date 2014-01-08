@@ -41,6 +41,12 @@
         <item name="master">Mastercard</item>
         <item name="amer">American Express</item>
     </array>
+    <array name="car_acitivy_list">
+        <item name="vehicles">Vehicles</item>
+        <item name="claims">Claims</item>
+        <item name="quotes">Quotes</item>
+        <item name="info">Agent Info</item>
+    </array>
 
     <string name="title_activity_new_profile">NewProfileActivity</string>
     <string name="repeat_password">Repeat Password</string>
@@ -55,5 +61,8 @@
     <string name="cc_owner">Credit Card Owner Name</string>
     <string name="new_profile">Add New Profile</string>
     <string name="title_activity_car">CarActivity</string>
+    <string name="title_activity_vehicles">VehiclesActivity</string>
+    <string name="title_activity_house">HouseActivity</string>
+    <string name="group_image">group image</string>
 
 </resources>

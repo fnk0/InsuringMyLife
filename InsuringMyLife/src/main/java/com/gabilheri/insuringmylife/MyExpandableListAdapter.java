@@ -1,0 +1,139 @@
+package com.gabilheri.insuringmylife;
+
+import android.app.Activity;
+import android.util.SparseArray;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseExpandableListAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+/**
+ * Created by marcus on 1/5/14.
+ */
+public class MyExpandableListAdapter extends BaseExpandableListAdapter {
+
+
+    private final SparseArray<ListRowGroup> groups;
+    public LayoutInflater inflater;
+    public Activity activity;
+
+    public MyExpandableListAdapter(Activity act, SparseArray<ListRowGroup> groups) {
+        activity = act;
+        this.groups = groups;
+        inflater = act.getLayoutInflater();
+    }
+
+    @Override
+    public Object getChild(int groupPosition, int childPosition) {
+        return groups.get(groupPosition).children.get(childPosition);
+    }
+
+    @Override
+    public long getChildId(int groupPosition, int childPosition) {
+        return 0;
+    }
+
+    @Override
+    public View getChildView(int groupPosition, final int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
+
+        final String children = (String) getChild(groupPosition, childPosition);
+        TextView text = null;
+        if(convertView == null) {
+            convertView = inflater.inflate(R.layout.listrow_details, null);
+        }
+
+        text = (TextView) convertView.findViewById(R.id.textView1);
+        text.setText(children);
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(activity, children, Toast.LENGTH_SHORT).show();
+            }
+        });
+        return convertView;
+    }
+
+    @Override
+    public int getChildrenCount(int groupPosition) {
+        return groups.get(groupPosition).children.size();
+    }
+
+    @Override
+    public Object getGroup(int groupPosition) {
+        return groups.get(groupPosition);
+    }
+
+    @Override
+    public int getGroupCount() {
+        return groups.size();
+    }
+
+    @Override
+    public long getGroupId(int groupPosition) {
+        return 0;
+    }
+
+    @Override
+    public void onGroupCollapsed(int groupPosition) {
+        super.onGroupCollapsed(groupPosition);
+    }
+
+    @Override
+    public void onGroupExpanded(int groupPosition) {
+        super.onGroupExpanded(groupPosition);
+    }
+
+    @Override
+    public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
+
+        if(convertView == null) {
+            convertView = inflater.inflate(R.layout.listrow_group, null);
+        }
+        ListRowGroup group = (ListRowGroup) getGroup(groupPosition);
+        TextView title = (TextView) convertView.findViewById(R.id.textView1);
+        title.setText(group.string);
+       // ((CheckedTextView) convertView).setChecked(isExpanded);
+        ImageView imageView = (ImageView) convertView.findViewById(R.id.groupImage);
+
+        if(group.brand.equals("Ford")) {
+            imageView.setImageResource(R.drawable.ford);
+        } else if(group.brand.equals("Toyota")) {
+            imageView.setImageResource(R.drawable.toyota);
+        } else if(group.brand.equals("Audi")) {
+            imageView.setImageResource(R.drawable.audi);
+        } else if(group.brand.equals("Volvo")) {
+            imageView.setImageResource(R.drawable.volvo);
+        } else if(group.brand.equals("Volkswagen")) {
+            imageView.setImageResource(R.drawable.volkswagen);
+        } else if(group.brand.equals("Jeep")) {
+            imageView.setImageResource(R.drawable.jeep);
+        } else if(group.brand.equals("Chevrolet")) {
+            imageView.setImageResource(R.drawable.chevrolet);
+        } else if(group.brand.equals("Infinity")) {
+            imageView.setImageResource(R.drawable.infinity);
+        } else if(group.brand.equals("Dodge")) {
+            imageView.setImageResource(R.drawable.dodge);
+        } else if(group.brand.equals("BMW")) {
+            imageView.setImageResource(R.drawable.bmw);
+        } else if(group.brand.equals("Hyundai")) {
+            imageView.setImageResource(R.drawable.hyundai);
+        } else {
+            imageView.setImageResource(R.drawable.ic_launcher);
+        }
+
+        return convertView;
+    }
+
+    @Override
+    public boolean hasStableIds() {
+        return false;
+    }
+
+    @Override
+    public boolean isChildSelectable(int i, int i2) {
+        return false;
+    }
+}
