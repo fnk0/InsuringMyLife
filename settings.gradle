@@ -1,1 +1,1 @@
-include ':InsuringMyLife'
+include ':InsuringMyLife', ':libraries:showcase'

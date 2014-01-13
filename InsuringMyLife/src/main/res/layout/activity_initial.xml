@@ -12,16 +12,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@color/blue"
+        android:background="@color/background"
         android:weightSum="1"
         >
-
-        <ImageView
-            android:src="@drawable/applogo"
-            android:layout_width="wrap_content"
-            android:layout_height="0dip"
-            android:layout_weight="0.7"
-            />
         <LinearLayout
             android:layout_weight="0.1"
             android:layout_width="match_parent"
@@ -29,43 +22,51 @@
             android:orientation="horizontal"
             android:weightSum="1"
             >
-        <Button
-            android:id="@+id/lifeButton"
-            android:layout_width="0dip"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:text="Life Button"
-            />
-        <Button
-            android:id="@+id/carButton"
-            android:layout_width="0dip"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:text="Car Button"
-            />
+            <Button
+                android:id="@+id/lifeButton"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:text="Life Button"
+                />
+            <Button
+                android:id="@+id/carButton"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:text="Car Button"
+                />
         </LinearLayout>
-    <LinearLayout
-        android:layout_weight="0.1"
-        android:layout_width="match_parent"
-        android:layout_height="0dip"
-        android:orientation="horizontal"
-        android:weightSum="1"
-        >
-        <Button
-            android:id="@+id/accidentButton"
-            android:layout_width="0dip"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:text="Accident Button"
-            />
-        <Button
-            android:id="@+id/houseButton"
-            android:layout_width="0dip"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:text="House Button"
-            />
+        <LinearLayout
+            android:layout_weight="0.1"
+            android:layout_width="match_parent"
+            android:layout_height="0dip"
+            android:orientation="horizontal"
+            android:weightSum="1"
+            >
+            <Button
+                android:id="@+id/accidentButton"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:text="Accident Button"
+                />
+            <Button
+                android:id="@+id/houseButton"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:text="House Button"
+                />
         </LinearLayout>
+
+        <ImageView
+            android:src="@drawable/applogo"
+            android:layout_width="wrap_content"
+            android:layout_height="0dip"
+            android:layout_weight="0.7"
+            />
+
     </LinearLayout>
 
     <!-- android:layout_gravity="start" tells DrawerLayout to treat

@@ -15,6 +15,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.espian.showcaseview.ShowcaseView;
+import com.espian.showcaseview.targets.ViewTarget;
+
 import java.util.ArrayList;
 
 public class InitialActivity extends Activity implements View.OnClickListener {
@@ -85,6 +88,11 @@ public class InitialActivity extends Activity implements View.OnClickListener {
         lifeButton.setOnClickListener(this);
         houseButton.setOnClickListener(this);
         accidentButton.setOnClickListener(this);
+
+        View showcasedView = findViewById(R.id.carButton);
+        ViewTarget target = new ViewTarget(showcasedView);
+        target.getPoint();
+        ShowcaseView.insertShowcaseView(target, this, "Icon Selection", "Please select one of the icons shown below");
 
     }
 

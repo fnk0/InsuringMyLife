@@ -9,11 +9,15 @@
     <string name="password">Password</string>
     <string name="login">Login</string>
     <string name="register">Register</string>
-    <string name="title_activity_register">RegisterActivity</string>
-    <string name="title_activity_initial">InitialActivity</string>
+    <string name="title_activity_register">Register</string>
+    <string name="title_activity_initial">Insuring My Life</string>
     <string name="logout">Logout</string>
     <string name="drawer_open"> Drawer open</string>
     <string name="drawer_close"> Drawer Close</string>
+    <string name="email_username">User Name / E-mail</string>
+    <string name="title_activity_car">Insuring My Life: Auto</string>
+    <string name="title_activity_vehicles">Auto: Vehicles</string>
+    <string name="title_activity_house">Insuring My Life: Properties</string>
 
     <array name="drawer_options">
         <item name="item1"> Profile 1</item>
@@ -60,9 +64,6 @@
     <string name="personal_info">Personal Information</string>
     <string name="cc_owner">Credit Card Owner Name</string>
     <string name="new_profile">Add New Profile</string>
-    <string name="title_activity_car">CarActivity</string>
-    <string name="title_activity_vehicles">VehiclesActivity</string>
-    <string name="title_activity_house">HouseActivity</string>
     <string name="group_image">group image</string>
 
 </resources>

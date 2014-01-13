@@ -6,7 +6,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@color/blue"
+    android:background="@color/background"
     tools:context=".RegisterActivity"
     >
 
@@ -17,8 +17,11 @@
         android:ems="10"
         android:hint="@string/first_name"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:textColorHint="@android:color/white"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:background="@drawable/box"
+        android:padding="10dip"
         >
         <requestFocus />
     </EditText>
@@ -30,8 +33,11 @@
         android:hint="@string/last_name"
         android:layout_below="@+id/firstName"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:textColorHint="@android:color/white"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:background="@drawable/box"
+        android:padding="10dip"
         >
         <requestFocus />
     </EditText>
@@ -45,8 +51,11 @@
         android:layout_below="@+id/password"
         android:layout_centerHorizontal="true"
         android:inputType="textPassword"
-        android:layout_marginTop="10dp"
-        android:textColorHint="@android:color/white"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:background="@drawable/box"
+        android:padding="10dip"
         >
         <requestFocus />
     </EditText>
@@ -59,8 +68,11 @@
         android:layout_below="@+id/lastName"
         android:layout_centerHorizontal="true"
         android:inputType="textPassword"
-        android:layout_marginTop="10dp"
-        android:textColorHint="@android:color/white"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:background="@drawable/box"
+        android:padding="10dip"
         >
         <requestFocus />
     </EditText>
@@ -73,23 +85,29 @@
         android:layout_below="@+id/repeatPassword"
         android:layout_centerHorizontal="true"
         android:inputType="textEmailAddress"
-        android:layout_marginTop="10dp"
-        android:textColorHint="@android:color/white"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:background="@drawable/box"
+        android:padding="10dip"
         >
         <requestFocus />
     </EditText>
 
     <Button
         android:id="@+id/register"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/email"
         android:text="@string/register"
         android:ems="10"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:textColor="@android:color/white"
-        android:background="@android:color/holo_green_dark"
+        android:background="@color/button_background"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:padding="10dip"
         />
 
 </RelativeLayout>
