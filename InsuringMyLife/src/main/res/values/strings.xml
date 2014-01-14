@@ -65,5 +65,18 @@
     <string name="cc_owner">Credit Card Owner Name</string>
     <string name="new_profile">Add New Profile</string>
     <string name="group_image">group image</string>
+    <string name="title_activity_about_aa">AboutAAA</string>
+    <string name="about_aaa">About AAA</string>
+    <string name="about_aaa_text">        Founded in 1902, AAA is a not-for-profit organization of clubs serving more than 50 million members in the United States and Canada. AAA serves its members through a network of 1,100 offices with more than 45,000 employees. Through affiliations with automobile and touring clubs around the world, AAA provides benefits to members traveling in 130 countries on six continents. AAA exists for its members and will judge everything it does by how well it serves their needs.</string>
+    <string name="about_aaa_ok">AAA Oklahoma, the Oklahoma affiliate of AAA, was founded in 1920 with 289 members and has grown to more than 360,000 members statewide. The club\'s 250+ employees operate 12 full service and 32 insurance and membership offices throughout Oklahoma...and more are planned!</string>
+    <string name="about_aaa_more">    While continuing to provide many of the traditional products and services that have made AAA one of the most recognized and respected names in the world, AAA Oklahoma is bringing forth new innovative services that allow us to create excellent experiences and inspire our members and employees to build strong lasting relationships.</string>
+    <string name="about_aaa_title2">Over the years, AAA has become recognized as: </string>
+    <string name="about_aaa_last">    \n
+    • The nation\’s leading provider of roadside assistance and automotive-related expertise. \n
+    • A financially strong and stable insurance company rated \"A+\" by A.M. Best, the insurance industry\'s most respected ratings agency. \n
+    • The world\’s largest publisher of travel information and one of the world’s largest leisure travel agencies. \n
+    • One of the most active advocates for the welfare of the traveling public. \n
+    • One of the fastest growing financial products and services organizations in the United States. \n</string>
+    <string name="title_activity_new_vehicle">NewVehicle</string>
 
 </resources>

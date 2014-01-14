@@ -44,6 +44,7 @@
         <activity
             android:name="com.gabilheri.insuringmylife.NewProfileActivity"
             android:label="@string/title_activity_new_profile"
+            android:parentActivityName="com.gabilheri.insuringmylife.InitialActivity"
             android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -51,7 +52,8 @@
         </activity>
         <activity
             android:name="com.gabilheri.insuringmylife.CarActivity"
-            android:label="@string/title_activity_car" >
+            android:label="@string/title_activity_car"
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.gabilheri.insuringmylife.InitialActivity" />
@@ -59,17 +61,36 @@
         <activity
             android:name="com.gabilheri.insuringmylife.VehiclesActivity"
             android:label="@string/title_activity_vehicles"
-            android:parentActivityName="com.gabilheri.insuringmylife.CarActivity" >
+            android:parentActivityName="com.gabilheri.insuringmylife.CarActivity"
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="CarActivity" />
         </activity>
         <activity
             android:name="com.gabilheri.insuringmylife.HouseActivity"
-            android:label="@string/title_activity_house" >
+            android:label="@string/title_activity_house"
+            android:parentActivityName="com.gabilheri.insuringmylife.InitialActivity"
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.gabilheri.insuringmylife.InitialActivity" />
+        </activity>
+        <activity
+            android:name="com.gabilheri.insuringmylife.AboutAAA"
+            android:label="@string/title_activity_about_aa"
+            android:parentActivityName="com.gabilheri.insuringmylife.InitialActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="InitialActivity" />
+        </activity>
+        <activity
+            android:name="com.gabilheri.insuringmylife.NewVehicle"
+            android:label="@string/title_activity_new_vehicle"
+            android:parentActivityName="com.gabilheri.insuringmylife.VehiclesActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="VehiclesActivity" />
         </activity>
     </application>
 

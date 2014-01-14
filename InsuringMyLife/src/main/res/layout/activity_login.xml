@@ -30,8 +30,8 @@
         android:layout_alignLeft="@+id/login"
         android:layout_alignParentBottom="true"
         android:layout_alignRight="@+id/login"
-        android:text="Forgot User Name or Password"
-        android:background="@android:color/transparent"
+        android:text="@string/register"
+        android:background="@color/button_background"
         android:textColor="@android:color/white"
         />
 
@@ -45,6 +45,7 @@
         android:text="@string/login"
         android:background="@color/button_background"
         android:textColor="@android:color/white"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
         />
 
     <EditText

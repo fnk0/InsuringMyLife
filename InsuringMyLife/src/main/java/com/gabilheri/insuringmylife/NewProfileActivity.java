@@ -50,6 +50,8 @@ public class NewProfileActivity extends Activity implements View.OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_profile);
 
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+
         monthSpinner = (Spinner) findViewById(R.id.monthSpinner);
         daySpinner = (Spinner) findViewById(R.id.daySpinner);
         yearSpinner = (Spinner) findViewById(R.id.yearSpinner);
@@ -69,9 +71,21 @@ public class NewProfileActivity extends Activity implements View.OnClickListener
            dayNumbers[i] = i + 1;
         }
 
-        ArrayAdapter<Integer> daySpinnerAdapter = new ArrayAdapter<Integer>(this,   android.R.layout.simple_spinner_item, dayNumbers);
+        ArrayAdapter<Integer> daySpinnerAdapter = new ArrayAdapter<Integer>(this, R.layout.spinner, dayNumbers);
         daySpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // The drop down view
         daySpinner.setAdapter(daySpinnerAdapter);
+
+        String[] months = getResources().getStringArray(R.array.months);
+        ArrayAdapter<String> monthSpinnerAdapter = new ArrayAdapter<String>(this, R.layout.spinner, months);
+        monthSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        monthSpinner.setAdapter(monthSpinnerAdapter);
+        monthExpSpinner.setAdapter(monthSpinnerAdapter);
+
+        String[] ccCompanies = getResources().getStringArray(R.array.cc_companies);
+        ArrayAdapter<String> ccCompaniesAdapter = new ArrayAdapter<String>(this, R.layout.spinner, ccCompanies);
+        ccCompaniesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ccCompaniesSpinner.setAdapter(ccCompaniesAdapter);
+
 
         int year = Calendar.getInstance().get(Calendar.YEAR);
 
@@ -80,7 +94,7 @@ public class NewProfileActivity extends Activity implements View.OnClickListener
             year--;
         }
 
-        ArrayAdapter<Integer> yearSpinnerAdapter = new ArrayAdapter<Integer>(this,   android.R.layout.simple_spinner_item, yearBirthdayNumbers);
+        ArrayAdapter<Integer> yearSpinnerAdapter = new ArrayAdapter<Integer>(this, R.layout.spinner, yearBirthdayNumbers);
         yearSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // The drop down view
         yearSpinner.setAdapter(yearSpinnerAdapter);
 
@@ -91,7 +105,7 @@ public class NewProfileActivity extends Activity implements View.OnClickListener
             yearExp++;
         }
 
-        ArrayAdapter<Integer> yearExpSpinnerAdapter = new ArrayAdapter<Integer>(this,   android.R.layout.simple_spinner_item, yearExpirationNumbers);
+        ArrayAdapter<Integer> yearExpSpinnerAdapter = new ArrayAdapter<Integer>(this, R.layout.spinner, yearExpirationNumbers);
         yearExpSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // The drop down view
         yearExpSpinner.setAdapter(yearExpSpinnerAdapter);
 

@@ -4,6 +4,8 @@
     <color name="background">#3C4662</color>
     <color name="action_bar_color">#6C7CB3</color>
     <color name="button_background">#373433</color>
+    <color name="spinner_odd">#364C5F</color>
+    <color name="spinner_even">#2F4150</color>
 
 
 </resources>

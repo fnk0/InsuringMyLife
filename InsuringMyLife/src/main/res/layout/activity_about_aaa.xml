@@ -1,0 +1,81 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/aboutAAA"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.gabilheri.insuringmylife.AboutAAA"
+    tools:ignore="MergeRootFrame"
+    android:background="@color/background"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:id="@+id/aboutAAATitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:padding="@dimen/activity_horizontal_margin"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="About AAA"
+            />
+
+        <TextView
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:textColor="@android:color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/about_aaa_text"
+            android:lineSpacingExtra="3dip"
+            />
+
+        <TextView
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            android:textColor="@android:color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/about_aaa_ok"
+            android:lineSpacingExtra="3dip"
+            />
+
+        <TextView
+            android:padding="@dimen/activity_horizontal_margin"
+            android:textColor="@android:color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/about_aaa_more"
+            android:lineSpacingExtra="3dip"
+            />
+
+        <TextView
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:textColor="@android:color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/about_aaa_title2"
+            android:lineSpacingExtra="3dip"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:textColor="@android:color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/about_aaa_last"
+            android:lineSpacingExtra="3dip"
+            />
+
+
+    </LinearLayout>
+
+ </ScrollView>
