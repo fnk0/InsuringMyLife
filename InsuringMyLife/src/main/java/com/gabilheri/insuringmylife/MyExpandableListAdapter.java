@@ -97,33 +97,33 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
         title.setText(group.string);
        // ((CheckedTextView) convertView).setChecked(isExpanded);
         ImageView imageView = (ImageView) convertView.findViewById(R.id.groupImage);
-
+        /*
         if(group.brand.equals("Ford")) {
-            imageView.setImageResource(R.drawable.ford);
+            imageView.setImageResource(android.R.drawable.ford);
         } else if(group.brand.equals("Toyota")) {
-            imageView.setImageResource(R.drawable.toyota);
+            imageView.setImageResource(android.R.drawable.toyota);
         } else if(group.brand.equals("Audi")) {
-            imageView.setImageResource(R.drawable.audi);
+            imageView.setImageResource(android.R.drawable.audi);
         } else if(group.brand.equals("Volvo")) {
-            imageView.setImageResource(R.drawable.volvo);
+            imageView.setImageResource(android.R.drawable.volvo);
         } else if(group.brand.equals("Volkswagen")) {
-            imageView.setImageResource(R.drawable.volkswagen);
+            imageView.setImageResource(android.R.drawable.volkswagen);
         } else if(group.brand.equals("Jeep")) {
-            imageView.setImageResource(R.drawable.jeep);
+            imageView.setImageResource(android.R.drawable.jeep);
         } else if(group.brand.equals("Chevrolet")) {
-            imageView.setImageResource(R.drawable.chevrolet);
+            imageView.setImageResource(android.R.drawable.chevrolet);
         } else if(group.brand.equals("Infinity")) {
-            imageView.setImageResource(R.drawable.infinity);
+            imageView.setImageResource(android.R.drawable.infinity);
         } else if(group.brand.equals("Dodge")) {
-            imageView.setImageResource(R.drawable.dodge);
+            imageView.setImageResource(android.R.drawable.dodge);
         } else if(group.brand.equals("BMW")) {
-            imageView.setImageResource(R.drawable.bmw);
+            imageView.setImageResource(android.R.drawable.bmw);
         } else if(group.brand.equals("Hyundai")) {
-            imageView.setImageResource(R.drawable.hyundai);
+            imageView.setImageResource(android.R.drawable.hyundai);
         } else {
-            imageView.setImageResource(R.drawable.ic_launcher);
+            imageView.setImageResource(android.R.drawable.ic_launcher);
         }
-
+        */
         return convertView;
     }
 

@@ -52,6 +52,19 @@
         <item name="info">Agent Info</item>
     </array>
 
+    <array name="car_brands">
+
+        <item name="ford">Ford</item>
+        <item name="toyota">Toyota </item>
+        <item name="volkswagen">Volkswagen</item>
+        <item name="dodge">Dodge</item>
+        <item name="hyundai">Hyundai</item>
+        <item name="honda">Honda</item>
+        <item name="chevrolet">Chevrolet</item>
+        <item name="gm">General Motors</item>
+
+    </array>
+
     <string name="title_activity_new_profile">NewProfileActivity</string>
     <string name="repeat_password">Repeat Password</string>
     <string name="first_name">First Name</string>
@@ -78,5 +91,6 @@
     • One of the most active advocates for the welfare of the traveling public. \n
     • One of the fastest growing financial products and services organizations in the United States. \n</string>
     <string name="title_activity_new_vehicle">NewVehicle</string>
+    <string name="police_number">Police Number</string>
 
 </resources>

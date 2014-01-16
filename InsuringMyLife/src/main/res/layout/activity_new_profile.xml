@@ -33,9 +33,9 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:hint="@string/first_name"
             android:layout_below="@id/personalInfo"
-            android:background="@drawable/box"
             android:padding="10dip"
             android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:background="@drawable/box"
             />
         <EditText
             android:id="@+id/lastName"
@@ -109,9 +109,9 @@
             android:layout_below="@id/creditCardInfo"
             android:hint="@string/cc_owner"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:background="@drawable/box"
             android:padding="10dip"
             android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:background="@drawable/box"
             />
         <LinearLayout
             android:id="@+id/ccNumberLayout"
@@ -121,7 +121,8 @@
             android:orientation="horizontal"
             android:weightSum="1"
             android:layout_marginTop="@dimen/activity_vertical_margin"
-        >
+
+         >
         <EditText
             android:id="@+id/ccNumber"
             android:layout_width="0dip"
@@ -129,11 +130,12 @@
             android:hint="@string/cc_num"
             android:layout_weight="0.75"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:background="@drawable/box"
             android:padding="10dip"
             android:paddingTop="@dimen/activity_vertical_margin"
             android:inputType="number"
             android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:background="@drawable/box"
+
         />
         <EditText
             android:id="@+id/cvc"
@@ -141,10 +143,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.25"
             android:hint="@string/cvc"
-            android:background="@drawable/box"
             android:padding="10dip"
             android:inputType="number"
             android:textAppearance="?android:attr/textAppearanceLarge"
+            android:background="@drawable/box"
         />
         </LinearLayout>
         <TextView

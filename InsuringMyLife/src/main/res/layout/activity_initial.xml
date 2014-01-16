@@ -15,8 +15,13 @@
         android:background="@color/background"
         android:weightSum="1"
         >
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dip"
+            android:layout_weight="0.18"
+            />
         <LinearLayout
-            android:layout_weight="0.1"
+            android:layout_weight="0.32"
             android:layout_width="match_parent"
             android:layout_height="0dip"
             android:orientation="horizontal"
@@ -27,18 +32,18 @@
                 android:layout_width="0dip"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
-                android:text="Life Button"
+                android:background="@drawable/life_button"
                 />
             <Button
                 android:id="@+id/carButton"
                 android:layout_width="0dip"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
-                android:text="Car Button"
+                android:background="@drawable/car_button"
                 />
         </LinearLayout>
         <LinearLayout
-            android:layout_weight="0.1"
+            android:layout_weight="0.32"
             android:layout_width="match_parent"
             android:layout_height="0dip"
             android:orientation="horizontal"
@@ -49,23 +54,16 @@
                 android:layout_width="0dip"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
-                android:text="Accident Button"
+                android:background="@drawable/accident_button"
                 />
             <Button
                 android:id="@+id/houseButton"
                 android:layout_width="0dip"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
-                android:text="House Button"
+                android:background="@drawable/house_button"
                 />
         </LinearLayout>
-
-        <ImageView
-            android:src="@drawable/applogo"
-            android:layout_width="wrap_content"
-            android:layout_height="0dip"
-            android:layout_weight="0.7"
-            />
 
     </LinearLayout>
 
