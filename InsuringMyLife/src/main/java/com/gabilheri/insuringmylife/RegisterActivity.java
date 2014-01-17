@@ -2,6 +2,7 @@ package com.gabilheri.insuringmylife;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -106,6 +107,12 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
                 params.add(new BasicNameValuePair("last_name", lastName));
                 params.add(new BasicNameValuePair("password", password));
                 params.add(new BasicNameValuePair("email", email));
+
+                SharedPreferences userNamePref = getSharedPreferences("firstName", MODE_PRIVATE);
+                SharedPreferences.Editor userNameEditor = userNamePref.edit();
+                userNameEditor.putString("firstName", firstName);
+                userNameEditor.putString("lastName", lastName);
+                userNameEditor.commit();
 
                 Log.d("request!", "starting");
 

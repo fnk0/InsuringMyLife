@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="blue">#2d8ac9</color>
-    <color name="background">#3C4662</color>
+    <color name="background">#3a4362</color>
     <color name="action_bar_color">#6C7CB3</color>
     <color name="button_background">#373433</color>
     <color name="spinner_odd">#364C5F</color>

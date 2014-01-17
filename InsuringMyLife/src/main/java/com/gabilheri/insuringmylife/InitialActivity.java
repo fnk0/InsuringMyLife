@@ -71,7 +71,7 @@ public class InitialActivity extends Activity implements View.OnClickListener {
         }
 
         drawerOptions.add("About AAA");
-        drawerOptions.add("New Profile");
+        drawerOptions.add("Update Profile");
         drawerOptions.add("Logout");
         optionsDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawerList = (ListView) findViewById(R.id.left_drawer);
@@ -181,8 +181,8 @@ public class InitialActivity extends Activity implements View.OnClickListener {
 
             Intent i = new Intent(InitialActivity.this, LoginActivity.class);
             startActivity(i);
-        } else if(drawerOptions.get(position).equals("New Profile")) {
-            Intent i = new Intent(InitialActivity.this, NewProfileActivity.class);
+        } else if(drawerOptions.get(position).equals("Update Profile")) {
+            Intent i = new Intent(InitialActivity.this, UpdateProfile.class);
             startActivity(i);
         } else if(drawerOptions.get(position).equals("About AAA")) {
             Intent i = new Intent(InitialActivity.this, AboutAAA.class);

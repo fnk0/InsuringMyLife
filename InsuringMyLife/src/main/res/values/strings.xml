@@ -92,5 +92,10 @@
     • One of the fastest growing financial products and services organizations in the United States. \n</string>
     <string name="title_activity_new_vehicle">NewVehicle</string>
     <string name="police_number">Police Number</string>
+    <string name="main_driver">Main Driver</string>
+    <string name="year">Year</string>
+    <string name="car_tag">Car Tag</string>
+    <string name="car_model">Car Model</string>
+    <string name="aaa_number">AAA Customer Number</string>
 
 </resources>

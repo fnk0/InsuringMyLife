@@ -26,7 +26,6 @@ public class VehiclesActivity extends Activity {
     public ProgressDialog pDialog;
     public JSONParser jsonParser = new JSONParser();
 
-    public String profile_id;
     public String user_id;
 
     // Create an Array to hold the vehicles
@@ -46,7 +45,7 @@ public class VehiclesActivity extends Activity {
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_MESSAGE = "message";
     private static final String TAG_USERID = "user_id";
-    private static final String TAG_PROFILEID = "profile_id";
+    private static final String TAG_POLICENUMBER = "police_number";
     private static final String TAG_VEHICLES = "vehicles";
     private static final String TAG_YEAR = "year";
     private static final String TAG_MODEL = "model";
@@ -62,8 +61,6 @@ public class VehiclesActivity extends Activity {
 
         SharedPreferences loginPref = getSharedPreferences("loginPref", MODE_PRIVATE);
         user_id = loginPref.getString("email", "");
-        SharedPreferences profilePref = getSharedPreferences("selectedProfile", MODE_PRIVATE);
-        profile_id = profilePref.getString("selectedProfile", "");
 
     }
 
@@ -111,12 +108,8 @@ public class VehiclesActivity extends Activity {
         try {
 
             List<NameValuePair> params = new ArrayList<NameValuePair>();
-            /*
-            String user_id = "test";
-            String profile_id = "Marcus Gabilheri";
-            */
+
             params.add(new BasicNameValuePair(TAG_USERID, user_id));
-            params.add(new BasicNameValuePair(TAG_PROFILEID, profile_id));
 
             JSONObject jObject = jsonParser.makeHttpRequest(VEHICLES_URL, "POST", params);
 
@@ -135,26 +128,17 @@ public class VehiclesActivity extends Activity {
                     String color = obj.getString(TAG_COLOR);
                     String license_plate = obj.getString(TAG_LICENSE);
                     String main_driver = obj.getString(TAG_DRIVER);
+                    String policeNumber = obj.getString(TAG_POLICENUMBER);
 
                     // Creating a new HashMap
                     ListRowGroup group = new ListRowGroup(brand + " " + year, brand);
+                    group.children.add("Police Number " + policeNumber);
                     group.children.add("Model: " + model);
                     group.children.add("Color: " + color);
                     group.children.add("license Plate: " + license_plate);
                     group.children.add("Main Driver: " + main_driver);
 
                     vehiclesGroup.append(i, group);
-                    /*
-                    HashMap<String, String> map = new HashMap<String, String>();
-                    map.put(TAG_YEAR, year);
-                    map.put(TAG_MODEL, model);
-                    map.put(TAG_BRAND, brand);
-                    map.put(TAG_LICENSE, license_plate);
-                    map.put(TAG_DRIVER, main_driver);
-                    map.put(TAG_COLOR, color);
-
-                    vehiclesList.add(map);
-                    */
                 }
 
             } else {

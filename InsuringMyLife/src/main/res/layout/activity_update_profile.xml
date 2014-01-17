@@ -44,9 +44,19 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:hint="@string/last_name"
             android:layout_below="@+id/firstName"
-            android:paddingTop="@dimen/activity_vertical_margin"
             android:padding="10dip"
             android:background="@drawable/box"
+            />
+        <EditText
+            android:id="@+id/aaaNumber"
+            android:background="@drawable/box"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lastName"
+            android:padding="10dip"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:hint="@string/aaa_number"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
             />
         <TextView
             android:id="@+id/birthdayTextHelper"
@@ -55,8 +65,9 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@android:color/white"
             android:text="@string/birthday"
-            android:layout_below="@id/lastName"
-            android:paddingTop="@dimen/activity_vertical_margin"
+            android:layout_below="@id/aaaNumber"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:padding="10dip"
             android:textStyle="bold"
             />
         <LinearLayout

@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-public class NewProfileActivity extends Activity implements View.OnClickListener {
+public class UpdateProfile extends Activity implements View.OnClickListener {
 
 
     private Spinner monthSpinner;
@@ -41,14 +41,14 @@ public class NewProfileActivity extends Activity implements View.OnClickListener
     private Button newProfileButton;
 
     JSONParser jsonParser = new JSONParser();
-    private static final String PROFILE_URL = "http://162.243.225.173/InsuringMyLife/new_profile.php";
+    private static final String PROFILE_URL = "http://162.243.225.173/InsuringMyLife/update_profile.php";
     private static final String TAG_MESSAGE = "message";
     private static final String TAG_SUCCESS = "success";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_profile);
+        setContentView(R.layout.activity_update_profile);
 
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -139,7 +139,7 @@ public class NewProfileActivity extends Activity implements View.OnClickListener
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pDialog = new ProgressDialog(NewProfileActivity.this);
+            pDialog = new ProgressDialog(UpdateProfile.this);
             pDialog.setMessage("Creating Profile...");
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(true);
@@ -190,7 +190,7 @@ public class NewProfileActivity extends Activity implements View.OnClickListener
                 success = json.getInt(TAG_SUCCESS);
 
                 if(success == 1) {
-                    Intent i = new Intent(NewProfileActivity.this, LoginActivity.class);
+                    Intent i = new Intent(UpdateProfile.this, LoginActivity.class);
                     startActivity(i);
                     return json.getString(TAG_MESSAGE);
                 } else {
@@ -207,7 +207,7 @@ public class NewProfileActivity extends Activity implements View.OnClickListener
             pDialog.dismiss();
 
             if(file_url != null) {
-                Toast.makeText(NewProfileActivity.this, file_url, Toast.LENGTH_LONG).show();
+                Toast.makeText(UpdateProfile.this, file_url, Toast.LENGTH_LONG).show();
             }
         }
     }

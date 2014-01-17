@@ -42,7 +42,7 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.gabilheri.insuringmylife.NewProfileActivity"
+            android:name=".UpdateProfile"
             android:label="@string/title_activity_new_profile"
             android:parentActivityName="com.gabilheri.insuringmylife.InitialActivity"
             android:screenOrientation="portrait" >
