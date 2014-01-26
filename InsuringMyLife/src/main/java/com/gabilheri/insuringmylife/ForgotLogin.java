@@ -1,24 +1,16 @@
 package com.gabilheri.insuringmylife;
 
 import android.app.Activity;
-import android.app.DialogFragment;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
-import com.gabilheri.insuringmylife.fragments.DatePickerFragment;
-
-public class NewVehicle extends Activity {
+public class ForgotLogin extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_vehicle);
-
-        SharedPreferences loginName = getSharedPreferences("loginPref", MODE_PRIVATE);
-        String login = loginName.getString("email", "");
+        setContentView(R.layout.activity_forgot_login);
     }
 
 
@@ -26,7 +18,7 @@ public class NewVehicle extends Activity {
     public boolean onCreateOptionsMenu(Menu menu) {
         
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.new_vehicle, menu);
+        getMenuInflater().inflate(R.menu.forgot_login, menu);
         return true;
     }
 
@@ -41,16 +33,5 @@ public class NewVehicle extends Activity {
         }
         return super.onOptionsItemSelected(item);
     }
-
-    public void showDatePickerDialog(View v) {
-
-        DialogFragment datePicker = new DatePickerFragment();
-        datePicker.show(getFragmentManager(), "datePicker");
-    }
-
-    public void addNewVehicle(View v) {
-
-    }
-
 
 }

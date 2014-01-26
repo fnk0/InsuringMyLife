@@ -51,9 +51,7 @@
         <item name="quotes">Quotes</item>
         <item name="info">Agent Info</item>
     </array>
-
     <array name="car_brands">
-
         <item name="ford">Ford</item>
         <item name="toyota">Toyota </item>
         <item name="volkswagen">Volkswagen</item>
@@ -62,7 +60,24 @@
         <item name="honda">Honda</item>
         <item name="chevrolet">Chevrolet</item>
         <item name="gm">General Motors</item>
-
+    </array>
+    <array name="states">
+        <item name="state">States</item>
+        <item name="ar">Arizona</item>
+        <item name="al">Alabama</item>
+        <item name="ak">Arkansas</item>
+        <item name="ca">California</item>
+        <item name="fl">Florida</item>
+        <item name="ks">Kansas</item>
+        <item name="ok">Oklahoma</item>
+        <item name="oh">Ohio</item>
+    </array>
+    <array name="security_questions">
+        <item name="question1">What\'s the name of your first pet?</item>
+        <item name="question2">What\'s your mother\'s maiden name?</item>
+        <item name="question3">What\'s your favorite color?</item>
+        <item name="question4">In which city where you born?</item>
+        <item name="question5">What was your childhood nickname?</item>
     </array>
 
     <string name="title_activity_new_profile">NewProfileActivity</string>
@@ -92,10 +107,20 @@
     • One of the fastest growing financial products and services organizations in the United States. \n</string>
     <string name="title_activity_new_vehicle">NewVehicle</string>
     <string name="police_number">Police Number</string>
-    <string name="main_driver">Main Driver</string>
+    <string name="main_driver">Driver\'s Name</string>
     <string name="year">Year</string>
     <string name="car_tag">Car Tag</string>
     <string name="car_model">Car Model</string>
     <string name="aaa_number">AAA Customer Number</string>
+    <string name="update_profile">Update Profile</string>
+    <string name="title_activity_quote">QuoteActivity</string>
+    <string name="vehicle_info">Vehicle Information</string>
+    <string name="driver_info">Driver Information</string>
+    <string name="pick_driver_birthday">Pick Birthday</string>
+    <string name="add_vehicle">Add Vehicle</string>
+    <string name="new_vehicle_driver">New Vehicle and Driver Information</string>
+    <string name="drivers_license">Drivers License Number</string>
+    <string name="title_activity_forgot_login">Forgot Login / Password</string>
+    <string name="title_activity_quiz">QuizActivity</string>
 
 </resources>

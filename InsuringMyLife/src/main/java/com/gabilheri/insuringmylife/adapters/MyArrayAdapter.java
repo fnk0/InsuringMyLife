@@ -1,4 +1,4 @@
-package com.gabilheri.insuringmylife;
+package com.gabilheri.insuringmylife.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.gabilheri.insuringmylife.R;
 
 /**
  * Created by marcus on 1/3/14.

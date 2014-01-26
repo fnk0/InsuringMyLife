@@ -1,4 +1,4 @@
-package com.gabilheri.insuringmylife;
+package com.gabilheri.insuringmylife.adapters;
 
 import android.app.Activity;
 import android.util.SparseArray;
@@ -6,9 +6,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.gabilheri.insuringmylife.ListRowGroup;
+import com.gabilheri.insuringmylife.R;
 
 /**
  * Created by marcus on 1/5/14.
@@ -40,19 +41,32 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
     public View getChildView(int groupPosition, final int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
 
         final String children = (String) getChild(groupPosition, childPosition);
-        TextView text = null;
+        TextView textTitle = null;
+        TextView textDescription = null;
+
         if(convertView == null) {
-            convertView = inflater.inflate(R.layout.listrow_details, null);
+            if(childPosition == 0) {
+                convertView = inflater.inflate(R.layout.listrow_first_element, null);
+            } else if(childPosition % 2 != 0) {
+                convertView = inflater.inflate(R.layout.listrow_details, null);
+            } else {
+                convertView = inflater.inflate(R.layout.listrow_details_color2, null);
+            }
         }
 
-        text = (TextView) convertView.findViewById(R.id.textView1);
-        text.setText(children);
+        textTitle = (TextView) convertView.findViewById(R.id.titleView);
+        textDescription = (TextView) convertView.findViewById(R.id.descriptionView);
+        textTitle.setText(getChildString(childPosition));
+        textDescription.setText(children);
+
+        /*
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(activity, children, Toast.LENGTH_SHORT).show();
             }
         });
+        */
         return convertView;
     }
 
@@ -95,8 +109,9 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
         ListRowGroup group = (ListRowGroup) getGroup(groupPosition);
         TextView title = (TextView) convertView.findViewById(R.id.textView1);
         title.setText(group.string);
+
        // ((CheckedTextView) convertView).setChecked(isExpanded);
-        ImageView imageView = (ImageView) convertView.findViewById(R.id.groupImage);
+       // ImageView imageView = (ImageView) convertView.findViewById(R.id.groupImage);
         /*
         if(group.brand.equals("Ford")) {
             imageView.setImageResource(android.R.drawable.ford);
@@ -135,5 +150,26 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
     @Override
     public boolean isChildSelectable(int i, int i2) {
         return false;
+    }
+
+    private static String getChildString(int position) {
+
+        switch (position) {
+            case 0:
+                return "";
+            case 1:
+                return "Police Number";
+            case 2:
+                return "Model";
+            case 3:
+                return "Color";
+            case 4:
+                return "License Plate";
+            case 5:
+                return "Main Driver";
+            default:
+                break;
+        }
+        return "Test";
     }
 }

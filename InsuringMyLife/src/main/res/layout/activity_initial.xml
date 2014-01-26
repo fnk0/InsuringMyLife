@@ -18,8 +18,9 @@
         <Space
             android:layout_width="match_parent"
             android:layout_height="0dip"
-            android:layout_weight="0.18"
+            android:layout_weight="0.1"
             />
+
         <LinearLayout
             android:layout_weight="0.32"
             android:layout_width="match_parent"
@@ -64,7 +65,16 @@
                 android:background="@drawable/house_button"
                 />
         </LinearLayout>
-
+        <TextView
+            android:id="@+id/userName"
+            android:textColor="@android:color/white"
+            android:layout_width="match_parent"
+            android:layout_height="0dip"
+            android:layout_weight="0.18"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            />
     </LinearLayout>
 
     <!-- android:layout_gravity="start" tells DrawerLayout to treat

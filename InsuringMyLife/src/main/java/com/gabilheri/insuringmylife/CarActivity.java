@@ -1,6 +1,6 @@
 package com.gabilheri.insuringmylife;
 
-import android.app.ListActivity;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -9,16 +9,13 @@ import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
+import android.widget.Button;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+public class CarActivity extends Activity {
 
-public class CarActivity extends ListActivity {
-
-    private String profileName;
     private TextView profileTextView;
+    private Button vehiclesButton, claimsButton, quoteButton, agentButton;
 
     // Rapid navigation menu tags
     private static final int MAIN_MENU = 300;
@@ -31,37 +28,34 @@ public class CarActivity extends ListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_car);
 
-        SharedPreferences sp = getSharedPreferences("selectedProfile", MODE_PRIVATE);
-        profileName = sp.getString("selectedProfile", "No profiles Selected");
-
-        profileTextView = (TextView) findViewById(R.id.profileName);
-        profileTextView.setText("Hello " + profileName);
+        SharedPreferences sp = getSharedPreferences("loginPref", MODE_PRIVATE);
 
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
-        final ListView listView = (ListView) findViewById(android.R.id.list);
-        String[] values = getResources().getStringArray(R.array.car_acitivy_list);
+        vehiclesButton = (Button) findViewById(R.id.vehiclesButton);
+        claimsButton = (Button) findViewById(R.id.claimsButton);
+        quoteButton = (Button) findViewById(R.id.quoteButton);
 
-        final ArrayList<String> list = new ArrayList<String>();
-        for(int i = 0; i < values.length; i++) {
-            list.add(values[i]);
+    }
+
+    public void changeActivity(View v) {
+
+        int id = v.getId();
+
+        switch (id) {
+            case R.id.vehiclesButton:
+                Intent vehiclesIntent = new Intent(CarActivity.this, VehiclesActivity.class);
+                startActivity(vehiclesIntent);
+                break;
+            case R.id.claimsButton:
+                break;
+            case R.id.quoteButton:
+                Intent quoteIntent = new Intent(CarActivity.this, QuoteActivity.class);
+                startActivity(quoteIntent);
+                break;
+            case R.id.agentButton:
+                break;
         }
-
-        setListAdapter(new MyArrayAdapter(this, values));
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
-
-                switch (position) {
-                    case 0:
-                        Intent i = new Intent(CarActivity.this, VehiclesActivity.class);
-                        startActivity(i);
-                        break;
-                }
-            }
-        });
-
     }
 
     @Override

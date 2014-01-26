@@ -2,14 +2,18 @@ package com.gabilheri.insuringmylife;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.SparseArray;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.Toast;
+
+import com.gabilheri.insuringmylife.adapters.MyExpandableListAdapter;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -25,6 +29,7 @@ public class VehiclesActivity extends Activity {
 
     public ProgressDialog pDialog;
     public JSONParser jsonParser = new JSONParser();
+
 
     public String user_id;
 
@@ -102,12 +107,14 @@ public class VehiclesActivity extends Activity {
 
         vehiclesList = new ArrayList<HashMap<String, String>>();
         int success = 0;
-
         // Building parameters for the request
 
         try {
 
             List<NameValuePair> params = new ArrayList<NameValuePair>();
+
+            SharedPreferences loginPref = getSharedPreferences("loginPref", MODE_PRIVATE);
+            user_id = loginPref.getString("email", "");
 
             params.add(new BasicNameValuePair(TAG_USERID, user_id));
 
@@ -130,13 +137,13 @@ public class VehiclesActivity extends Activity {
                     String main_driver = obj.getString(TAG_DRIVER);
                     String policeNumber = obj.getString(TAG_POLICENUMBER);
 
-                    // Creating a new HashMap
-                    ListRowGroup group = new ListRowGroup(brand + " " + year, brand);
-                    group.children.add("Police Number " + policeNumber);
-                    group.children.add("Model: " + model);
-                    group.children.add("Color: " + color);
-                    group.children.add("license Plate: " + license_plate);
-                    group.children.add("Main Driver: " + main_driver);
+                    ListRowGroup group = new ListRowGroup(brand + " " + year + " " + model, brand);
+                    group.children.add(brand + " " + year + " " + model);
+                    group.children.add(policeNumber);
+                    group.children.add(model);
+                    group.children.add(color);
+                    group.children.add(license_plate);
+                    group.children.add(main_driver);
 
                     vehiclesGroup.append(i, group);
                 }
@@ -148,6 +155,12 @@ public class VehiclesActivity extends Activity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
+
+    public void addVehicle(View v) {
+
+        Intent i = new Intent(VehiclesActivity.this, NewVehicle.class);
+        startActivity(i);
     }
 
     class LoadVehicles extends AsyncTask<String, String, String> {

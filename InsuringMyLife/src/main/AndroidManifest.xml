@@ -42,7 +42,7 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".UpdateProfile"
+            android:name="com.gabilheri.insuringmylife.UpdateProfile"
             android:label="@string/title_activity_new_profile"
             android:parentActivityName="com.gabilheri.insuringmylife.InitialActivity"
             android:screenOrientation="portrait" >
@@ -91,6 +91,30 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="VehiclesActivity" />
+        </activity>
+        <activity
+            android:name="com.gabilheri.insuringmylife.QuoteActivity"
+            android:label="@string/title_activity_quote"
+            android:parentActivityName="com.gabilheri.insuringmylife.CarActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="CarActivity" />
+        </activity>
+        <activity
+            android:name="com.gabilheri.insuringmylife.ForgotLogin"
+            android:label="@string/title_activity_forgot_login"
+            android:parentActivityName="com.gabilheri.insuringmylife.LoginActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="LoginActivity" />
+        </activity>
+        <activity
+            android:name="com.gabilheri.insuringmylife.QuizActivity"
+            android:label="@string/title_activity_quiz"
+            android:parentActivityName="com.gabilheri.insuringmylife.InitialActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="InitialActivity" />
         </activity>
     </application>
 

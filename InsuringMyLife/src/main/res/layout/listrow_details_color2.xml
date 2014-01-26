@@ -6,7 +6,7 @@
     android:clickable="true"
     android:orientation="vertical"
     tools:context="com.gabilheri.insuringmylife.VehiclesActivity"
-    android:background="@color/spinner_odd"
+    android:background="@color/spinner_even"
     >
     <TextView
         android:id="@+id/titleView"

@@ -38,7 +38,7 @@ public class UpdateProfile extends Activity implements View.OnClickListener {
     private ArrayList<Integer> yearExpirationNumbers = new ArrayList<Integer>();
     private ProgressDialog pDialog;
     private EditText firstNameField, lastNameField, ccNameField, ccNumberField, cvcField;
-    private Button newProfileButton;
+    private Button updateProfileButton;
 
     JSONParser jsonParser = new JSONParser();
     private static final String PROFILE_URL = "http://162.243.225.173/InsuringMyLife/update_profile.php";
@@ -64,7 +64,7 @@ public class UpdateProfile extends Activity implements View.OnClickListener {
         ccNameField = (EditText) findViewById(R.id.ccName);
         ccNumberField = (EditText) findViewById(R.id.ccNumber);
         cvcField = (EditText) findViewById(R.id.cvc);
-        newProfileButton = (Button) findViewById(R.id.addNewProfile);
+        updateProfileButton = (Button) findViewById(R.id.updateProfile);
 
         dayNumbers = new Integer[31];
         for(int i = 0; i < 31; i++) {
@@ -109,7 +109,12 @@ public class UpdateProfile extends Activity implements View.OnClickListener {
         yearExpSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // The drop down view
         yearExpSpinner.setAdapter(yearExpSpinnerAdapter);
 
-        newProfileButton.setOnClickListener(this);
+        SharedPreferences loginPref = getSharedPreferences("loginPref", MODE_PRIVATE);
+
+        firstNameField.setText(loginPref.getString("name", ""));
+        lastNameField.setText(loginPref.getString("last_name", ""));
+
+        updateProfileButton.setOnClickListener(this);
     }
 
 

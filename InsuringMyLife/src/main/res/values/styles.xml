@@ -1,13 +1,14 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
+    <style name="AppTheme" parent="android:Theme.Holo">
         <!-- Customize your theme here. -->
     </style>
 
     <style name="CustomTheme" parent="android:Theme.Holo.Light.DarkActionBar">
 
         <item name="android:actionBarStyle">@style/MyActionBar</item>
+        <item name="android:spinnerItemStyle">@style/SpinnerStyle</item>
     </style>
 
     <style name="MyActionBar"
@@ -18,6 +19,11 @@
 
     <style name="MyActionBarTitleText" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">
         <item name="android:textColor"> @android:color/white</item>
+    </style>
+
+    <style name="SpinnerStyle">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceLarge</item>
     </style>
 
 </resources>

@@ -206,10 +206,10 @@
 
             </LinearLayout>
         <Button
-            android:id="@+id/addNewProfile"
+            android:id="@+id/updateProfile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/new_profile"
+            android:text="@string/update_profile"
             android:layout_below="@id/expDate"
             android:background="@color/button_background"
             android:layout_marginTop="@dimen/activity_vertical_margin"
