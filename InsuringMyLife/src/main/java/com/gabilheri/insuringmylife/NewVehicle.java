@@ -2,15 +2,33 @@ package com.gabilheri.insuringmylife;
 
 import android.app.Activity;
 import android.app.DialogFragment;
+import android.app.ProgressDialog;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioGroup;
+import android.widget.Spinner;
 
 import com.gabilheri.insuringmylife.fragments.DatePickerFragment;
 
 public class NewVehicle extends Activity {
+
+    private EditText policeNumber, carInfo, carModel, carTag, carYear, carDriver, driversLicense;
+    private Spinner carBrand, driversLicenseState;
+    private RadioGroup carDriverGender;
+    private Button mNewVehicle;
+
+    private ProgressDialog pDialog;
+
+    JSONParser jsonParser = new JSONParser();
+
+    private static final String NEWVEHICLE_URL = "http://162.243.225.173/InsuringMyLife/new_vehicle.php";
+    private static final String TAG_MESSAGE = "message";
+    private static final String TAG_SUCCESS = "success";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +37,17 @@ public class NewVehicle extends Activity {
 
         SharedPreferences loginName = getSharedPreferences("loginPref", MODE_PRIVATE);
         String login = loginName.getString("email", "");
+
+        policeNumber = (EditText) findViewById(R.id.policeNumber);
+        carInfo = (EditText) findViewById(R.id.carInfo);
+        carModel = (EditText) findViewById(R.id.carModel);
+        carTag = (EditText) findViewById(R.id.carTag);
+        carYear = (EditText) findViewById(R.id.carYear);
+        carDriver = (EditText) findViewById(R.id.carDriver);
+        driversLicense = (EditText) findViewById(R.id.driversLicenceNumber);
+        carBrand = (Spinner) findViewById(R.id.carBrand);
+        driversLicenseState = (Spinner) findViewById(R.id.stateDriversLicense);
+        carDriverGender = (RadioGroup) findViewById(R.id.genderRadioGroup);
     }
 
 

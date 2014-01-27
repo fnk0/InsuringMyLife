@@ -4,6 +4,7 @@
     <color name="background">#3a4362</color>
     <color name="action_bar_color">#6C7CB3</color>
     <color name="button_background">#373433</color>
+    <color name="button_background_down">#575555</color>
     <color name="spinner_odd">#364C5F</color>
     <color name="spinner_even">#2F4150</color>
     <color name="car_button">#3498db</color>

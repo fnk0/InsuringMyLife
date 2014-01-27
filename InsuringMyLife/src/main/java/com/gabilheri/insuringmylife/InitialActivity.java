@@ -69,6 +69,7 @@ public class InitialActivity extends Activity implements View.OnClickListener {
 
         drawerOptions.add("About AAA");
         drawerOptions.add("Update Profile");
+        drawerOptions.add("Take a Quiz!");
         drawerOptions.add("Logout");
         optionsDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawerList = (ListView) findViewById(R.id.left_drawer);
@@ -171,6 +172,9 @@ public class InitialActivity extends Activity implements View.OnClickListener {
             startActivity(i);
         } else if(drawerOptions.get(position).equals("About AAA")) {
             Intent i = new Intent(InitialActivity.this, AboutAAA.class);
+            startActivity(i);
+        } else if(drawerOptions.get(position).equals("Take a Quiz!")) {
+            Intent i = new Intent(InitialActivity.this, QuizActivity.class);
             startActivity(i);
         } else {
 

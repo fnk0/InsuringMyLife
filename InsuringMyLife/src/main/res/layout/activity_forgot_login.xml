@@ -83,7 +83,7 @@
     <Button
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:text="Submit"
-        android:background="@color/button_background"
+        android:background="@drawable/standard_button"
         android:textColor="@android:color/white"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_width="match_parent"

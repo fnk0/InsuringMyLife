@@ -145,7 +145,7 @@
 
         <Button
             android:textColor="@android:color/white"
-            android:background="@color/button_background"
+            android:background="@drawable/standard_button"
             android:text="@string/pick_driver_birthday"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -171,6 +171,7 @@
                 android:layout_weight="0.3"
             />
             <RadioGroup
+                android:id="@+id/genderRadioGroup"
                 android:layout_weight="0.7"
                 android:layout_width="0dip"
                 android:layout_height="wrap_content"
@@ -203,7 +204,7 @@
         </LinearLayout>
         <Button
             android:id="@+id/addVehicle"
-            android:background="@color/button_background"
+            android:background="@drawable/standard_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@android:color/white"
