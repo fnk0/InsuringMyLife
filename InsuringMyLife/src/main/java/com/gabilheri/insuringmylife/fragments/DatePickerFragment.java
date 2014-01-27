@@ -4,7 +4,10 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.DatePicker;
+
+import com.gabilheri.insuringmylife.R;
 
 import java.util.Calendar;
 
@@ -30,7 +33,11 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
     }
 
     @Override
-    public void onDateSet(DatePicker datePicker, int i, int i2, int i3) {
+    public void onDateSet(DatePicker datePicker, int year, int month, int day) {
 
+
+        String myDate = (month + 1) + "/" + day + "/" + year;
+        Button pickDateButton = (Button) getActivity().findViewById(R.id.pickBirthday);
+        pickDateButton.setText(myDate);
     }
 }

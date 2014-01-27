@@ -24,6 +24,7 @@
             android:background="@drawable/box"
             android:padding="5dip"
             android:hint="@string/police_number"
+            android:inputType="number"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:layout_marginBottom="@dimen/activity_vertical_margin"
             />
@@ -144,6 +145,7 @@
         </LinearLayout>
 
         <Button
+            android:id="@+id/pickBirthday"
             android:textColor="@android:color/white"
             android:background="@drawable/standard_button"
             android:text="@string/pick_driver_birthday"

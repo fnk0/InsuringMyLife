@@ -70,7 +70,7 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
         if(!password.equals(repeatPassword)) {
             Toast.makeText(RegisterActivity.this, "Passwords don't match!", Toast.LENGTH_LONG).show();
         } else if(password.length() < 6) {
-            Toast.makeText(RegisterActivity.this, "Password should be at least 6 chars long!", Toast.LENGTH_LONG).show();
+            Toast.makeText(RegisterActivity.this, "Password should be at least 6 characters long!", Toast.LENGTH_LONG).show();
         } else if(counter != 1) {
             Toast.makeText(RegisterActivity.this, "The e-mail does not seen valid!", Toast.LENGTH_LONG).show();
         } else {
