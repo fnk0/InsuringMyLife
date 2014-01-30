@@ -88,16 +88,6 @@ public class NewVehicle extends Activity implements  View.OnClickListener{
 
     class AddNewVehicle extends AsyncTask<String, String, String> {
 
-        int getPoliceNumber = Integer.parseInt(policeNumber.getText().toString());
-        String getCarBrand = carBrand.getSelectedItem().toString();
-        String getCarModel = carModel.getText().toString();
-        String getCarTag = carTag.getText().toString();
-        int getCarYear = Integer.parseInt(carYear.getText().toString());
-        String getCarDriver = carDriver.getText().toString();
-        String getDriversLicense = driversLicense.getText().toString();
-        String getDriversLicenseState = driversLicenseState.getSelectedItem().toString();
-
-
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -110,6 +100,27 @@ public class NewVehicle extends Activity implements  View.OnClickListener{
 
         @Override
         protected String doInBackground(String... strings) {
+
+
+            int getPoliceNumber = Integer.parseInt(policeNumber.getText().toString());
+            String getCarBrand = carBrand.getSelectedItem().toString();
+            String getCarModel = carModel.getText().toString();
+            String getCarTag = carTag.getText().toString();
+            int getCarYear = Integer.parseInt(carYear.getText().toString());
+            String getCarDriver = carDriver.getText().toString();
+            String getDriversLicense = driversLicense.getText().toString();
+            String getDriversLicenseState = driversLicenseState.getSelectedItem().toString();
+
+            /*
+            try {
+
+                List<NameValuePair> params = new ArrayList<NameValuePair>();
+
+                //params.add("police_number", getPoliceNumber);
+            } catch(JSONException e) {
+                e.printStackTrace();
+            }
+            */
             return null;
         }
     }

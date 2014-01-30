@@ -122,7 +122,6 @@
     <string name="drivers_license">Drivers License Number</string>
     <string name="title_activity_forgot_login">Forgot Login / Password</string>
     <string name="title_activity_quiz">QuizActivity</string>
-
     <string name="q1"> Question Number One! </string>
     <string name="q2"> Question Number Two! </string>
     <string name="q3"> Question Number Three! </string>
@@ -137,7 +136,6 @@
         <item name="ar4"> Standard questions that is being showed. I should think that some options would be big than one line. 1</item>
         <item name="ar5">another not very big answer</item>
     </string-array>
-
     <string-array name="array2">
         <item name="ar1"> Standard questions that is being showed. I should think that some options would be big than one line. 2</item>
         <item name="ar2"> Standard questions that is being showed. I should think that some options would be big than one line. 2</item>
@@ -145,7 +143,6 @@
         <item name="ar4"> Standard questions that is being showed. I should think that some options would be big than one line. 2</item>
         <item name="ar5">another not very big answer</item>
     </string-array>
-
     <string-array name="array3">
         <item name="ar1"> Standard questions that is being showed. I should think that some options would be big than one line. 3</item>
         <item name="ar2"> Standard questions that is being showed. I should think that some options would be big than one line. 3</item>
@@ -153,7 +150,6 @@
         <item name="ar4"> Standard questions that is being showed. I should think that some options would be big than one line. 3</item>
         <item name="ar5">another not very big answer</item>
     </string-array>
-
     <string-array name="array4">
         <item name="ar1"> Standard questions that is being showed. I should think that some options would be big than one line. 4</item>
         <item name="ar2"> Standard questions that is being showed. I should think that some options would be big than one line. 4</item>
@@ -161,7 +157,6 @@
         <item name="ar4"> Standard questions that is being showed. I should think that some options would be big than one line. 4</item>
         <item name="ar5">another not very big answer</item>
     </string-array>
-
     <string-array name="array5">
         <item name="ar1"> Standard questions that is being showed. I should think that some options would be big than one line. 5</item>
         <item name="ar2"> Standard questions that is being showed. I should think that some options would be big than one line. 5</item>
@@ -169,7 +164,6 @@
         <item name="ar4"> Standard questions that is being showed. I should think that some options would be big than one line. 5</item>
         <item name="ar5">another not very big answer</item>
     </string-array>
-
     <string-array name="array6">
         <item name="ar1"> Standard questions that is being showed. I should think that some options would be big than one line. 6</item>
         <item name="ar2"> Standard questions that is being showed. I should think that some options would be big than one line. 6</item>
@@ -178,5 +172,7 @@
         <item name="ar5">another not very big answer</item>
     </string-array>
 
+    <string name="title_activity_view_quizzes">ViewQuizzes</string>
+    <string name="title_activity_quizz_result">QuizzResult</string>
 
 </resources>

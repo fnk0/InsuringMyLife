@@ -24,6 +24,7 @@ public class QuizActivity extends FragmentActivity {
     SectionsPagerAdapter mSectionsPagerAdapter;
 
     public static ArrayList<Integer> radioGroups = new ArrayList<Integer>();
+    public static ArrayList<View> viewsRoot = new ArrayList<View>();
 
     ViewPager mViewPager;
 
@@ -131,53 +132,78 @@ public class QuizActivity extends FragmentActivity {
         public static final String ARG_SECTION_NUMBER = "section_number";
 
         public DummySectionFragment() {
+
+
+
         }
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
 
-            int[] titles = {R.string.q1, R.string.q2, R.string.q3, R.string.q4, R.string.q5, R.string.q6};
-            int[] questions = {R.array.array1, R.array.array2, R.array.array3, R.array.array4, R.array.array5, R.array.array6};
+            int[] layouts = {R.layout.quiz1, R.layout.quiz2, R.layout.quiz3, R.layout.quiz4, R.layout.quiz5, R.layout.quiz6};
+            int position = getArguments().getInt(ARG_SECTION_NUMBER) - 1;
 
-
-            String[] questionsArray = getResources().getStringArray(questions[getArguments().getInt(ARG_SECTION_NUMBER) - 1]);
-
-            View rootView = inflater.inflate(R.layout.fragment_quiz,
+            View rootView = inflater.inflate(layouts[position],
                     container, false);
 
-            RadioGroup group = (RadioGroup) rootView.findViewById(R.id.quizAnswers);
+           rootView =  getRootView(rootView, position);
 
-            TextView titleView = (TextView) rootView.findViewById(R.id.quizTitles);
-            titleView.setText(titles[getArguments().getInt(ARG_SECTION_NUMBER) - 1]);
-
-            RadioButton num1 = (RadioButton) rootView.findViewById(R.id.num1);
-            num1.setText(questionsArray[0]);
-
-            RadioButton num2 = (RadioButton) rootView.findViewById(R.id.num2);
-            num2.setText(questionsArray[1]);
-
-            RadioButton num3 = (RadioButton) rootView.findViewById(R.id.num3);
-            num3.setText(questionsArray[2]);
-
-            RadioButton num4 = (RadioButton) rootView.findViewById(R.id.num4);
-            num4.setText(questionsArray[3]);
-
-            RadioButton num5 = (RadioButton) rootView.findViewById(R.id.num5);
-            num5.setText(questionsArray[4]);
+            viewsRoot.add(rootView);
 
             return rootView;
         }
     }
 
-    public void submitQuiz(View v) {
+    public void submitQuiz(View view) {
 
-        for(int i = 0; i < radioGroups.size(); i++) {
+        int counter = 0;
 
-            Log.d("ANSWERS", "" + radioGroups.get(i));
+        for(View v : viewsRoot) {
 
+            int x = getAnswer(v);
+            Log.d("Answer " + counter, " = " + x);
+            counter++;
         }
 
+        viewsRoot.clear();
+
+    }
+
+    public static View getRootView(View v, int position) {
+
+        int[] titles = {R.string.q1, R.string.q2, R.string.q3, R.string.q4, R.string.q5, R.string.q6};
+        int[] questions = {R.array.array1, R.array.array2, R.array.array3, R.array.array4, R.array.array5, R.array.array6};
+
+        String[] questionsArray = v.getResources().getStringArray(questions[position]);
+        View rootView = v;
+
+        TextView titleView = (TextView) rootView.findViewById(R.id.quizTitles);
+        titleView.setText(titles[position]);
+
+        RadioButton num1 = (RadioButton) rootView.findViewById(R.id.num1);
+        num1.setText(questionsArray[0]);
+
+        RadioButton num2 = (RadioButton) rootView.findViewById(R.id.num2);
+        num2.setText(questionsArray[1]);
+
+        RadioButton num3 = (RadioButton) rootView.findViewById(R.id.num3);
+        num3.setText(questionsArray[2]);
+
+        RadioButton num4 = (RadioButton) rootView.findViewById(R.id.num4);
+        num4.setText(questionsArray[3]);
+
+        RadioButton num5 = (RadioButton) rootView.findViewById(R.id.num5);
+        num5.setText(questionsArray[4]);
+
+        return rootView;
+    }
+
+    public static int getAnswer (View v) {
+
+        RadioGroup group = (RadioGroup) v.findViewById(R.id.quizAnswers);
+
+        return group.getCheckedRadioButtonId();
     }
 
 }

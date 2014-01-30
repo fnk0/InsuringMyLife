@@ -116,6 +116,22 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="InitialActivity" />
         </activity>
+        <activity
+            android:name="com.gabilheri.insuringmylife.ViewQuizzes"
+            android:label="@string/title_activity_view_quizzes"
+            android:parentActivityName="com.gabilheri.insuringmylife.InitialActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="InitialActivity" />
+        </activity>
+        <activity
+            android:name="com.gabilheri.insuringmylife.QuizzResult"
+            android:label="@string/title_activity_quizz_result"
+            android:parentActivityName="com.gabilheri.insuringmylife.ViewQuizzes" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ViewQuizzes" />
+        </activity>
     </application>
 
 </manifest>
