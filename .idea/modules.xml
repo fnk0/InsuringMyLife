@@ -4,7 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/InsuringMyLife.iml" filepath="$PROJECT_DIR$/InsuringMyLife.iml" />
       <module fileurl="file://$PROJECT_DIR$/InsuringMyLife/InsuringMyLife-InsuringMyLife.iml" filepath="$PROJECT_DIR$/InsuringMyLife/InsuringMyLife-InsuringMyLife.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Libraries/libraries.iml" filepath="$PROJECT_DIR$/Libraries/libraries.iml" />
       <module fileurl="file://$PROJECT_DIR$/Libraries/showcase/showcase.iml" filepath="$PROJECT_DIR$/Libraries/showcase/showcase.iml" />
     </modules>
   </component>

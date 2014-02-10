@@ -15,10 +15,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-
 import com.espian.showcaseview.ShowcaseView;
 import com.espian.showcaseview.targets.ViewTarget;
-
 import java.util.ArrayList;
 
 public class InitialActivity extends Activity implements View.OnClickListener {
@@ -133,7 +131,8 @@ public class InitialActivity extends Activity implements View.OnClickListener {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        return false;
+        getMenuInflater().inflate(R.menu.initial, menu);
+        return true;
     }
 
     @Override

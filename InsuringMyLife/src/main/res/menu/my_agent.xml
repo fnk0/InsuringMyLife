@@ -1,17 +1,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.gabilheri.insuringmylife.InitialActivity" >
+    tools:context="com.gabilheri.insuringmylife.MyAgent" >
     
     <item android:id="@+id/action_settings"
         android:title="@string/action_settings"
         android:orderInCategory="100"
         android:showAsAction="never" />
-
-    <item
-        android:id="@+id/aaa_logo"
-        android:icon="@drawable/aaalogo"
-        android:showAsAction="always"
-   />
-
-
 </menu>

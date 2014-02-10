@@ -37,10 +37,10 @@
       <sourceFolder url="file://$MODULE_DIR$/src/defaultFlavorDebug/rs" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/defaultFlavorDebug/res" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/defaultFlavorDebug/resources" type="java-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/build/source/r/test/defaultFlavor/debug" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/build/source/aidl/test/defaultFlavor/debug" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/build/source/buildConfig/test/defaultFlavor/debug" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/build/source/rs/test/defaultFlavor/debug" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/build/source/r/test/defaultFlavor/debug" isTestSource="true" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/build/source/aidl/test/defaultFlavor/debug" isTestSource="true" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/build/source/buildConfig/test/defaultFlavor/debug" isTestSource="true" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/build/source/rs/test/defaultFlavor/debug" isTestSource="true" generated="true" />
       <sourceFolder url="file://$MODULE_DIR$/build/res/rs/test/defaultFlavor/debug" type="java-test-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/defaultFlavor/aidl" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/defaultFlavor/assets" isTestSource="false" />

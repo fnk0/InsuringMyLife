@@ -132,6 +132,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ViewQuizzes" />
         </activity>
+        <activity
+            android:name="com.gabilheri.insuringmylife.MyAgent"
+            android:label="@string/title_activity_my_agent"
+            android:parentActivityName="com.gabilheri.insuringmylife.CarActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="CarActivity" />
+        </activity>
     </application>
 
 </manifest>
