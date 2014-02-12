@@ -1,9 +1,12 @@
 package com.gabilheri.insuringmylife;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 public class MyAgent extends Activity {
 
@@ -34,6 +37,16 @@ public class MyAgent extends Activity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void callAgent(View v) {
+
+        String phoneNumber = "111-333-222-4";
+        String uri = "tel:" + phoneNumber.trim();
+        Intent intent = new Intent(Intent.ACTION_CALL);
+        intent.setData(Uri.parse(uri));
+        startActivity(intent);
+
     }
 
 
