@@ -110,35 +110,7 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
         TextView title = (TextView) convertView.findViewById(R.id.textView1);
         title.setText(group.string);
 
-       // ((CheckedTextView) convertView).setChecked(isExpanded);
-       // ImageView imageView = (ImageView) convertView.findViewById(R.id.groupImage);
-        /*
-        if(group.brand.equals("Ford")) {
-            imageView.setImageResource(android.R.drawable.ford);
-        } else if(group.brand.equals("Toyota")) {
-            imageView.setImageResource(android.R.drawable.toyota);
-        } else if(group.brand.equals("Audi")) {
-            imageView.setImageResource(android.R.drawable.audi);
-        } else if(group.brand.equals("Volvo")) {
-            imageView.setImageResource(android.R.drawable.volvo);
-        } else if(group.brand.equals("Volkswagen")) {
-            imageView.setImageResource(android.R.drawable.volkswagen);
-        } else if(group.brand.equals("Jeep")) {
-            imageView.setImageResource(android.R.drawable.jeep);
-        } else if(group.brand.equals("Chevrolet")) {
-            imageView.setImageResource(android.R.drawable.chevrolet);
-        } else if(group.brand.equals("Infinity")) {
-            imageView.setImageResource(android.R.drawable.infinity);
-        } else if(group.brand.equals("Dodge")) {
-            imageView.setImageResource(android.R.drawable.dodge);
-        } else if(group.brand.equals("BMW")) {
-            imageView.setImageResource(android.R.drawable.bmw);
-        } else if(group.brand.equals("Hyundai")) {
-            imageView.setImageResource(android.R.drawable.hyundai);
-        } else {
-            imageView.setImageResource(android.R.drawable.ic_launcher);
-        }
-        */
+
         return convertView;
     }
 

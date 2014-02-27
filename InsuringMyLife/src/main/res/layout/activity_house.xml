@@ -7,14 +7,78 @@
     tools:context="com.gabilheri.insuringmylife.HouseActivity"
     tools:ignore="MergeRootFrame"
     android:orientation="vertical"
+    android:background="@color/background"
+    android:weightSum="1"
     >
 
     <TextView
-        android:id="@+id/profileName"
-        android:text=""
-        android:layout_width="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:background="@color/orange_color"
+        android:text="Home"
+        android:textSize="45sp"
+        android:textColor="@android:color/white"
+        android:drawableLeft="@drawable/l_house_logo"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:gravity="center_vertical"
+        android:paddingLeft="100sp"
+        android:paddingBottom="5sp"
+        android:paddingTop="5sp"
+
+        />
+    <Space
+        android:layout_weight="0.13"
+        android:layout_width="match_parent"
+        android:layout_height="0dip" />
+    <Button
+        android:id="@+id/reportAccident"
+        android:background="@drawable/red_button"
+        android:text="Report an Accident"
+        android:textColor="@android:color/white"
+        android:drawableLeft="@drawable/claims_logo"
+        android:textSize="33sp"
+        android:drawablePadding="15sp"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="0.24"
+        android:paddingTop="5sp"
+        android:paddingBottom="5sp"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        />
+
+    <Button
+        android:id="@+id/existingClaims"
+        android:background="@drawable/blue_button"
+        android:text="Existing Claims"
+        android:textColor="@android:color/white"
+        android:drawableLeft="@drawable/l_house_logo"
+        android:textSize="33sp"
+        android:drawablePadding="15sp"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="0.24"
+        android:paddingTop="5sp"
+        android:paddingBottom="5sp"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        />
+
+    <Button
+        android:id="@+id/contactAgent"
+        android:background="@drawable/orange_button"
+        android:text="Contact Your Agent"
+        android:textColor="@android:color/white"
+        android:drawableLeft="@drawable/agent_logo"
+        android:textSize="33sp"
+        android:drawablePadding="15sp"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="0.24"
+        android:paddingTop="5sp"
+        android:paddingBottom="5sp"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
         />
 
 

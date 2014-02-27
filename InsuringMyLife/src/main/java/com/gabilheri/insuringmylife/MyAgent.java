@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,9 +16,7 @@ public class MyAgent extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_agent);
 
-
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -40,13 +39,30 @@ public class MyAgent extends Activity {
     }
 
     public void callAgent(View v) {
-
         String phoneNumber = "111-333-222-4";
         String uri = "tel:" + phoneNumber.trim();
         Intent intent = new Intent(Intent.ACTION_CALL);
         intent.setData(Uri.parse(uri));
         startActivity(intent);
+    }
 
+    public void addContact(View v) {
+
+        Intent intent = new Intent(ContactsContract.Intents.Insert.ACTION);
+        intent.setType(ContactsContract.RawContacts.CONTENT_TYPE);
+
+        String email = "myagent@email.com";
+        String phoneNumber = "111-333-222-4";
+        String name = "My Agent Name";
+        String lastName = "My Agent Last Name";
+
+        intent.putExtra(ContactsContract.Intents.Insert.EMAIL, email)
+              .putExtra(ContactsContract.Intents.Insert.EMAIL_TYPE, ContactsContract.CommonDataKinds.Email.TYPE_WORK)
+              .putExtra(ContactsContract.Intents.Insert.NAME, name + " " + lastName)
+              .putExtra(ContactsContract.Intents.Insert.PHONE, phoneNumber)
+              .putExtra(ContactsContract.Intents.Insert.PHONE_TYPE, ContactsContract.CommonDataKinds.Phone.TYPE_WORK);
+
+        startActivity(intent);
     }
 
 

@@ -1,7 +1,9 @@
 package com.gabilheri.insuringmylife;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
+import android.widget.Toast;
 
 import org.apache.http.NameValuePair;
 
@@ -13,23 +15,24 @@ import java.util.List;
  */
 public class JSONSender extends AsyncTask<String, String, String> {
 
-
     List<NameValuePair> params = new ArrayList<NameValuePair>();
     ProgressDialog pDialog;
     String dialogMessage;
+    Activity activity;
 
 
 
-    public JSONSender(ProgressDialog dialog, String dialogMessage, List<NameValuePair> params) {
+    public JSONSender(Activity activity, String dialogMessage, List<NameValuePair> params) {
 
         this.params = params;
-        this.pDialog = dialog;
         this.dialogMessage = dialogMessage;
+        this.activity = activity;
     }
 
     @Override
     protected void onPreExecute() {
 
+        pDialog = new ProgressDialog(activity);
         pDialog.setMessage(dialogMessage);
 
 
@@ -39,5 +42,13 @@ public class JSONSender extends AsyncTask<String, String, String> {
     @Override
     protected String doInBackground(String... strings) {
         return null;
+    }
+
+    @Override
+    protected void onPostExecute(String file_url) {
+        pDialog.dismiss();
+        if (file_url != null) {
+            Toast.makeText(activity, file_url, Toast.LENGTH_LONG).show();
+        }
     }
 }
