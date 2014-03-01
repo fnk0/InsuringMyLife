@@ -48,6 +48,7 @@
             android:padding="5dip"
             android:layout_marginBottom="@dimen/activity_vertical_margin"
             android:textColor="@android:color/white"
+            android:paddingRight="100dip"
             />
         <RadioButton
             android:id="@+id/num2"
@@ -57,6 +58,7 @@
             android:padding="5dip"
             android:layout_marginBottom="@dimen/activity_vertical_margin"
             android:textColor="@android:color/white"
+            android:drawablePadding="@dimen/activity_horizontal_margin"
             />
         <RadioButton
             android:id="@+id/num3"
@@ -66,6 +68,7 @@
             android:padding="5dip"
             android:layout_marginBottom="@dimen/activity_vertical_margin"
             android:textColor="@android:color/white"
+            android:drawablePadding="@dimen/activity_horizontal_margin"
             />
         <RadioButton
             android:id="@+id/num4"
@@ -75,6 +78,7 @@
             android:padding="5dip"
             android:layout_marginBottom="@dimen/activity_vertical_margin"
             android:textColor="@android:color/white"
+            android:drawablePadding="@dimen/activity_horizontal_margin"
             />
         <RadioButton
             android:id="@+id/num5"
@@ -84,6 +88,7 @@
             android:padding="5dip"
             android:layout_marginBottom="@dimen/activity_vertical_margin"
             android:textColor="@android:color/white"
+            android:drawablePadding="@dimen/activity_horizontal_margin"
             />
     </RadioGroup>
 

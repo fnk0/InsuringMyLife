@@ -1,18 +1,18 @@
 package com.gabilheri.insuringmylife;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
-public class QuizzResult extends Activity {
+public class HealthActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_quizz_result);
+        setContentView(R.layout.activity_health);
+
+        getActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
 
@@ -20,7 +20,7 @@ public class QuizzResult extends Activity {
     public boolean onCreateOptionsMenu(Menu menu) {
         
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.quizz_result, menu);
+        getMenuInflater().inflate(R.menu.health, menu);
         return true;
     }
 
@@ -35,18 +35,4 @@ public class QuizzResult extends Activity {
         }
         return super.onOptionsItemSelected(item);
     }
-
-    public void buttonClick(View view) {
-
-        int id = view.getId();
-
-        if (id == R.id.backToQuizzes) {
-            Intent quizzes = new Intent(this, ViewQuizzes.class);
-            startActivity(quizzes);
-        } else if(id == R.id.retaqueQuiz) {
-            Intent quizz = new Intent(this, QuizActivity.class);
-            startActivity(quizz);
-        }
-    }
-
 }

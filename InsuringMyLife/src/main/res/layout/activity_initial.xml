@@ -34,6 +34,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
                 android:background="@drawable/life_button"
+                android:onClick="changeActivity"
                 />
             <Button
                 android:id="@+id/carButton"
@@ -41,6 +42,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
                 android:background="@drawable/car_button"
+                android:onClick="changeActivity"
                 />
         </LinearLayout>
         <LinearLayout
@@ -56,6 +58,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
                 android:background="@drawable/accident_button"
+                android:onClick="changeActivity"
                 />
             <Button
                 android:id="@+id/houseButton"
@@ -63,8 +66,10 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
                 android:background="@drawable/house_button"
+                android:onClick="changeActivity"
                 />
         </LinearLayout>
+
         <TextView
             android:id="@+id/userName"
             android:textColor="@android:color/white"
@@ -92,4 +97,5 @@
         android:divider="@android:color/transparent"
         android:dividerHeight="0dp"
         android:background="#bdc3c7"/>
+
 </android.support.v4.widget.DrawerLayout>

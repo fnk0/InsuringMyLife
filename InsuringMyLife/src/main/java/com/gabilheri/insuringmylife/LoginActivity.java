@@ -2,8 +2,11 @@ package com.gabilheri.insuringmylife;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -49,10 +52,12 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         setContentView(R.layout.activity_login);
 
         SharedPreferences sp = getSharedPreferences("loginPref", MODE_PRIVATE);
-        if(sp.contains(TAG_EMAIL) && sp.contains(TAG_PASSWORD
-        )) {
-            userAlreadyLoggedIn = true;
-            new AttemptLogin().execute();
+        if(getInternetState()) {
+            if(sp.contains(TAG_EMAIL) && sp.contains(TAG_PASSWORD
+            )) {
+                userAlreadyLoggedIn = true;
+                new AttemptLogin().execute();
+            }
         }
         // Setup input fields
 
@@ -75,7 +80,9 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         // Determine which button was pressed:
         switch (v.getId()) {
             case R.id.login:
-                new AttemptLogin().execute();
+                if(getInternetState()) {
+                    new AttemptLogin().execute();
+                }
                 break;
             case R.id.register:
                 Intent i = new Intent(this, RegisterActivity.class);
@@ -85,6 +92,25 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                 break;
         }
     }
+
+    public void showNoInternetDialog() {
+        // TODO SHOW DIALOG WITH NO INTERNET INFO
+
+    }
+
+    public boolean getInternetState() {
+
+       ConnectivityManager conMgr =  (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+       NetworkInfo activeNetwork = conMgr.getActiveNetworkInfo();
+
+        if (activeNetwork != null && activeNetwork.isConnected()) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
 
     // Async task is a separated thread than the thread that runs the GUI
     // Any type of networking should be done with asynctask

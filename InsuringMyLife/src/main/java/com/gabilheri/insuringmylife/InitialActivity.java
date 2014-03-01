@@ -12,14 +12,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+
 import com.espian.showcaseview.ShowcaseView;
 import com.espian.showcaseview.targets.ViewTarget;
+
 import java.util.ArrayList;
 
-public class InitialActivity extends Activity implements View.OnClickListener {
+public class InitialActivity extends Activity  {
 
     private ArrayList<String> drawerOptions;
     private DrawerLayout optionsDrawerLayout;
@@ -27,8 +28,8 @@ public class InitialActivity extends Activity implements View.OnClickListener {
     private ActionBarDrawerToggle drawerToggle;
     private CharSequence drawerTitle;
     private CharSequence title;
-    private Button lifeButton, carButton, houseButton, accidentButton;
     private TextView userName;
+    private boolean tutorialOn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +41,15 @@ public class InitialActivity extends Activity implements View.OnClickListener {
         SharedPreferences loginPref = getSharedPreferences("loginPref", MODE_PRIVATE);
         userName.setText("Hello " + loginPref.getString("name", "a") + " " + loginPref.getString("last_name", "b"));
         title = drawerTitle = getTitle();
+
+        SharedPreferences tutorialPref = getSharedPreferences("tutorialPref", MODE_PRIVATE);
+
+        // Checks if the tutorial has been launched already.
+        if(tutorialPref.contains("tutorialOn")) {
+            tutorialOn = tutorialPref.getBoolean("tutorialOn", false);
+        } else {
+            tutorialOn = true;
+        }
 
         optionsDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawerToggle = new ActionBarDrawerToggle(this, optionsDrawerLayout,
@@ -76,36 +86,45 @@ public class InitialActivity extends Activity implements View.OnClickListener {
         drawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.drawer_list_item, drawerOptions));
         drawerList.setOnItemClickListener(new DrawerItemClickListener());
 
-        lifeButton = (Button) findViewById(R.id.lifeButton);
-        carButton = (Button) findViewById(R.id.carButton);
-        houseButton = (Button) findViewById(R.id.houseButton);
-        accidentButton = (Button) findViewById(R.id.accidentButton);
+        if(tutorialOn) {
+           displayTutorial();
+        }
+    }
 
-        carButton.setOnClickListener(this);
-        lifeButton.setOnClickListener(this);
-        houseButton.setOnClickListener(this);
-        accidentButton.setOnClickListener(this);
-
+    public void displayTutorial() {
+        // Displays the showcase view with tutorial
         View showcasedView = findViewById(R.id.carButton);
         ViewTarget target = new ViewTarget(showcasedView);
         target.getPoint();
         ShowcaseView.insertShowcaseView(target, this, "Icon Selection", "Please select one of the icons shown below");
 
+        /**
+        ActionItemTarget actionTarget = new ActionItemTarget(this, optionsDrawerLayout.getId());
+        actionTarget.getPoint();
+        ShowcaseView.insertShowcaseView(actionTarget, this, "Navigation Drawer", "Slide from your left or click the drawer toggle to open the drawer menu");
+        */
+
+        // Sets the tutorial to OFF so it doesn't shows up all the time to the user
+        SharedPreferences tutorialPref = getSharedPreferences("tutorialPref", MODE_PRIVATE);
+        SharedPreferences.Editor tutorialPrefEditor = tutorialPref.edit();
+        tutorialPrefEditor.putBoolean("tutorialOn", false);
+        tutorialPrefEditor.commit();
     }
 
-    @Override
-    public void onClick(View view) {
-
+    public void changeActivity(View view) {
         int id = view.getId();
-
         switch (id) {
             case R.id.lifeButton:
+                Intent lifeActivity = new Intent(InitialActivity.this, HealthActivity.class);
+                startActivity(lifeActivity);
                 break;
             case R.id.carButton:
                 Intent carActivity = new Intent(InitialActivity.this, CarActivity.class);
                 startActivity(carActivity);
                 break;
             case R.id.accidentButton:
+                Intent accidentActivity = new Intent(InitialActivity.this, ReportClaim.class);
+                startActivity(accidentActivity);
                 break;
             case R.id.houseButton:
                 Intent houseActivity = new Intent(InitialActivity.this, HouseActivity.class);
@@ -132,6 +151,8 @@ public class InitialActivity extends Activity implements View.OnClickListener {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.initial, menu);
+
+        menu.add(1, 1, 1, "Tutorial");
         return true;
     }
 
@@ -140,6 +161,16 @@ public class InitialActivity extends Activity implements View.OnClickListener {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+        if (id == R.id.action_settings) {
+            return true;
+        } else if(id == 1) {
+            SharedPreferences tutorialPref = getSharedPreferences("tutorialPref", MODE_PRIVATE);
+            SharedPreferences.Editor tutorialPrefEditor = tutorialPref.edit();
+            tutorialPrefEditor.putBoolean("tutorialOn", true);
+            tutorialPrefEditor.commit();
+            displayTutorial();
+        }
 
         if(drawerToggle.onOptionsItemSelected(item)) {
             return true;

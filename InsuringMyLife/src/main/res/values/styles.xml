@@ -9,6 +9,7 @@
 
         <item name="android:actionBarStyle">@style/MyActionBar</item>
         <item name="android:spinnerItemStyle">@style/SpinnerStyle</item>
+        <item name="android:radioButtonStyle">@style/RadioButtonIcon</item>
     </style>
 
     <style name="MyActionBar"
@@ -24,6 +25,10 @@
     <style name="SpinnerStyle">
         <item name="android:textColor">#FFFFFF</item>
         <item name="android:textAppearance">?android:attr/textAppearanceLarge</item>
+    </style>
+
+    <style name="RadioButtonIcon" parent="@android:style/Widget.CompoundButton.RadioButton">
+        <item name="android:button">@drawable/radio</item>
     </style>
 
 </resources>
