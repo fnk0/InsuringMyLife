@@ -57,6 +57,7 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:hint="@string/aaa_number"
             android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:inputType="number"
             />
         <TextView
             android:id="@+id/birthdayTextHelper"

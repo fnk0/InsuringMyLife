@@ -198,7 +198,7 @@ public class InitialActivity extends Activity  {
             Intent i = new Intent(InitialActivity.this, LoginActivity.class);
             startActivity(i);
         } else if(drawerOptions.get(position).equals("Update Profile")) {
-            Intent i = new Intent(InitialActivity.this, UpdateProfile.class);
+            Intent i = new Intent(InitialActivity.this, UpdateProfileActivity.class);
             startActivity(i);
         } else if(drawerOptions.get(position).equals("About AAA")) {
             Intent i = new Intent(InitialActivity.this, AboutAAA.class);
