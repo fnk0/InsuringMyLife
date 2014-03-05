@@ -134,6 +134,12 @@ public class VehiclesActivity extends Activity {
                     String license_plate = obj.getString(TAG_LICENSE);
                     String main_driver = obj.getString(TAG_DRIVER);
                     String policeNumber = obj.getString(TAG_POLICENUMBER);
+                    String driversLicense = obj.getString("drivers_license");
+                    String licenseState = obj.getString("license_state");
+                    String driverBirthday = obj.getString("driver_birthday_month") + "/" +
+                            obj.getString("driver_birthday_day") + "/" +
+                            obj.get("driver_birthday_year");
+                    String driverGender = obj.getString("driver_gender");
 
                     ListRowGroup group = new ListRowGroup(brand + " " + year + " " + model, brand);
                     group.children.add(brand + " " + year + " " + model);
@@ -142,6 +148,8 @@ public class VehiclesActivity extends Activity {
                     group.children.add(color);
                     group.children.add(license_plate);
                     group.children.add(main_driver);
+                    group.children.add(driversLicense + "   -   " + licenseState);
+                    group.children.add(driverBirthday + "   -   " + driverGender);
 
                     vehiclesGroup.append(i, group);
                 }

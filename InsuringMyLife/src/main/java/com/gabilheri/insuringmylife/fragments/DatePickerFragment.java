@@ -35,8 +35,23 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
     @Override
     public void onDateSet(DatePicker datePicker, int year, int month, int day) {
 
+        String monthS;
+        String dayS;
 
-        String myDate = (month + 1) + "/" + day + "/" + year;
+        if(month < 10) {
+            monthS = "0" + (month + 1);
+        } else {
+            monthS = "" + (month + 1);
+        }
+
+        if(day < 10) {
+            dayS = "0" + (day +1);
+        } else {
+            dayS = "" + (day + 1);
+        }
+
+        String myDate = monthS + "/" + dayS + "/" + year;
+
         Button pickDateButton = (Button) getActivity().findViewById(R.id.pickBirthday);
         pickDateButton.setText(myDate);
     }

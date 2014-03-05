@@ -3,9 +3,11 @@ package com.gabilheri.insuringmylife;
 import android.app.Activity;
 import android.app.DialogFragment;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,12 +18,20 @@ import android.widget.Spinner;
 
 import com.gabilheri.insuringmylife.fragments.DatePickerFragment;
 
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class NewVehicle extends Activity implements  View.OnClickListener{
 
-    private EditText policeNumber, carInfo, carModel, carTag, carYear, carDriver, driversLicense;
+    private EditText policeNumber, carInfo, carModel, carTag, carYear, carDriver, driversLicense, carColor;
     private Spinner carBrand, driversLicenseState;
     private RadioGroup carDriverGender;
-    private Button mNewVehicle;
+    private Button mNewVehicle, pickBirthday;
 
     private ProgressDialog pDialog;
 
@@ -41,6 +51,7 @@ public class NewVehicle extends Activity implements  View.OnClickListener{
 
         policeNumber = (EditText) findViewById(R.id.policeNumber);
         carModel = (EditText) findViewById(R.id.carModel);
+        carColor = (EditText) findViewById(R.id.carColor);
         carTag = (EditText) findViewById(R.id.carTag);
         carYear = (EditText) findViewById(R.id.carYear);
         carDriver = (EditText) findViewById(R.id.carDriver);
@@ -48,6 +59,7 @@ public class NewVehicle extends Activity implements  View.OnClickListener{
         carBrand = (Spinner) findViewById(R.id.carBrand);
         driversLicenseState = (Spinner) findViewById(R.id.stateDriversLicense);
         carDriverGender = (RadioGroup) findViewById(R.id.genderRadioGroup);
+        pickBirthday = (Button) findViewById(R.id.pickBirthday);
 
         mNewVehicle = (Button) findViewById(R.id.addVehicle);
         mNewVehicle.setOnClickListener(this);
@@ -92,7 +104,7 @@ public class NewVehicle extends Activity implements  View.OnClickListener{
         protected void onPreExecute() {
             super.onPreExecute();
             pDialog = new ProgressDialog(NewVehicle.this);
-            pDialog.setMessage("Adding Vehicle");
+            pDialog.setMessage("Adding Vehicle...");
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(true);
             pDialog.show();
@@ -101,27 +113,92 @@ public class NewVehicle extends Activity implements  View.OnClickListener{
         @Override
         protected String doInBackground(String... strings) {
 
-
-            int getPoliceNumber = Integer.parseInt(policeNumber.getText().toString());
+            String getPoliceNumber = policeNumber.getText().toString();
             String getCarBrand = carBrand.getSelectedItem().toString();
             String getCarModel = carModel.getText().toString();
             String getCarTag = carTag.getText().toString();
-            int getCarYear = Integer.parseInt(carYear.getText().toString());
+            String getCarYear = carYear.getText().toString();
             String getCarDriver = carDriver.getText().toString();
             String getDriversLicense = driversLicense.getText().toString();
             String getDriversLicenseState = driversLicenseState.getSelectedItem().toString();
+            String getCarColor = carColor.getText().toString();
+            String[] driverBirthday = pickBirthday.getText().toString().split("/");
 
-            /*
+            String driverBirthdayMonth = driverBirthday[0];
+            String driverBirthdayDay = driverBirthday[1];
+            String driverBirthdayYear = driverBirthday[2];
+
+            String driverGender;
+
+            SharedPreferences loginPref = getSharedPreferences("loginPref", MODE_PRIVATE);
+            String email = loginPref.getString("email", "");
+
+            if(carDriverGender.getCheckedRadioButtonId() == R.id.radioMale) {
+                driverGender = "Male";
+            } else {
+                driverGender = "Female";
+            }
+
+
             try {
-
                 List<NameValuePair> params = new ArrayList<NameValuePair>();
+                params.add(new BasicNameValuePair("user_id", email));
+                params.add(new BasicNameValuePair("police_number", getPoliceNumber));
+                params.add(new BasicNameValuePair("year", getCarYear));
+                params.add(new BasicNameValuePair("model", getCarModel));
+                params.add(new BasicNameValuePair("brand", getCarBrand));
+                params.add(new BasicNameValuePair("color", getCarColor));
+                params.add(new BasicNameValuePair("license_plate", getCarTag));
+                params.add(new BasicNameValuePair("drivers_license", getDriversLicense));
+                params.add(new BasicNameValuePair("license_state", getDriversLicenseState));
+                params.add(new BasicNameValuePair("main_driver", getCarDriver));
+                params.add(new BasicNameValuePair("driver_birthday_year", driverBirthdayYear));
+                params.add(new BasicNameValuePair("driver_birthday_month", driverBirthdayMonth));
+                params.add(new BasicNameValuePair("driver_birthday_day", driverBirthdayDay));
+                params.add(new BasicNameValuePair("driver_gender", driverGender));
 
-                //params.add("police_number", getPoliceNumber);
+                Log.d("Query Requested", "Params");
+                Log.d("user_id: ", email);
+                Log.d("police_number: ", getPoliceNumber);
+                Log.d("year: ", getCarYear);
+                Log.d("brand: ", getCarBrand);
+                Log.d("color: ", getCarColor);
+                Log.d("license_plate: ", getCarTag);
+                Log.d("main_driver: ", getCarDriver);
+                Log.d("birthday_year: ", driverBirthdayYear);
+                Log.d("birthday_month: ", driverBirthdayMonth);
+                Log.d("birthday_day: ", driverBirthdayDay);
+                Log.d("drivers_license: ", getDriversLicense);
+                Log.d("license_state: ", getDriversLicenseState);
+                Log.d("driver_gender: ", driverGender);
+
+                JSONObject json = jsonParser.makeHttpRequest(NEWVEHICLE_URL, "POST", params);
+
+                Log.d("New Vehicle Attempt", json.toString());
+
+                int success = json.getInt(TAG_SUCCESS);
+
+                if(success == 1) {
+                    Intent backToVehicles = new Intent(NewVehicle.this, VehiclesActivity.class);
+                    startActivity(backToVehicles);
+                    finish();
+                    return json.getString(TAG_MESSAGE);
+                } else {
+                    return json.getString(TAG_MESSAGE);
+                }
+
             } catch(JSONException e) {
                 e.printStackTrace();
             }
-            */
+
             return null;
         }
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            pDialog.dismiss();
+
+        }
+
     }
 }

@@ -43,15 +43,33 @@
             android:background="@android:color/white"
             android:layout_marginBottom="@dimen/activity_vertical_margin"
             />
-        <Spinner
-            android:id="@+id/carBrand"
+        <LinearLayout
+            android:weightSum="1"
+            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_vertical_margin"
-            android:entries="@array/car_brands"
-            android:spinnerMode="dialog"
-            android:padding="10dip"
-            />
+            android:layout_height="wrap_content">
+            <Spinner
+                android:id="@+id/carBrand"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:layout_marginBottom="@dimen/activity_vertical_margin"
+                android:entries="@array/car_brands"
+                android:spinnerMode="dialog"
+                android:padding="10dip"
+                />
+            <EditText
+                android:id="@+id/carColor"
+                android:layout_weight="0.5"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:hint="Color"
+                android:background="@drawable/box"
+                android:padding="5dip"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_marginBottom="@dimen/activity_vertical_margin"
+                />
+        </LinearLayout>
         <EditText
             android:id="@+id/carModel"
             android:layout_width="match_parent"
@@ -171,6 +189,7 @@
                 android:layout_width="0dip"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.3"
+                android:gravity="center_vertical"
             />
             <RadioGroup
                 android:id="@+id/genderRadioGroup"
@@ -178,29 +197,26 @@
                 android:layout_width="0dip"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                >
-            <RadioButton
-                android:id="@+id/radioMale"
-                android:text="Male"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.3"
-                android:textColor="@android:color/white"
-                android:layout_marginRight="@dimen/activity_vertical_margin"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:button="@android:drawable/btn_star"
-
+            >
+                <RadioButton
+                    android:id="@+id/radioMale"
+                    android:text="Male"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.3"
+                    android:textColor="@android:color/white"
+                    android:layout_marginRight="@dimen/activity_vertical_margin"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
                 />
 
-            <RadioButton
-                android:id="@+id/radioFemale"
-                android:text="Female"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.35"
-                android:textColor="@android:color/white"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:button="@android:drawable/btn_star"
+                <RadioButton
+                    android:id="@+id/radioFemale"
+                    android:text="Female"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.35"
+                    android:textColor="@android:color/white"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
                 />
             </RadioGroup>
         </LinearLayout>

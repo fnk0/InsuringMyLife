@@ -1,6 +1,7 @@
 package com.gabilheri.insuringmylife.adapters;
 
 import android.app.Activity;
+import android.util.Log;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +21,7 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
     private final SparseArray<ListRowGroup> groups;
     public LayoutInflater inflater;
     public Activity activity;
+    int counter = 0;
 
     public MyExpandableListAdapter(Activity act, SparseArray<ListRowGroup> groups) {
         activity = act;
@@ -38,20 +40,19 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
     }
 
     @Override
-    public View getChildView(int groupPosition, final int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
+    public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
 
         final String children = (String) getChild(groupPosition, childPosition);
-        TextView textTitle = null;
-        TextView textDescription = null;
 
-        if(convertView == null) {
-            if(childPosition == 0) {
-                convertView = inflater.inflate(R.layout.listrow_first_element, null);
-            } else if(childPosition % 2 != 0) {
-                convertView = inflater.inflate(R.layout.listrow_details, null);
-            } else {
-                convertView = inflater.inflate(R.layout.listrow_details_color2, null);
-            }
+        TextView textTitle;
+        TextView textDescription;
+
+        if(childPosition == 0) {
+            convertView = inflater.inflate(R.layout.listrow_first_element, null);
+        } else if(childPosition % 2 != 0) {
+            convertView = inflater.inflate(R.layout.listrow_details, null);
+        } else {
+            convertView = inflater.inflate(R.layout.listrow_details_color2, null);
         }
 
         textTitle = (TextView) convertView.findViewById(R.id.titleView);
@@ -59,14 +60,7 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
         textTitle.setText(getChildString(childPosition));
         textDescription.setText(children);
 
-        /*
-        convertView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(activity, children, Toast.LENGTH_SHORT).show();
-            }
-        });
-        */
+        Log.d("Child Position: ",  "" + childPosition);
         return convertView;
     }
 
@@ -110,7 +104,6 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
         TextView title = (TextView) convertView.findViewById(R.id.textView1);
         title.setText(group.string);
 
-
         return convertView;
     }
 
@@ -139,8 +132,11 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
                 return "License Plate";
             case 5:
                 return "Main Driver";
-            default:
-                break;
+            case 6:
+                return "Drivers License Number / State";
+            case 7:
+                return "Driver's Birthday / Gender";
+
         }
         return "Test";
     }

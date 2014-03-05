@@ -7,7 +7,7 @@
 >
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin"
@@ -104,13 +104,86 @@
             />
         </LinearLayout>
         <TextView
+            android:id="@+id/addressInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@android:color/white"
+            android:text="Billing Address"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            android:layout_below="@id/birthdaySpinners"
+            android:textStyle="bold"
+            android:padding="10dip"
+            />
+        <EditText
+            android:id="@+id/address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:hint="@string/address"
+            android:layout_below="@id/addressInfo"
+            android:padding="10dip"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:background="@drawable/box"
+            />
+
+        <EditText
+            android:id="@+id/city"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:hint="@string/city"
+            android:layout_below="@id/address"
+            android:padding="10dip"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:background="@drawable/box"
+        />
+
+        <LinearLayout
+            android:id="@+id/zipState"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@id/city"
+            android:weightSum="1"
+            >
+
+            <EditText
+                android:id="@+id/zipCode"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:hint="@string/zip_code"
+                android:layout_weight="0.47"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:padding="10dip"
+                android:paddingTop="@dimen/activity_vertical_margin"
+                android:inputType="number"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:background="@drawable/box"
+            />
+
+            <EditText
+                android:id="@+id/state"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:hint="@string/state"
+                android:layout_weight="0.53"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:padding="10dip"
+                android:paddingTop="@dimen/activity_vertical_margin"
+                android:background="@drawable/box"
+                />
+
+        </LinearLayout>
+
+        <TextView
             android:id="@+id/creditCardInfo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@android:color/white"
             android:text="@string/cc_info"
-            android:layout_below="@id/birthdaySpinners"
+            android:layout_below="@id/zipState"
             android:paddingTop="@dimen/activity_vertical_margin"
             android:textStyle="bold"
             />

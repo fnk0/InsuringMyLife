@@ -44,7 +44,8 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     private static final String TAG_PASSWORD = "password";
     private static final String TAG_NAME = "name";
     private static final String TAG_LASTNAME = "last_name";
-    public boolean userAlreadyLoggedIn = false;
+    private static final String TAG_ZIP = "zip_code"
+;    public boolean userAlreadyLoggedIn = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -121,7 +122,6 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         // Three methods gets called, first preExecute, then doInBackground
         // Once doInBackground is completed, the onPost execute method will be called
 
-        boolean failure = false;
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -141,6 +141,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
             String password;
             String firstName;
             String lastName;
+            String zipCode;
 
             if(userAlreadyLoggedIn) {
 
@@ -171,7 +172,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                 success = json.getInt(TAG_SUCCESS);
                 lastName = json.getString(TAG_LASTNAME);
                 firstName = json.getString(TAG_NAME);
-
+                zipCode = json.getString(TAG_ZIP);
 
                 if(success == 1) {
                     Log.d("Login succesfull!", json.toString());
@@ -183,6 +184,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                     loginEditor.putString(TAG_PASSWORD, password);
                     loginEditor.putString(TAG_NAME, firstName);
                     loginEditor.putString(TAG_LASTNAME, lastName);
+                    loginEditor.putString(TAG_ZIP, zipCode);
                     loginEditor.commit();
 
                     Intent i = new Intent(LoginActivity.this, InitialActivity.class);

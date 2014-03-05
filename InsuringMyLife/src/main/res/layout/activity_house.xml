@@ -24,7 +24,7 @@
         android:paddingLeft="100sp"
         android:paddingBottom="5sp"
         android:paddingTop="5sp"
-        />
+    />
     <Space
         android:layout_weight="0.12"
         android:layout_width="match_parent"
@@ -44,6 +44,7 @@
         android:paddingTop="5sp"
         android:paddingBottom="5sp"
         android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:onClick="changeActivity"
         />
 
     <Button
@@ -61,6 +62,7 @@
         android:paddingTop="5sp"
         android:paddingBottom="5sp"
         android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:onClick="changeActivity"
         />
 
     <Button
@@ -78,6 +80,7 @@
         android:paddingTop="5sp"
         android:paddingBottom="5sp"
         android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:onClick="changeActivity"
         />
 
 

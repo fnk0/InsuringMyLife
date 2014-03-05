@@ -1,9 +1,11 @@
 package com.gabilheri.insuringmylife;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 public class HealthActivity extends Activity {
 
@@ -13,6 +15,18 @@ public class HealthActivity extends Activity {
         setContentView(R.layout.activity_health);
 
         getActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    public void changeActivity(View v) {
+
+        int id = v.getId();
+
+        switch (id) {
+            case R.id.contactAgent:
+                Intent agentIntent = new Intent(HealthActivity.this, MyAgent.class);
+                startActivity(agentIntent);
+                break;
+        }
     }
 
 

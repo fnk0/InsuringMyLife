@@ -34,7 +34,7 @@ public class UpdateProfileActivity extends Activity implements View.OnClickListe
     private ArrayList<Integer> yearBirthdayNumbers = new ArrayList<Integer>();
     private ArrayList<Integer> yearExpirationNumbers = new ArrayList<Integer>();
     private ProgressDialog pDialogCreate, pDialogLoad;
-    private EditText firstNameField, lastNameField, ccNameField, ccNumberField, cvcField, customerNumberField;
+    private EditText firstNameField, lastNameField, ccNameField, ccNumberField, cvcField, customerNumberField, addressField, cityField, zipField, stateField;
     private Button updateProfileButton;
     private String email;
     private String[] months, ccCompanies;
@@ -71,6 +71,10 @@ public class UpdateProfileActivity extends Activity implements View.OnClickListe
         ccNumberField = (EditText) findViewById(R.id.ccNumber);
         cvcField = (EditText) findViewById(R.id.cvc);
         updateProfileButton = (Button) findViewById(R.id.updateProfile);
+        addressField = (EditText) findViewById(R.id.address);
+        cityField = (EditText) findViewById(R.id.city);
+        zipField = (EditText) findViewById(R.id.zipCode);
+        stateField = (EditText) findViewById(R.id.state);
 
         dayNumbers = new Integer[31];
         for(int i = 0; i < 31; i++) {
@@ -158,7 +162,7 @@ public class UpdateProfileActivity extends Activity implements View.OnClickListe
         }
 
         @Override
-        protected String doInBackground(String ... args) {
+        protected String doInBackground(String ... args) throws NullPointerException {
 
             int success;
             String firstName = firstNameField.getText().toString();
@@ -173,12 +177,23 @@ public class UpdateProfileActivity extends Activity implements View.OnClickListe
             String expYear = yearExpSpinner.getSelectedItem().toString();
             String ccCompany = ccCompaniesSpinner.getSelectedItem().toString();
             String ccName = ccNameField.getText().toString();
+            String address = addressField.getText().toString();
+            String city = cityField.getText().toString();
+            String zipCode = zipField.getText().toString();
+            String state = stateField.getText().toString();
             String email;
 
 
             try {
                 SharedPreferences loginPref = getSharedPreferences("loginPref", 0);
                 email = loginPref.getString("email", "");
+
+                SharedPreferences.Editor editor = loginPref.edit();
+                editor.putString("name", firstName);
+                editor.putString("last_name", lastName);
+                editor.putString("zip_code", zipCode);
+                editor.commit();
+
                 List<NameValuePair> params = new ArrayList<NameValuePair>();
                 params.add(new BasicNameValuePair("customer_number", customerNumber));
                 params.add(new BasicNameValuePair("name", firstName));
@@ -186,6 +201,10 @@ public class UpdateProfileActivity extends Activity implements View.OnClickListe
                 params.add(new BasicNameValuePair("birthday_year", yearBirthday));
                 params.add(new BasicNameValuePair("birthday_month", Integer.toString(monthBirthday)));
                 params.add(new BasicNameValuePair("birthday_day", dayBirthday));
+                params.add(new BasicNameValuePair("address", address));
+                params.add(new BasicNameValuePair("city", city));
+                params.add(new BasicNameValuePair("state", state));
+                params.add(new BasicNameValuePair("zip_code", zipCode));
                 params.add(new BasicNameValuePair("email", email));
                 params.add(new BasicNameValuePair("cc_number", ccNumber));
                 params.add(new BasicNameValuePair("cc_name", ccName));
@@ -219,7 +238,7 @@ public class UpdateProfileActivity extends Activity implements View.OnClickListe
             pDialogCreate.dismiss();
 
             if(file_url != null) {
-                Toast.makeText(UpdateProfileActivity.this, "Update Succesfull", Toast.LENGTH_LONG).show();
+                Toast.makeText(UpdateProfileActivity.this, "Profile Successfully Updated", Toast.LENGTH_LONG).show();
             }
         }
     }
@@ -250,13 +269,17 @@ public class UpdateProfileActivity extends Activity implements View.OnClickListe
                     profileInfoList.put("birthday_year", Integer.toString(obj.getInt("birthday_year")));
                     profileInfoList.put("birthday_month", Integer.toString(obj.getInt("birthday_month")));
                     profileInfoList.put("birthday_day", Integer.toString(obj.getInt("birthday_day")));
+                    profileInfoList.put("address", obj.getString("address"));
+                    profileInfoList.put("city", obj.getString("city"));
+                    profileInfoList.put("state", obj.getString("state"));
+                    profileInfoList.put("zip_code", obj.getString("zip_code"));
                     profileInfoList.put("cc_number", obj.getString("cc_number"));
                     profileInfoList.put("cc_name", obj.getString("cc_name"));
                     profileInfoList.put("cc_expiration_year", obj.getString("cc_expiration_year"));
                     profileInfoList.put("cc_expiration_month", obj.getString("cc_expiration_month"));
-                    profileInfoList.put("cc_company", obj.getString("cc_company").toUpperCase());
+                    profileInfoList.put("cc_company", obj.getString("cc_company"));
                     profileInfoList.put("cc_cvc",  obj.getString("cc_cvc"));
-                    Log.d("Company: ", obj.getString("cc_company").toUpperCase());
+                    Log.d("Company: ", profileInfoList.get("cc_company"));
                 }
             }
 
@@ -267,28 +290,32 @@ public class UpdateProfileActivity extends Activity implements View.OnClickListe
 
     public void updateList() {
 
-        boolean thrown = false;
-        do {
-            try {
-                firstNameField.setText(profileInfoList.get("name"));
-                lastNameField.setText(profileInfoList.get("last_name"));
-                if(!profileInfoList.get("customer_number").equals("0")) {
-                    customerNumberField.setText(profileInfoList.get("customer_number"));
-                }
-                monthSpinner.setSelection(monthSpinnerAdapter.getPosition(months[Integer.parseInt(profileInfoList.get("birthday_month")) - 1]));
-                daySpinner.setSelection(daySpinnerAdapter.getPosition(Integer.parseInt(profileInfoList.get("birthday_day"))));
-                yearSpinner.setSelection(yearSpinnerAdapter.getPosition(Integer.parseInt(profileInfoList.get("birthday_year"))));
-                ccNameField.setText(profileInfoList.get("cc_name"));
-                ccNumberField.setText("****" + profileInfoList.get("cc_number"));
-                cvcField.setText(profileInfoList.get("cc_cvc"));
-                yearExpSpinner.setSelection(yearExpSpinnerAdapter.getPosition(Integer.parseInt(profileInfoList.get("cc_expiration_year"))));
-                monthExpSpinner.setSelection(monthSpinnerAdapter.getPosition(months[Integer.parseInt(profileInfoList.get("cc_expiration_month")) - 1]));
-                ccCompaniesSpinner.setSelection(ccCompaniesAdapter.getPosition(profileInfoList.get("cc_company")));
-            } catch (Exception e) {
-                thrown = true;
-                e.printStackTrace();
+        try {
+            firstNameField.setText(profileInfoList.get("name"));
+            lastNameField.setText(profileInfoList.get("last_name"));
+            if(!profileInfoList.get("customer_number").equals("0")) {
+                customerNumberField.setText(profileInfoList.get("customer_number"));
             }
-        } while(thrown);
+            monthSpinner.setSelection(monthSpinnerAdapter.getPosition(months[Integer.parseInt(profileInfoList.get("birthday_month")) - 1]));
+            daySpinner.setSelection(daySpinnerAdapter.getPosition(Integer.parseInt(profileInfoList.get("birthday_day"))));
+            yearSpinner.setSelection(yearSpinnerAdapter.getPosition(Integer.parseInt(profileInfoList.get("birthday_year"))));
+            addressField.setText(profileInfoList.get("address"));
+            cityField.setText(profileInfoList.get("city"));
+            stateField.setText(profileInfoList.get("state"));
+            if(!profileInfoList.get("zip_code").equals(0)) {
+             zipField.setText(profileInfoList.get("zip_code"));
+            }
+            ccNameField.setText(profileInfoList.get("cc_name"));
+            ccNumberField.setText("****" + profileInfoList.get("cc_number"));
+            cvcField.setText(profileInfoList.get("cc_cvc"));
+            yearExpSpinner.setSelection(yearExpSpinnerAdapter.getPosition(Integer.parseInt(profileInfoList.get("cc_expiration_year"))));
+            monthExpSpinner.setSelection(monthSpinnerAdapter.getPosition(months[Integer.parseInt(profileInfoList.get("cc_expiration_month")) - 1]));
+            ccCompaniesSpinner.setSelection(ccCompaniesAdapter.getPosition(profileInfoList.get("cc_company")));
+        } catch (Exception e) {
+
+            e.printStackTrace();
+        }
+
     }
 
     class LoadProfile extends AsyncTask<String, String, String> {

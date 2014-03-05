@@ -1,10 +1,12 @@
 package com.gabilheri.insuringmylife;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 public class HouseActivity extends Activity {
 
@@ -15,6 +17,17 @@ public class HouseActivity extends Activity {
 
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
+    }
+
+    public void changeActivity(View v) {
+        int id = v.getId();
+
+        switch (id) {
+            case R.id.contactAgent:
+                Intent agentIntent = new Intent(HouseActivity.this, MyAgent.class);
+                startActivity(agentIntent);
+                break;
+        }
     }
 
 
