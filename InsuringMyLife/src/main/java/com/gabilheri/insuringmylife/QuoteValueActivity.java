@@ -4,8 +4,11 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 public class QuoteValueActivity extends Activity {
+
+    public TextView quoteResult;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -13,6 +16,14 @@ public class QuoteValueActivity extends Activity {
         setContentView(R.layout.activity_quote_value);
 
         getActionBar().setDisplayHomeAsUpEnabled(true);
+
+        quoteResult = (TextView) findViewById(R.id.quoteValue);
+
+        double quoteValue = getIntent().getDoubleExtra("quoteValue", 0.00);
+
+        quoteResult.setText("$ " + quoteValue);
+
+
     }
 
 

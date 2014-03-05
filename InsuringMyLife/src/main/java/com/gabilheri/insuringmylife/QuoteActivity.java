@@ -71,7 +71,7 @@ public class QuoteActivity extends Activity {
         spinnersLayout = (LinearLayout) findViewById(R.id.vehicleHolder);
 
         spinnerNumDrivers = (Spinner) findViewById(R.id.numDrivers);
-        spinnerVehicles = (Spinner) findViewById(R.id.numVehicles);
+        spinnerNumVehicles = (Spinner) findViewById(R.id.numVehicles);
         spinnerResidenceType = (Spinner) findViewById(R.id.residenceType);
         currentCustomer = (RadioGroup) findViewById(R.id.currentCustomer);
         isStudent = (RadioGroup) findViewById(R.id.isStudent);
@@ -212,19 +212,19 @@ public class QuoteActivity extends Activity {
         int numDrivers = spinnerNumDrivers.getSelectedItemPosition() + 1;
         String residenceInformation = spinnerResidenceType.getSelectedItem().toString();
 
-        boolean isCustomer = false;
-        boolean student = false;
-        boolean vehicleFinanced = false;
+        String isCustomer = "No";
+        String student = "No";
+        String vehicleFinanced = "No";
 
         if(currentCustomer.getCheckedRadioButtonId() == R.id.yes) {
-            isCustomer = true;
+            isCustomer = "Yes";
             startingPrice -= 200;
         } else {
             startingPrice += 40;
         }
 
         if(isStudent.getCheckedRadioButtonId() == R.id.studentYes) {
-            student = true;
+            student = "Yes";
             startingPrice -= 175;
         } else {
             startingPrice += 50;
@@ -247,14 +247,23 @@ public class QuoteActivity extends Activity {
         }
 
         if(isFinanced.getCheckedRadioButtonId() == R.id.financedYes) {
-            vehicleFinanced = true;
+            vehicleFinanced = "Yes";
             startingPrice += 80;
         } else {
             startingPrice -= 80;
         }
 
-
         Intent intent = new Intent(QuoteActivity.this, QuoteValueActivity.class);
+
+        intent.putExtra("quoteValue", startingPrice);
+        intent.putExtra("numVehicles", numVehicles);
+        intent.putExtra("numDrivers", numDrivers);
+        intent.putExtra("residenceType", residenceInformation);
+        intent.putExtra("isCustomer", isCustomer);
+        intent.putExtra("student", student);
+        intent.putExtra("vehicleFinanced", vehicleFinanced);
+        intent.putExtra("marriageType", marriageType);
+
         startActivity(intent);
     }
 
