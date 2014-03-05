@@ -13,6 +13,8 @@ import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.Toast;
 import com.gabilheri.insuringmylife.adapters.MyExpandableListAdapter;
+import com.gabilheri.insuringmylife.helpers.Vehicle;
+
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
@@ -47,15 +49,6 @@ public class VehiclesActivity extends Activity {
     // JSON ID's
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_MESSAGE = "message";
-    private static final String TAG_USERID = "user_id";
-    private static final String TAG_POLICENUMBER = "police_number";
-    private static final String TAG_VEHICLES = "vehicles";
-    private static final String TAG_YEAR = "year";
-    private static final String TAG_MODEL = "model";
-    private static final String TAG_BRAND = "brand";
-    private static final String TAG_COLOR = "color";
-    private static final String TAG_LICENSE = "license_plate";
-    private static final String TAG_DRIVER = "main_driver";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,12 +107,12 @@ public class VehiclesActivity extends Activity {
             SharedPreferences loginPref = getSharedPreferences("loginPref", MODE_PRIVATE);
             user_id = loginPref.getString("email", "");
 
-            params.add(new BasicNameValuePair(TAG_USERID, user_id));
+            params.add(new BasicNameValuePair(Vehicle.TAG_USERID, user_id));
 
             JSONObject jObject = jsonParser.makeHttpRequest(VEHICLES_URL, "POST", params);
 
             success = jObject.getInt(TAG_SUCCESS);
-            vehicles = jObject.getJSONArray(TAG_VEHICLES);
+            vehicles = jObject.getJSONArray(Vehicle.TAG_VEHICLES);
 
             if(success == 1) {
                 // loop through all the vehicles
@@ -127,19 +120,19 @@ public class VehiclesActivity extends Activity {
                     JSONObject obj = vehicles.getJSONObject(i);
 
                     // Get each element based on it's tag
-                    String year = obj.getString(TAG_YEAR);
-                    String model = obj.getString(TAG_MODEL);
-                    String brand = obj.getString(TAG_BRAND);
-                    String color = obj.getString(TAG_COLOR);
-                    String license_plate = obj.getString(TAG_LICENSE);
-                    String main_driver = obj.getString(TAG_DRIVER);
-                    String policeNumber = obj.getString(TAG_POLICENUMBER);
-                    String driversLicense = obj.getString("drivers_license");
-                    String licenseState = obj.getString("license_state");
-                    String driverBirthday = obj.getString("driver_birthday_month") + "/" +
-                            obj.getString("driver_birthday_day") + "/" +
-                            obj.get("driver_birthday_year");
-                    String driverGender = obj.getString("driver_gender");
+                    String year = obj.getString(Vehicle.TAG_YEAR);
+                    String model = obj.getString(Vehicle.TAG_MODEL);
+                    String brand = obj.getString(Vehicle.TAG_BRAND);
+                    String color = obj.getString(Vehicle.TAG_COLOR);
+                    String license_plate = obj.getString(Vehicle.TAG_LICENSE);
+                    String main_driver = obj.getString(Vehicle.TAG_DRIVER);
+                    String policeNumber = obj.getString(Vehicle.TAG_POLICENUMBER);
+                    String driversLicense = obj.getString(Vehicle.TAG_DRIVER_LICENSE);
+                    String licenseState = obj.getString(Vehicle.TAG_LICENSE_STATE);
+                    String driverBirthday = obj.getString(Vehicle.TAG_BIRTHDAY_MONTH) + "/" +
+                            obj.getString(Vehicle.TAG_BIRTHDAY_DAY) + "/" +
+                            obj.get(Vehicle.TAG_BIRTHDAY_YEAR);
+                    String driverGender = obj.getString(Vehicle.TAG_DRIVER_GENDER);
 
                     ListRowGroup group = new ListRowGroup(brand + " " + year + " " + model, brand);
                     group.children.add(brand + " " + year + " " + model);

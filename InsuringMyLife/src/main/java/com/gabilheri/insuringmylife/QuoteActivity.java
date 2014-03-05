@@ -54,11 +54,7 @@ public class QuoteActivity extends Activity {
     // JSON ID's
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_MESSAGE = "message";
-    private static final String TAG_USERID = "user_id";
-    private static final String TAG_VEHICLES = "vehicles";
-    private static final String TAG_YEAR = "year";
-    private static final String TAG_MODEL = "model";
-    private static final String TAG_BRAND = "brand";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -173,25 +169,35 @@ public class QuoteActivity extends Activity {
             SharedPreferences loginPref = getSharedPreferences("loginPref", MODE_PRIVATE);
             user_id = loginPref.getString("email", "");
 
-            params.add(new BasicNameValuePair(TAG_USERID, user_id));
+            params.add(new BasicNameValuePair(Vehicle.TAG_USERID, user_id));
 
             JSONObject jObject = jsonParser.makeHttpRequest(VEHICLES_URL, "POST", params);
 
             success = jObject.getInt(TAG_SUCCESS);
-            vehicles = jObject.getJSONArray(TAG_VEHICLES);
+            vehicles = jObject.getJSONArray(Vehicle.TAG_VEHICLES);
 
             if(success == 1) {
                 // loop through all the vehicles
                 for(int i = 0; i < vehicles.length(); i++) {
                     JSONObject obj = vehicles.getJSONObject(i);
 
+                    // Create a new Vehicle
+                    Vehicle myVehicle = new Vehicle();
                     // Get each element based on it's tag
-                    String id = obj.getString("id");
-                    String year = obj.getString(TAG_YEAR);
-                    String model = obj.getString(TAG_MODEL);
-                    String brand = obj.getString(TAG_BRAND);
-
-                    Vehicle myVehicle = new Vehicle(id, brand, year, model);
+                    myVehicle.setId(obj.getString(Vehicle.TAG_ID));
+                    myVehicle.setYear(obj.getString(Vehicle.TAG_YEAR));
+                    myVehicle.setModel(obj.getString(Vehicle.TAG_MODEL));
+                    myVehicle.setBrand(obj.getString(Vehicle.TAG_BRAND));
+                    myVehicle.setColor(obj.getString(Vehicle.TAG_COLOR));
+                    myVehicle.setLicensePlate(obj.getString(Vehicle.TAG_LICENSE));
+                    myVehicle.setMainDriver(obj.getString(Vehicle.TAG_DRIVER));
+                    myVehicle.setPoliceNumber(obj.getString(Vehicle.TAG_POLICENUMBER));
+                    myVehicle.setDriverLicense(obj.getString(Vehicle.TAG_DRIVER_LICENSE));
+                    myVehicle.setLicenseState(obj.getString(Vehicle.TAG_LICENSE_STATE));
+                    myVehicle.setDriverBirthday(obj.getString(Vehicle.TAG_BIRTHDAY_MONTH) + "/" +
+                            obj.getString(Vehicle.TAG_BIRTHDAY_DAY) + "/" +
+                            obj.get(Vehicle.TAG_BIRTHDAY_YEAR));
+                    myVehicle.setDriverGender(obj.getString(Vehicle.TAG_DRIVER_GENDER));
 
                     popUpVehicles.add(myVehicle);
                 }
@@ -215,6 +221,18 @@ public class QuoteActivity extends Activity {
         String isCustomer = "No";
         String student = "No";
         String vehicleFinanced = "No";
+
+        for(int i = 0; i < numVehicles; i++) {
+            if(numVehicles > 1) {
+                startingPrice -= 50;
+            }
+        }
+
+        for(int i = 0; i< numDrivers; i++) {
+            if(numDrivers > 3) {
+                startingPrice += 50;
+            }
+        }
 
         if(currentCustomer.getCheckedRadioButtonId() == R.id.yes) {
             isCustomer = "Yes";
@@ -253,6 +271,12 @@ public class QuoteActivity extends Activity {
             startingPrice -= 80;
         }
 
+        ArrayList<Vehicle> selectedVehicles = new ArrayList<Vehicle>();
+
+        for(Spinner s : spinnersArray) {
+            selectedVehicles.add((Vehicle) s.getSelectedItem());
+        }
+
         Intent intent = new Intent(QuoteActivity.this, QuoteValueActivity.class);
 
         intent.putExtra("quoteValue", startingPrice);
@@ -263,6 +287,7 @@ public class QuoteActivity extends Activity {
         intent.putExtra("student", student);
         intent.putExtra("vehicleFinanced", vehicleFinanced);
         intent.putExtra("marriageType", marriageType);
+        intent.putExtra("vehiclesSize", selectedVehicles.size());
 
         startActivity(intent);
     }
