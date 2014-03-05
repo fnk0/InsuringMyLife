@@ -342,14 +342,14 @@
             android:gravity="center_vertical"
             />
         <RadioGroup
-            android:id="@+id/isStudent"
+            android:id="@+id/vehicleFinanced"
             android:layout_weight="0.5"
             android:layout_width="0dip"
             android:layout_height="wrap_content"
             android:paddingLeft="@dimen/activity_vertical_margin"
             >
             <RadioButton
-                android:id="@+id/studentYes"
+                android:id="@+id/financedYes"
                 android:text="Yes"
                 android:paddingLeft="@dimen/activity_vertical_margin"
                 android:layout_width="wrap_content"
@@ -357,7 +357,7 @@
                 android:textColor="@android:color/white"
             />
             <RadioButton
-                android:id="@+id/studentNo"
+                android:id="@+id/financedNo"
                 android:text="No"
                 android:paddingLeft="@dimen/activity_vertical_margin"
                 android:layout_width="wrap_content"

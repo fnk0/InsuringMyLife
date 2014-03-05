@@ -2,6 +2,7 @@ package com.gabilheri.insuringmylife;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -40,8 +42,8 @@ public class QuoteActivity extends Activity {
 
     private ArrayList<Vehicle> popUpVehicles;
     private ArrayAdapter<Vehicle> vehiclesAdapter;
-    private Spinner spinnerVehicles;
-    private int counter;
+    private Spinner spinnerVehicles, spinnerNumVehicles, spinnerNumDrivers, spinnerResidenceType;
+    private RadioGroup currentCustomer, isStudent, isMarried, isFinanced;
     private LinearLayout spinnersLayout;
     private ArrayList<Spinner> spinnersArray;
 
@@ -67,6 +69,14 @@ public class QuoteActivity extends Activity {
         spinnersArray = new ArrayList<Spinner>();
         spinnerVehicles = (Spinner) findViewById(R.id.selectCars);
         spinnersLayout = (LinearLayout) findViewById(R.id.vehicleHolder);
+
+        spinnerNumDrivers = (Spinner) findViewById(R.id.numDrivers);
+        spinnerVehicles = (Spinner) findViewById(R.id.numVehicles);
+        spinnerResidenceType = (Spinner) findViewById(R.id.residenceType);
+        currentCustomer = (RadioGroup) findViewById(R.id.currentCustomer);
+        isStudent = (RadioGroup) findViewById(R.id.isStudent);
+        isMarried = (RadioGroup) findViewById(R.id.isMarried);
+        isFinanced = (RadioGroup) findViewById(R.id.vehicleFinanced);
 
     }
 
@@ -192,6 +202,60 @@ public class QuoteActivity extends Activity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
+
+    public void getQuote(View view) {
+
+        double startingPrice = 2049;
+
+        int numVehicles = spinnerNumVehicles.getSelectedItemPosition() + 1;
+        int numDrivers = spinnerNumDrivers.getSelectedItemPosition() + 1;
+        String residenceInformation = spinnerResidenceType.getSelectedItem().toString();
+
+        boolean isCustomer = false;
+        boolean student = false;
+        boolean vehicleFinanced = false;
+
+        if(currentCustomer.getCheckedRadioButtonId() == R.id.yes) {
+            isCustomer = true;
+            startingPrice -= 200;
+        } else {
+            startingPrice += 40;
+        }
+
+        if(isStudent.getCheckedRadioButtonId() == R.id.studentYes) {
+            student = true;
+            startingPrice -= 175;
+        } else {
+            startingPrice += 50;
+        }
+
+        String marriageType = "";
+
+        switch (isMarried.getCheckedRadioButtonId()) {
+            case R.id.marriedYes:
+                marriageType = "Married";
+                startingPrice -= 150;
+                break;
+            case R.id.marriedNo:
+                marriageType = "Single";
+                startingPrice += 50;
+                break;
+            case R.id.divorced:
+                marriageType = "Divorced";
+                break;
+        }
+
+        if(isFinanced.getCheckedRadioButtonId() == R.id.financedYes) {
+            vehicleFinanced = true;
+            startingPrice += 80;
+        } else {
+            startingPrice -= 80;
+        }
+
+
+        Intent intent = new Intent(QuoteActivity.this, QuoteValueActivity.class);
+        startActivity(intent);
     }
 
 }
