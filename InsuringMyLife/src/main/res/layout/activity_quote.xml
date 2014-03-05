@@ -32,7 +32,9 @@
         android:weightSum="1"
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingBottom="5dip"
+        >
         <TextView
             android:textSize="18sp"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
@@ -63,7 +65,9 @@
         android:weightSum="1"
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingBottom="5dip"
+        >
         <TextView
             android:textSize="18sp"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
@@ -93,7 +97,9 @@
         android:weightSum="1"
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingBottom="5dip"
+        >
         <TextView
             android:textSize="18sp"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
@@ -123,7 +129,9 @@
         android:orientation="horizontal"
         android:weightSum="1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingBottom="5dip"
+        >
         <TextView
             android:textSize="18sp"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
@@ -164,16 +172,50 @@
         android:background="@android:color/white"
         android:layout_marginBottom="8dip"
         />
+    <TextView
+        android:textSize="18sp"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:textColor="@android:color/white"
+        android:text="Select Vehicles:"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        />
+
+    <Button
+        android:id="@+id/addNewCar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:background="@drawable/standard_button"
+        android:text="Add Another Vehicle"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:textColor="@android:color/white"
+        android:onClick="addNewVehicle"
+        />
+    <LinearLayout
+        android:id="@+id/vehicleHolder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        >
+
+
+        </LinearLayout>
     <Spinner
         android:id="@+id/selectCars"
         android:text="Select Cars"
         android:textColor="@android:color/white"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:padding="6dip"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:spinnerMode="dialog"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
     />
     <View
         android:layout_width="match_parent"
@@ -185,7 +227,9 @@
         android:orientation="horizontal"
         android:weightSum="1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingBottom="5dip"
+        >
         <TextView
             android:textSize="18sp"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
@@ -243,6 +287,7 @@
         android:weightSum="1"
         android:layout_marginLeft="@dimen/activity_vertical_margin"
         android:layout_marginTop="8dip"
+        android:paddingBottom="5dip"
         >
         <RadioButton
             android:id="@+id/marriedYes"
@@ -284,7 +329,7 @@
         android:weightSum="1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
+
         >
         <TextView
             android:textSize="18sp"

@@ -171,7 +171,6 @@
         <item name="ar4"> Standard questions that is being showed. I should think that some options would be big than one line. 6</item>
         <item name="ar5">another not very big answer</item>
     </string-array>
-
     <string-array name="numbers">
         <item name="1">1</item>
         <item name="2">2</item>
@@ -183,7 +182,6 @@
         <item name="8">8</item>
         <item name="9">9</item>
     </string-array>
-
     <string-array name="residence_type">
         <item name="house">House</item>
         <item name="townhouse">Townhouse</item>
@@ -217,5 +215,6 @@
     <string name="address">Address</string>
     <string name="zip_code">Zip Code</string>
     <string name="state">State</string>
+    <string name="title_activity_quote_value">QuoteValueActivity</string>
 
 </resources>

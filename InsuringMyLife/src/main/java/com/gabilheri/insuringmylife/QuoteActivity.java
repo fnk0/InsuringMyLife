@@ -7,6 +7,10 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.gabilheri.insuringmylife.helpers.Vehicle;
@@ -35,6 +39,11 @@ public class QuoteActivity extends Activity {
     private ArrayList<HashMap<String, String>> vehiclesList;
 
     private ArrayList<Vehicle> popUpVehicles;
+    private ArrayAdapter<Vehicle> vehiclesAdapter;
+    private Spinner spinnerVehicles;
+    private int counter;
+    private LinearLayout spinnersLayout;
+    private ArrayList<Spinner> spinnersArray;
 
     // PHP script address
 
@@ -53,9 +62,31 @@ public class QuoteActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quote);
+        getActionBar().setDisplayHomeAsUpEnabled(true);
 
-        SharedPreferences loginPref = getSharedPreferences("loginPref", MODE_PRIVATE);
-        user_id = loginPref.getString("email", "");
+        spinnersArray = new ArrayList<Spinner>();
+        spinnerVehicles = (Spinner) findViewById(R.id.selectCars);
+        spinnersLayout = (LinearLayout) findViewById(R.id.vehicleHolder);
+
+    }
+
+    public void setVehiclesAdapter() {
+
+        vehiclesAdapter = new ArrayAdapter<Vehicle>(this, R.layout.spinner, popUpVehicles);
+        vehiclesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerVehicles.setAdapter(vehiclesAdapter);
+        spinnersArray.add(spinnerVehicles);
+    }
+
+    public void addNewVehicle(View view) {
+
+        Spinner mySpinner = new Spinner(view.getContext());
+        vehiclesAdapter = new ArrayAdapter<Vehicle>(this, R.layout.spinner, popUpVehicles);
+        vehiclesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mySpinner.setAdapter(vehiclesAdapter);
+        spinnersArray.add(mySpinner);
+
+        spinnersLayout.addView(mySpinner);
 
     }
 
@@ -112,6 +143,7 @@ public class QuoteActivity extends Activity {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
+            setVehiclesAdapter();
             pDialog.dismiss();
 
         }

@@ -31,4 +31,9 @@ public class Vehicle {
     public String getYear() {
         return year;
     }
+
+    @Override
+    public String toString() {
+        return year + " " + brand + " " + model;
+    }
 }
