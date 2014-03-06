@@ -42,7 +42,7 @@ public class QuoteActivity extends Activity {
 
     private ArrayList<Vehicle> popUpVehicles;
     private ArrayAdapter<Vehicle> vehiclesAdapter;
-    private Spinner spinnerVehicles, spinnerNumVehicles, spinnerNumDrivers, spinnerResidenceType;
+    private Spinner spinnerNumVehicles, spinnerNumDrivers, spinnerResidenceType;
     private RadioGroup currentCustomer, isStudent, isMarried, isFinanced;
     private LinearLayout spinnersLayout;
     private ArrayList<Spinner> spinnersArray;
@@ -63,7 +63,6 @@ public class QuoteActivity extends Activity {
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
         spinnersArray = new ArrayList<Spinner>();
-        //spinnerVehicles = (Spinner) findViewById(R.id.selectCars);
         spinnersLayout = (LinearLayout) findViewById(R.id.vehicleHolder);
 
         spinnerNumDrivers = (Spinner) findViewById(R.id.numDrivers);
@@ -80,8 +79,7 @@ public class QuoteActivity extends Activity {
 
         vehiclesAdapter = new ArrayAdapter<Vehicle>(this, R.layout.spinner, popUpVehicles);
         vehiclesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-       // spinnerVehicles.setAdapter(vehiclesAdapter);
-       // spinnersArray.add(spinnerVehicles);
+
     }
 
     public void addNewVehicle(View view) {
