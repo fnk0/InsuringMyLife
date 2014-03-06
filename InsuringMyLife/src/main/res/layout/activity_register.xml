@@ -1,4 +1,4 @@
-<RelativeLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -6,120 +6,251 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="@color/background"
-    tools:context=".RegisterActivity"
     >
-    <TextView
-        android:id="@+id/title"
-        android:background="@color/green_life"
-        android:text="Register"
-        android:textSize="30sp"
-        android:textColor="@android:color/white"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical|center_horizontal"
-        android:paddingBottom="5sp"
-        android:paddingTop="5sp"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
-    />
-    <EditText
-        android:id="@+id/firstName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/first_name"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:padding="10dip"
-        android:background="@drawable/box"
-        android:layout_below="@+id/title"
-        >
-        <requestFocus />
-    </EditText>
-    <EditText
-        android:id="@+id/lastName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/last_name"
-        android:layout_below="@+id/firstName"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:background="@drawable/box"
-        android:padding="10dip"
-        >
-        <requestFocus />
-    </EditText>
 
-    <EditText
-        android:id="@+id/repeatPassword"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/repeat_password"
-        android:layout_below="@+id/password"
-        android:layout_centerHorizontal="true"
-        android:inputType="textPassword"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:background="@drawable/box"
-        android:padding="10dip"
+        tools:context=".RegisterActivity"
         >
-        <requestFocus />
-    </EditText>
-    <EditText
-        android:id="@+id/password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/password"
-        android:layout_below="@+id/lastName"
-        android:layout_centerHorizontal="true"
-        android:inputType="textPassword"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:background="@drawable/box"
-        android:padding="10dip"
-        >
-        <requestFocus />
-    </EditText>
-    <EditText
-        android:id="@+id/email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/email"
-        android:layout_below="@+id/repeatPassword"
-        android:layout_centerHorizontal="true"
-        android:inputType="textEmailAddress"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:background="@drawable/box"
-        android:padding="10dip"
-        >
-        <requestFocus />
-    </EditText>
+        <TextView
+            android:id="@+id/title"
+            android:background="@color/green_life"
+            android:text="Register"
+            android:textSize="30sp"
+            android:textColor="@android:color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical|center_horizontal"
+            android:paddingBottom="5sp"
+            android:paddingTop="5sp"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+        />
+        <TextView
+            android:id="@+id/personalInfo"
+            android:text="User Information"
+            android:textColor="@android:color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_below="@id/title"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            />
+        <View
+            android:id="@+id/lineSpacer1"
+            android:layout_width="match_parent"
+            android:layout_height="1dip"
+            android:background="@android:color/white"
+            android:layout_below="@id/personalInfo"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            />
+        <EditText
+            android:id="@+id/firstName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/first_name"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:padding="10dip"
+            android:background="@drawable/box"
+            android:layout_below="@+id/lineSpacer1"
+            >
+            <requestFocus />
+        </EditText>
+        <EditText
+            android:id="@+id/lastName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/last_name"
+            android:layout_below="@+id/firstName"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:background="@drawable/box"
+            android:padding="10dip"
+            >
+            <requestFocus />
+        </EditText>
 
-    <Button
-        android:id="@+id/register"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/email"
-        android:text="@string/register"
-        android:ems="10"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:textColor="@android:color/white"
-        android:background="@drawable/standard_button"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:padding="10dip"
+        <EditText
+            android:id="@+id/repeatPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/repeat_password"
+            android:layout_below="@+id/password"
+            android:layout_centerHorizontal="true"
+            android:inputType="textPassword"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:background="@drawable/box"
+            android:padding="10dip"
+            >
+            <requestFocus />
+        </EditText>
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/password"
+            android:layout_below="@+id/lastName"
+            android:layout_centerHorizontal="true"
+            android:inputType="textPassword"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:background="@drawable/box"
+            android:padding="10dip"
+            >
+            <requestFocus />
+        </EditText>
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/email"
+            android:layout_below="@+id/repeatPassword"
+            android:layout_centerHorizontal="true"
+            android:inputType="textEmailAddress"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:background="@drawable/box"
+            android:padding="10dip"
+            >
+            <requestFocus />
+        </EditText>
+
+        <TextView
+            android:id="@+id/securityQuestions"
+            android:text="Security Questions"
+            android:textColor="@android:color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_below="@id/email"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            />
+        <View
+            android:id="@+id/lineSpacer2"
+            android:layout_width="match_parent"
+            android:layout_height="1dip"
+            android:background="@android:color/white"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_below="@id/securityQuestions"
+            />
+
+        <Spinner
+            android:id="@+id/question1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/lineSpacer2"
+            android:entries="@array/security_questions"
         />
 
-</RelativeLayout>
+        <EditText
+            android:id="@+id/securityQuestion1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Answer Security Question 1"
+            android:layout_below="@+id/question1"
+            android:layout_centerHorizontal="true"
+            android:inputType="textEmailAddress"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:background="@drawable/box"
+            android:padding="10dip"
+            >
+            <requestFocus />
+        </EditText>
+
+        <Spinner
+            android:id="@+id/question2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/securityQuestion1"
+            android:entries="@array/security_questions"
+            />
+        <EditText
+            android:id="@+id/securityQuestion2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Answer Security Question 3"
+            android:layout_below="@+id/question2"
+            android:layout_centerHorizontal="true"
+            android:inputType="textEmailAddress"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:background="@drawable/box"
+            android:padding="10dip"
+            >
+            <requestFocus />
+        </EditText>
+
+        <Spinner
+            android:id="@+id/question3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/securityQuestion2"
+            android:entries="@array/security_questions"
+            />
+        <EditText
+            android:id="@+id/securityQuestion3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Answer Security Question 3"
+            android:layout_below="@+id/question3"
+            android:layout_centerHorizontal="true"
+            android:inputType="textEmailAddress"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:background="@drawable/box"
+            android:padding="10dip"
+            >
+            <requestFocus />
+        </EditText>
+
+        <Button
+            android:id="@+id/register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/securityQuestion3"
+            android:text="@string/register"
+            android:ems="10"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:textColor="@android:color/white"
+            android:background="@drawable/standard_button"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:padding="10dip"
+            />
+
+    </RelativeLayout>
+</ScrollView>

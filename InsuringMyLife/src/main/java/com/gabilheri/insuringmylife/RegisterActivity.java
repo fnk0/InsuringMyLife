@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import org.apache.http.NameValuePair;
@@ -24,7 +25,8 @@ import java.util.List;
 public class RegisterActivity extends Activity implements View.OnClickListener {
 
     // Declaring variables and constants
-    private EditText firstNameField, lastNameField, passwordField, repeatPasswordField, emailField;
+    private EditText firstNameField, lastNameField, passwordField, repeatPasswordField, emailField, answer1, answer2, answer3;
+    private Spinner securityQuestion1, securityQuestion2, securityQuestion3;
     private Button mRegister;
 
     private ProgressDialog pDialog;
@@ -47,10 +49,23 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
         passwordField = (EditText) findViewById(R.id.password);
         repeatPasswordField = (EditText) findViewById(R.id.repeatPassword);
         emailField = (EditText) findViewById(R.id.email);
+        securityQuestion1 = (Spinner) findViewById(R.id.question1);
+        securityQuestion2 = (Spinner) findViewById(R.id.question2);
+        securityQuestion3 = (Spinner) findViewById(R.id.question3);
+        answer1 = (EditText) findViewById(R.id.securityQuestion1);
+        answer2 = (EditText) findViewById(R.id.securityQuestion2);
+        answer3 = (EditText) findViewById(R.id.securityQuestion3);
+
 
         mRegister = (Button) findViewById(R.id.register);
         mRegister.setOnClickListener(this);
 
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        pDialog.dismiss();
     }
 
     @Override
@@ -99,6 +114,13 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
             String lastName = lastNameField.getText().toString();
             String password = passwordField.getText().toString();
             String email = emailField.getText().toString();
+            String question1= securityQuestion1.getSelectedItem().toString();
+            String question2 = securityQuestion2.getSelectedItem().toString();
+            String question3 = securityQuestion3.getSelectedItem().toString();
+
+            String sAnswer1 = answer1.getText().toString();
+            String sAnswer2 = answer2.getText().toString();
+            String sAnswer3 = answer3.getText().toString();
 
             try {
 
@@ -107,6 +129,13 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
                 params.add(new BasicNameValuePair("last_name", lastName));
                 params.add(new BasicNameValuePair("password", password));
                 params.add(new BasicNameValuePair("email", email));
+                params.add(new BasicNameValuePair("security_question1", question1));
+                params.add(new BasicNameValuePair("security_question2", question2));
+                params.add(new BasicNameValuePair("security_question3", question3));
+                params.add(new BasicNameValuePair("answer1", sAnswer1));
+                params.add(new BasicNameValuePair("answer2", sAnswer2));
+                params.add(new BasicNameValuePair("answer3", sAnswer3));
+
 
                 SharedPreferences userNamePref = getSharedPreferences("firstName", MODE_PRIVATE);
                 SharedPreferences.Editor userNameEditor = userNamePref.edit();

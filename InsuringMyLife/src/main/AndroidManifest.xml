@@ -175,6 +175,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="CarActivity" />
         </activity>
+        <activity
+            android:name="com.gabilheri.insuringmylife.ForgotPassword"
+            android:label="@string/title_activity_forgot_password"
+            android:parentActivityName="com.gabilheri.insuringmylife.LoginActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="LoginActivity" />
+        </activity>
     </application>
 
 </manifest>
