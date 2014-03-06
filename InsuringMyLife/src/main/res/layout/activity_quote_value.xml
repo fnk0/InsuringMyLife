@@ -74,6 +74,7 @@
             android:textAppearance="?android:attr/textAppearanceButton"
             android:drawableRight="@drawable/ic_action_email"
             android:paddingRight="40sp"
+            android:onClick="sendToAgent"
         />
 
         <Button
@@ -89,6 +90,7 @@
             android:textAppearance="?android:attr/textAppearanceButton"
             android:drawableRight="@drawable/ic_quote"
             android:paddingRight="40sp"
+            android:onClick="getAnotherQuote"
         />
 
         <Button
@@ -102,6 +104,7 @@
             android:text="Back to Main Menu"
             android:background="@drawable/standard_button"
             android:textAppearance="?android:attr/textAppearanceLarge"
+            android:onClick="backToMain"
         />
 
     </LinearLayout>

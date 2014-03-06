@@ -1,14 +1,18 @@
 package com.gabilheri.insuringmylife.helpers;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by marcus on 3/4/14.
  */
-public class Vehicle {
+public class Vehicle implements Parcelable {
 
     private String id, brand, year, model, policeNumber, color, licensePlate, mainDriver, driverBirthday, driverLicense, licenseState, driverGender;
     public static final String TAG_ID = "id";
     public static final String TAG_USERID = "user_id";
     public static final String TAG_VEHICLES = "vehicles";
+
     public static final String TAG_YEAR = "year";
     public static final String TAG_MODEL = "model";
     public static final String TAG_BRAND = "brand";
@@ -24,6 +28,35 @@ public class Vehicle {
     public static final String TAG_DRIVER_GENDER = "driver_gender";
 
     public Vehicle() {
+
+    }
+
+    public static final Parcelable.Creator<Vehicle> CREATOR
+            = new Parcelable.Creator<Vehicle>() {
+        public Vehicle createFromParcel(Parcel in) {
+            return new Vehicle(in);
+        }
+
+        public Vehicle[] newArray(int size) {
+            return new Vehicle[size];
+        }
+    };
+
+    public Vehicle(Parcel source) {
+
+        // Reconstruct from the parcel
+        id = source.readString();
+        brand = source.readString();
+        year = source.readString();
+        model = source.readString();
+        policeNumber = source.readString();
+        color = source.readString();
+        licensePlate = source.readString();
+        mainDriver = source.readString();
+        driverBirthday = source.readString();
+        driverLicense = source.readString();
+        licenseState = source.readString();
+        driverGender = source.readString();
 
     }
 
@@ -104,16 +137,16 @@ public class Vehicle {
         return year;
     }
 
-    public String policeNumber() {
-        return policeNumber;
-    }
-
     public String getColor() {
         return color;
     }
 
     public String getLicensePlate() {
         return licensePlate;
+    }
+
+    public String getPoliceNumber() {
+        return policeNumber;
     }
 
     public String getMainDriver() {
@@ -131,6 +164,35 @@ public class Vehicle {
     public String getDriverGender() {
         return driverGender;
     }
+
+    public String getDriverLicense() {
+        return driverLicense;
+    }
+
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+
+        parcel.writeString(getId());
+        parcel.writeString(getBrand());
+        parcel.writeString(getYear());
+        parcel.writeString(getModel());
+        parcel.writeString(getPoliceNumber());
+        parcel.writeString(getColor());
+        parcel.writeString(getLicensePlate());
+        parcel.writeString(getMainDriver());
+        parcel.writeString(getDriverBirthday());
+        parcel.writeString(getDriverLicense());
+        parcel.writeString(getLicenseState());
+        parcel.writeString(getDriverGender());
+
+    }
+
 
     @Override
     public String toString() {

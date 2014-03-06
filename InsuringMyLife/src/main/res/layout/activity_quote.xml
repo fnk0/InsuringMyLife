@@ -153,18 +153,18 @@
             </RadioGroup>
         </LinearLayout>
 
-        <TextView
-            android:textSize="18sp"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:textColor="@android:color/white"
-            android:text="Select Vehicles:"
+        <Button
+            android:id="@+id/addNewCar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:background="@drawable/standard_button"
+            android:text="Add a Vehicle"
             android:layout_marginTop="@dimen/activity_vertical_margin"
-            />
-
-
+            android:textColor="@android:color/white"
+            android:onClick="addNewVehicle"
+        />
 
         <LinearLayout
             android:id="@+id/vehicleHolder"
@@ -176,6 +176,7 @@
             android:layout_marginRight="@dimen/activity_horizontal_margin"
             >
         </LinearLayout>
+        <!--
         <Spinner
             android:id="@+id/selectCars"
             android:text="Select Cars"
@@ -187,19 +188,8 @@
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:layout_marginRight="@dimen/activity_horizontal_margin"
         />
+        -->
 
-        <Button
-            android:id="@+id/addNewCar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="@dimen/activity_horizontal_margin"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:background="@drawable/standard_button"
-            android:text="Add Another Vehicle"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:textColor="@android:color/white"
-            android:onClick="addNewVehicle"
-        />
 
         <LinearLayout
             android:orientation="horizontal"

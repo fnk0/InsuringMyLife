@@ -46,7 +46,7 @@ public class MyAgent extends Activity {
     private ImageView agentPicture;
     Bitmap image;
 
-    private static final String GET_AGENT_URL = "http://162.243.225.173/InsuringMyLife/get_agent.php";
+    public static final String GET_AGENT_URL = "http://162.243.225.173/InsuringMyLife/get_agent.php";
     private static final String GET_AGENT_PICTURE = "http://162.243.225.173/InsuringMyLife/assets/agents/";
     private static final String TAG_MESSAGE = "message";
     private static final String TAG_SUCCESS = "success";

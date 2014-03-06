@@ -63,7 +63,7 @@ public class QuoteActivity extends Activity {
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
         spinnersArray = new ArrayList<Spinner>();
-        spinnerVehicles = (Spinner) findViewById(R.id.selectCars);
+        //spinnerVehicles = (Spinner) findViewById(R.id.selectCars);
         spinnersLayout = (LinearLayout) findViewById(R.id.vehicleHolder);
 
         spinnerNumDrivers = (Spinner) findViewById(R.id.numDrivers);
@@ -80,8 +80,8 @@ public class QuoteActivity extends Activity {
 
         vehiclesAdapter = new ArrayAdapter<Vehicle>(this, R.layout.spinner, popUpVehicles);
         vehiclesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerVehicles.setAdapter(vehiclesAdapter);
-        spinnersArray.add(spinnerVehicles);
+       // spinnerVehicles.setAdapter(vehiclesAdapter);
+       // spinnersArray.add(spinnerVehicles);
     }
 
     public void addNewVehicle(View view) {
@@ -274,7 +274,7 @@ public class QuoteActivity extends Activity {
         ArrayList<Vehicle> selectedVehicles = new ArrayList<Vehicle>();
 
         for(Spinner s : spinnersArray) {
-            selectedVehicles.add((Vehicle) s.getSelectedItem());
+            selectedVehicles.add(popUpVehicles.get(s.getSelectedItemPosition()));
         }
 
         Intent intent = new Intent(QuoteActivity.this, QuoteValueActivity.class);
@@ -287,8 +287,7 @@ public class QuoteActivity extends Activity {
         intent.putExtra("student", student);
         intent.putExtra("vehicleFinanced", vehicleFinanced);
         intent.putExtra("marriageType", marriageType);
-        intent.putExtra("vehiclesSize", selectedVehicles.size());
-
+        intent.putParcelableArrayListExtra("vehicles", selectedVehicles);
         startActivity(intent);
     }
 
