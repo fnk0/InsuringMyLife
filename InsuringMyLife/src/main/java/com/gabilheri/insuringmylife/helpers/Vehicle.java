@@ -12,7 +12,6 @@ public class Vehicle implements Parcelable {
     public static final String TAG_ID = "id";
     public static final String TAG_USERID = "user_id";
     public static final String TAG_VEHICLES = "vehicles";
-
     public static final String TAG_YEAR = "year";
     public static final String TAG_MODEL = "model";
     public static final String TAG_BRAND = "brand";
@@ -26,6 +25,14 @@ public class Vehicle implements Parcelable {
     public static final String TAG_BIRTHDAY_MONTH = "driver_birthday_month";
     public static final String TAG_BIRTHDAY_DAY = "driver_birthday_day";
     public static final String TAG_DRIVER_GENDER = "driver_gender";
+
+    // PHP script address
+
+    public static final String VEHICLES_URL = "http://162.243.225.173/InsuringMyLife/view_vehicles.php";
+
+    // JSON ID's
+    public static final String TAG_SUCCESS = "success";
+    public static final String TAG_MESSAGE = "message";
 
     public Vehicle() {
 

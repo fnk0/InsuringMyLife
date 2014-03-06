@@ -1,11 +1,15 @@
 package com.gabilheri.insuringmylife;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
 public class ReportClaim extends Activity {
+
+    ProgressDialog pDialog;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

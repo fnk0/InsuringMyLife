@@ -76,10 +76,8 @@ public class QuoteActivity extends Activity {
     }
 
     public void setVehiclesAdapter() {
-
         vehiclesAdapter = new ArrayAdapter<Vehicle>(this, R.layout.spinner, popUpVehicles);
         vehiclesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
     }
 
     public void addNewVehicle(View view) {
