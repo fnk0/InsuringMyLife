@@ -7,8 +7,6 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.DatePicker;
 
-import com.gabilheri.insuringmylife.R;
-
 import java.util.Calendar;
 
 /**
@@ -16,6 +14,12 @@ import java.util.Calendar;
  */
 public class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
 
+
+    int id;
+
+    public DatePickerFragment(int id) {
+        this.id = id;
+    }
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -45,14 +49,14 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
         }
 
         if(day < 10) {
-            dayS = "0" + (day +1);
+            dayS = "0" + day;
         } else {
-            dayS = "" + (day + 1);
+            dayS = "" + day;
         }
 
         String myDate = monthS + "/" + dayS + "/" + year;
 
-        Button pickDateButton = (Button) getActivity().findViewById(R.id.pickBirthday);
+        Button pickDateButton = (Button) getActivity().findViewById(id);
         pickDateButton.setText(myDate);
     }
 }

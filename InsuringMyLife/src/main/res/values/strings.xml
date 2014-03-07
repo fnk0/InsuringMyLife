@@ -190,7 +190,6 @@
         <item name="apartment">Apartment</item>
         <item name="parents">Live with Parents</item>
     </string-array>
-
     <string-array name="accident_causes">
         <item name="cause1"> Cause of Accident One</item>
         <item name="cause2"> Cause of Accident Two</item>
@@ -227,5 +226,7 @@
     <string name="title_activity_quote_value">QuoteValueActivity</string>
     <string name="quote_result_agent">Remember that this value is an estimate. For a more accurate value please click on the button send this to agent. Your agent will receive this data and give you a more accurate value. Feel free to add any information that you think is important on the e-mail.</string>
     <string name="title_activity_forgot_password">ForgotPassword</string>
-    <string name="forgot_username"> <u> Forgot Username or Password </u> </string>
+    <string name="forgot_username"><u> Forgot Username or Password </u></string>
+    <string name="title_activity_after_claim">AfterClaim</string>
+
 </resources>

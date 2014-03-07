@@ -183,6 +183,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="LoginActivity" />
         </activity>
+        <activity
+            android:name="com.gabilheri.insuringmylife.AfterClaim"
+            android:label="@string/title_activity_after_claim"
+            android:parentActivityName="com.gabilheri.insuringmylife.InitialActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="InitialActivity" />
+        </activity>
     </application>
 
 </manifest>

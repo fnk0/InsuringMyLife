@@ -77,7 +77,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/select_one"
-
+            android:entries="@array/accident_causes"
             android:textAppearance="?android:attr/textAppearanceButton"
             android:textColor="@android:color/white"
             android:layout_marginRight="@dimen/activity_vertical_margin"
@@ -111,7 +111,9 @@
                 android:layout_marginLeft="@dimen/activity_vertical_margin"
                 android:layout_weight="0.5"
                 android:layout_width="0dip"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:onClick="showDatePickerDialog"
+                />
             <Button
                 android:id="@+id/timeButton"
                 android:text="@string/time"
@@ -121,21 +123,30 @@
                 android:layout_marginLeft="@dimen/activity_vertical_margin"
                 android:layout_weight="0.5"
                 android:layout_width="0dip"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:onClick="showTimePickerDialog"
+                />
 
         </LinearLayout>
-
-        <Button
-            android:text="@string/vehicle_involved"
-            android:background="@drawable/standard_button"
+        <TextView
+            android:text="Which vehicle was involved?"
+            android:paddingLeft="@dimen/activity_vertical_margin"
             android:textColor="@android:color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dip"
+            android:textSize="20sp"
+        />
+        <Spinner
+            android:id="@+id/vehiclesInvolved"
             android:layout_marginRight="@dimen/activity_vertical_margin"
             android:layout_marginLeft="@dimen/activity_vertical_margin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/activity_horizontal_margin"
-            />
+        />
         <EditText
+            android:id="@+id/claimDescription"
             android:layout_marginLeft="@dimen/activity_vertical_margin"
             android:layout_marginRight="@dimen/activity_vertical_margin"
             android:background="@drawable/box"
@@ -157,7 +168,9 @@
             android:layout_marginLeft="@dimen/activity_vertical_margin"
             android:layout_marginRight="@dimen/activity_vertical_margin"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:onClick="submitClaim"
+            />
 
     </LinearLayout>
 </ScrollView>

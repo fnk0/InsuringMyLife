@@ -93,7 +93,7 @@ public class NewVehicle extends Activity implements  View.OnClickListener{
 
     public void showDatePickerDialog(View v) {
 
-        DialogFragment datePicker = new DatePickerFragment();
+        DialogFragment datePicker = new DatePickerFragment(v.getId());
         datePicker.show(getFragmentManager(), "datePicker");
 
     }
@@ -199,6 +199,5 @@ public class NewVehicle extends Activity implements  View.OnClickListener{
             pDialog.dismiss();
 
         }
-
     }
 }

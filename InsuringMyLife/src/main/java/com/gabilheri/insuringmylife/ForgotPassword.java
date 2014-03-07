@@ -64,7 +64,6 @@ public class ForgotPassword extends Activity {
 
         passwordField = (EditText) findViewById(R.id.newPassword);
         repeatPasswordField = (EditText) findViewById(R.id.confirmPassword);
-
     }
 
     @Override
@@ -105,6 +104,8 @@ public class ForgotPassword extends Activity {
             questionsLayout.removeAllViews();
             getPasswordStuff.setVisibility(View.VISIBLE);
         }
+
+        //TODO IMPLEMENT IF USERS FAILS AND WHAT HAPPENS IF HE FAILS TOO MANY TIMES.
     }
 
     public void resetPassword(View v) {
