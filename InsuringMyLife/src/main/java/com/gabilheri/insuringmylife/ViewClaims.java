@@ -58,7 +58,9 @@ public class ViewClaims extends Activity {
         SharedPreferences loginPref = getSharedPreferences("loginPref", MODE_PRIVATE);
         user_id = loginPref.getString("email", "");
 
-        claimType = getIntent().getExtras().getString("claimType");
+        if(getIntent().getExtras() != null) {
+            claimType = getIntent().getExtras().getString("claimType");
+        }
     }
 
     @Override

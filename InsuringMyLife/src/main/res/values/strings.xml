@@ -235,5 +235,8 @@
     <string name="title_activity_report_house_claim">ReportHouseClaim</string>
     <string name="title_activity_report_health_claim">ReportHealthClaim</string>
     <string name="title_activity_house_quote">HouseQuote</string>
+    <string name="title_activity_family_members">FamilyMembers</string>
+    <string name="title_activity_health_quote">HealthQuote</string>
+    <string name="title_activity_new_famiy_member">NewFamiyMember</string>
 
 </resources>

@@ -13,7 +13,8 @@ import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.Toast;
 
-import com.gabilheri.insuringmylife.adapters.HouseExpandableAdapter;
+import com.gabilheri.insuringmylife.adapters.PersonExpandableAdapter;
+import com.gabilheri.insuringmylife.helpers.Person;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -25,62 +26,58 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class ViewHouses extends Activity {
+public class FamilyMembers extends Activity {
 
     public ProgressDialog pDialog;
     public JSONParser jsonParser = new JSONParser();
 
-
     public String user_id;
 
     // Create an Array to hold the houses
-    public JSONArray houses = null;
+    public JSONArray persons = null;
 
     // Manage the houses with an Arraylist
-    private ArrayList<HashMap<String, String>> housesList;
+    private ArrayList<HashMap<String, String>> personList;
 
     // GroupList Stuff
-    SparseArray<ListRowGroup> housesGroup = new SparseArray<ListRowGroup>();
-
-    // PHP script address
-
-    private static final String houses_URL = "http://162.243.225.173/InsuringMyLife/view_houses.php";
+    SparseArray<ListRowGroup> personGroup = new SparseArray<ListRowGroup>();
 
     // JSON ID's
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_MESSAGE = "message";
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_houses);
+    protected void onCreate(Bundle savedInstancebirthdayYear) {
+        super.onCreate(savedInstancebirthdayYear);
+        setContentView(R.layout.activity_family_members);
 
         SharedPreferences loginPref = getSharedPreferences("loginPref", MODE_PRIVATE);
         user_id = loginPref.getString("email", "");
     }
 
+    public void addFamilyMember(View v) {
+        Intent newMeber = new Intent(FamilyMembers.this, NewFamilyMember.class);
+        startActivity(newMeber);
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
-        new LoadHouses().execute();
+        new LoadFamilyMembers().execute();
     }
 
     public void updateList() {
         ExpandableListView listView = (ExpandableListView) findViewById(R.id.listView);
-        HouseExpandableAdapter adapter = new HouseExpandableAdapter(this, housesGroup);
+        PersonExpandableAdapter adapter = new PersonExpandableAdapter(this, personGroup);
         listView.setAdapter(adapter);
     }
 
-    public void addHouses(View view) {
-        Intent addHouses = new Intent(ViewHouses.this, NewHouse.class);
-        startActivity(addHouses);
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.view_houses, menu);
+        getMenuInflater().inflate(R.menu.family_members, menu);
         return true;
     }
 
@@ -100,7 +97,7 @@ public class ViewHouses extends Activity {
 
         // Initiate the ArrayList to hold the Json data
 
-        housesList = new ArrayList<HashMap<String, String>>();
+        personList = new ArrayList<HashMap<String, String>>();
         int success = 0;
         // Building parameters for the request
 
@@ -113,50 +110,55 @@ public class ViewHouses extends Activity {
 
             params.add(new BasicNameValuePair("user_id", user_id));
 
-            JSONObject jObject = jsonParser.makeHttpRequest(houses_URL, "POST", params);
+            JSONObject jObject = jsonParser.makeHttpRequest(Person.VIEW_PERSON_URL, "POST", params);
 
             success = jObject.getInt(TAG_SUCCESS);
-            houses = jObject.getJSONArray("houses");
+            persons = jObject.getJSONArray(Person.TAG_PERSONS);
 
             if(success == 1) {
                 // loop through all the houses
-                for(int i = 0; i < houses.length(); i++) {
-                    JSONObject obj = houses.getJSONObject(i);
+                for(int i = 0; i < persons.length(); i++) {
+                    JSONObject obj = persons.getJSONObject(i);
 
                     // Get each element based on it's tag
-                    String userID = obj.getString("user_id");
-                    String policeNumber = obj.getString("police_number");
-                    String address = obj.getString("address");
-                    String city = obj.getString("city");
-                    String state = obj.getString("state");
-                    String zipCode = obj.getString("zip_code");
-                    String payed = obj.getString("payed");
+                    String userID = obj.getString(Person.TAG_USERID);
+                    String policeNumber = obj.getString(Person.TAG_POLICENUMBER);
+                    String name = obj.getString(Person.TAG_NAME);
+                    String lastName = obj.getString(Person.TAG_LAST_NAME);
+                    String birthdayYear = obj.getString(Person.TAG_BIRTHDAY_YEAR);
+                    String birthdayMonth = obj.getString(Person.TAG_BIRTHDAY_MONTH);
+                    String birthdayDay = obj.getString(Person.TAG_BIRTHDAY_DAY);
+                    String age = obj.getString(Person.TAG_AGE);
+                    String relationship = obj.getString(Person.TAG_RELATIONSHIP);
+                    String hasInsurace = obj.getString(Person.TAG_INSURANCE);
 
-                    ListRowGroup group = new ListRowGroup(address, "address");
-                    group.children.add("Police Number: " + policeNumber);
-                    group.children.add(address);
-                    group.children.add(city);
-                    group.children.add(state + "   -   " + zipCode);
-                    group.children.add(payed);
+                    String birthday = birthdayMonth + "/" + birthdayDay + "/" + birthdayYear;
 
-                    housesGroup.append(i, group);
+                    ListRowGroup group = new ListRowGroup(name + " " + lastName, "name");
+                    group.children.add("Full Name: " + name + lastName);
+                    group.children.add(policeNumber);
+                    group.children.add(relationship);
+                    group.children.add(birthday + "  -  " + age + " years old.");
+                    group.children.add(hasInsurace);
+
+                    personGroup.append(i, group);
                 }
 
             } else {
-                String noHouses = "There's no houses yet!";
-                Toast.makeText(ViewHouses.this, noHouses, Toast.LENGTH_LONG).show();
+                String noHouses = "There's no Family Members yet!";
+                Toast.makeText(FamilyMembers.this, noHouses, Toast.LENGTH_LONG).show();
             }
         } catch (JSONException e) {
             e.printStackTrace();
         }
     }
 
-    class LoadHouses extends AsyncTask<String, String, String> {
+    class LoadFamilyMembers extends AsyncTask<String, String, String> {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pDialog = new ProgressDialog(ViewHouses.this);
-            pDialog.setMessage("Loading houses...");
+            pDialog = new ProgressDialog(FamilyMembers.this);
+            pDialog.setMessage("Loading Family Members...");
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(true);
             pDialog.show();

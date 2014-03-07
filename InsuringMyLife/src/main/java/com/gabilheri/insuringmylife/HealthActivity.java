@@ -14,7 +14,9 @@ public class HealthActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_health);
 
-        getActionBar().setDisplayHomeAsUpEnabled(true);
+        if(getActionBar() != null) {
+            getActionBar().setDisplayHomeAsUpEnabled(true);
+        }
     }
 
     public void changeActivity(View v) {
@@ -22,6 +24,23 @@ public class HealthActivity extends Activity {
         int id = v.getId();
 
         switch (id) {
+
+            case R.id.familyMembers:
+                Intent familyIntent = new Intent(HealthActivity.this, FamilyMembers.class);
+                startActivity(familyIntent);
+                break;
+
+            case R.id.existingClaims:
+                Intent claimsHealth = new Intent(HealthActivity.this, ViewClaims.class);
+                claimsHealth.putExtra("claimType", "person");
+                startActivity(claimsHealth);
+                break;
+
+            case R.id.getQuote:
+                Intent healthQuote = new Intent(HealthActivity.this, HealthQuote.class);
+                startActivity(healthQuote);
+                break;
+
             case R.id.contactAgent:
                 Intent agentIntent = new Intent(HealthActivity.this, MyAgent.class);
                 startActivity(agentIntent);
