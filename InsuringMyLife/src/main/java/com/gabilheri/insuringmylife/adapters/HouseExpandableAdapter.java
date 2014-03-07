@@ -122,15 +122,13 @@ public class HouseExpandableAdapter extends BaseExpandableListAdapter {
             case 0:
                 return "";
             case 1:
-                return "Cause";
+                return "Address";
             case 2:
-                return "Date";
+                return "City";
             case 3:
-                return "Time";
+                return "State - Zip Code";
             case 4:
-                return "Police Number";
-            case 5:
-                return "Description";
+                return "Ownership Status";
         }
         return "Test";
     }

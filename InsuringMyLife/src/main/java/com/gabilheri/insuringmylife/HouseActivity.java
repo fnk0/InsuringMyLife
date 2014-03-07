@@ -27,6 +27,14 @@ public class HouseActivity extends Activity {
                 Intent agentIntent = new Intent(HouseActivity.this, MyAgent.class);
                 startActivity(agentIntent);
                 break;
+            case R.id.myHouses:
+                Intent myHouses = new Intent(HouseActivity.this, ViewHouses.class);
+                startActivity(myHouses);
+                break;
+            case R.id.getQuote:
+                break;
+            case R.id.existingClaims:
+                break;
         }
     }
 

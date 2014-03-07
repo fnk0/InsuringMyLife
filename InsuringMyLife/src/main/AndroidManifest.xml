@@ -207,6 +207,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="HouseActivity" />
         </activity>
+        <activity
+            android:name="com.gabilheri.insuringmylife.NewHouse"
+            android:label="@string/title_activity_new_house"
+            android:parentActivityName="com.gabilheri.insuringmylife.ViewHouses" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ViewHouses" />
+        </activity>
     </application>
 
 </manifest>
