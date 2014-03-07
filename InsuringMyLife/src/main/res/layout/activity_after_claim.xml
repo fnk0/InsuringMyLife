@@ -1,16 +1,88 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.gabilheri.insuringmylife.AfterClaim">
+    tools:context="com.gabilheri.insuringmylife.AfterClaim"
+    android:background="@color/background"
+    android:orientation="vertical"
+    >
 
     <TextView
-        android:text="@string/hello_world"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:id="@+id/title"
+        android:background="@color/orange_color"
+        android:text="Thank You"
+        android:textSize="30sp"
+        android:textColor="@android:color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical|center_horizontal"
+        android:paddingBottom="5sp"
+        android:paddingTop="5sp"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+    />
 
-</RelativeLayout>
+    <TextView
+        android:id="@+id/thankYouMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Thank you, your claim was successfully registered in our servers.\n\nYour claim ID number is:"
+    />
+
+    <TextView
+        android:id="@+id/claimID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:textSize="30sp"
+        android:textColor="@color/green_life"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="153252151"
+        />
+
+    <Button
+        android:id="@+id/viewMyClaims"
+        android:background="@drawable/standard_button"
+        android:text="View My Claims"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:onClick="viewClaims"
+    />
+
+    <Button
+        android:id="@+id/contactAgent"
+        android:background="@drawable/standard_button"
+        android:text="Contact My Agent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:onClick="contactAgent"
+    />
+
+    <Button
+        android:id="@+id/backToMenu"
+        android:background="@drawable/standard_button"
+        android:text="Back To Main Menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:onClick="backToMain"
+
+    />
+
+</LinearLayout>

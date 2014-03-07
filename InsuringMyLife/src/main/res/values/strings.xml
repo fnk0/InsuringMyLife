@@ -228,5 +228,7 @@
     <string name="title_activity_forgot_password">ForgotPassword</string>
     <string name="forgot_username"><u> Forgot Username or Password </u></string>
     <string name="title_activity_after_claim">AfterClaim</string>
+    <string name="title_activity_view_claims">ViewClaims</string>
+    <string name="title_activity_view_houses">ViewHouses</string>
 
 </resources>

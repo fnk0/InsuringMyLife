@@ -191,6 +191,22 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="InitialActivity" />
         </activity>
+        <activity
+            android:name="com.gabilheri.insuringmylife.ViewClaims"
+            android:label="@string/title_activity_view_claims"
+            android:parentActivityName="com.gabilheri.insuringmylife.CarActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="CarActivity" />
+        </activity>
+        <activity
+            android:name="com.gabilheri.insuringmylife.ViewHouses"
+            android:label="@string/title_activity_view_houses"
+            android:parentActivityName="com.gabilheri.insuringmylife.HouseActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="HouseActivity" />
+        </activity>
     </application>
 
 </manifest>

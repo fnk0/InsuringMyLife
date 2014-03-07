@@ -3,6 +3,7 @@ package com.gabilheri.insuringmylife;
 import android.app.Activity;
 import android.app.DialogFragment;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -38,6 +39,7 @@ public class ReportClaim extends Activity {
     private Button dateButton, timeButton;
     private EditText claimDescription;
     private String user_id;
+    private int claimNumber;
 
     // Create an Array to hold the vehicles
     public JSONArray vehicles = null;
@@ -235,7 +237,7 @@ public class ReportClaim extends Activity {
             String description = claimDescription.getText().toString();
 
             Random randomNumber = new Random();
-            int claimNumber = randomNumber.nextInt(999999999);
+            claimNumber = randomNumber.nextInt(999999999);
 
             SharedPreferences loginPref = getSharedPreferences("loginPref", MODE_PRIVATE);
             String email = loginPref.getString("email", "");
@@ -263,6 +265,10 @@ public class ReportClaim extends Activity {
                 int success = json.getInt(TAG_SUCCESS);
 
                 if(success == 1) {
+                    Intent afterClaim = new Intent(ReportClaim.this, AfterClaim.class);
+
+                    afterClaim.putExtra("claimID", claimNumber);
+                    startActivity(afterClaim);
                     finish();
                     return json.getString(TAG_MESSAGE);
                 } else {
