@@ -72,7 +72,7 @@ public class ViewClaims extends Activity {
     }
 
     public void addClaims(View view) {
-        Intent addClaims = new Intent(ViewClaims.this, ReportClaim.class);
+        Intent addClaims = new Intent(ViewClaims.this, ReportVehicleClaim.class);
         startActivity(addClaims);
     }
 

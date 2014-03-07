@@ -123,7 +123,7 @@ public class InitialActivity extends Activity  {
                 startActivity(carActivity);
                 break;
             case R.id.accidentButton:
-                Intent accidentActivity = new Intent(InitialActivity.this, ReportClaim.class);
+                Intent accidentActivity = new Intent(InitialActivity.this, ReportClaims.class);
                 startActivity(accidentActivity);
                 break;
             case R.id.houseButton:

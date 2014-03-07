@@ -32,7 +32,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
-public class ReportClaim extends Activity {
+public class ReportVehicleClaim extends Activity {
 
     public ProgressDialog pDialog;
     public JSONParser jsonParser = new JSONParser();
@@ -127,7 +127,7 @@ public class ReportClaim extends Activity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pDialog = new ProgressDialog(ReportClaim.this);
+            pDialog = new ProgressDialog(ReportVehicleClaim.this);
             pDialog.setMessage("Loading information...");
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(true);
@@ -197,7 +197,7 @@ public class ReportClaim extends Activity {
                 }
             } else {
                 String noVehicles = "There's no vehicles yet! Click the Add vehicle button to add some of your awesome cars!";
-                Toast.makeText(ReportClaim.this, noVehicles, Toast.LENGTH_LONG).show();
+                Toast.makeText(ReportVehicleClaim.this, noVehicles, Toast.LENGTH_LONG).show();
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -209,7 +209,7 @@ public class ReportClaim extends Activity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pDialog = new ProgressDialog(ReportClaim.this);
+            pDialog = new ProgressDialog(ReportVehicleClaim.this);
             pDialog.setMessage("Reporting Claim...");
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(true);
@@ -265,7 +265,7 @@ public class ReportClaim extends Activity {
                 int success = json.getInt(TAG_SUCCESS);
 
                 if(success == 1) {
-                    Intent afterClaim = new Intent(ReportClaim.this, AfterClaim.class);
+                    Intent afterClaim = new Intent(ReportVehicleClaim.this, AfterClaim.class);
 
                     afterClaim.putExtra("claimID", claimNumber);
                     startActivity(afterClaim);

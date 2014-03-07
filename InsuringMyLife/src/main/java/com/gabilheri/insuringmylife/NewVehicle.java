@@ -26,7 +26,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NewVehicle extends Activity implements  View.OnClickListener{
+public class NewVehicle extends Activity implements View.OnClickListener{
 
     private EditText policeNumber, carInfo, carModel, carTag, carYear, carDriver, driversLicense, carColor;
     private Spinner carBrand, driversLicenseState;

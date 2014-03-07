@@ -231,5 +231,8 @@
     <string name="title_activity_view_claims">ViewClaims</string>
     <string name="title_activity_view_houses">ViewHouses</string>
     <string name="title_activity_new_house">NewHouse</string>
+    <string name="title_activity_report_claims">ReportClaims</string>
+    <string name="title_activity_report_house_claim">ReportHouseClaim</string>
+    <string name="title_activity_report_health_claim">ReportHealthClaim</string>
 
 </resources>

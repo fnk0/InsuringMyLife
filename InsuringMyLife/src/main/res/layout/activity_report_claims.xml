@@ -1,0 +1,85 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.gabilheri.insuringmylife.ReportClaims"
+    tools:ignore="MergeRootFrame"
+    android:orientation="vertical"
+    android:background="@color/background"
+    android:weightSum="1"
+    >
+
+    <TextView
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:background="@color/red_color"
+        android:text="Select Claim Type"
+        android:textSize="30sp"
+        android:textColor="@android:color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical|center_horizontal"
+        android:paddingBottom="5sp"
+        android:paddingTop="5sp"
+        />
+    <Space
+        android:layout_weight="0.12"
+        android:layout_width="match_parent"
+        android:layout_height="0dip" />
+    <Button
+        android:id="@+id/vehicleClaims"
+        android:background="@drawable/blue_button"
+        android:text="Vehicle Accident"
+        android:textColor="@android:color/white"
+        android:drawableLeft="@drawable/s_existing_claims"
+        android:textSize="33sp"
+        android:drawablePadding="15sp"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="0.25"
+        android:paddingTop="5sp"
+        android:paddingBottom="5sp"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:onClick="changeActivity"
+        />
+
+    <Button
+        android:id="@+id/houseClaim"
+        android:background="@drawable/orange_button"
+        android:text="House Accident"
+        android:textColor="@android:color/white"
+        android:drawableLeft="@drawable/l_house_logo"
+        android:textSize="33sp"
+        android:drawablePadding="15sp"
+        android:paddingLeft="40sp"
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="0.25"
+        android:paddingTop="5sp"
+        android:paddingBottom="5sp"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:onClick="changeActivity"
+        />
+
+    <Button
+        android:id="@+id/healthClaim"
+        android:background="@drawable/green_life_button"
+        android:text="Health Claim"
+        android:textColor="@android:color/white"
+        android:drawableLeft="@drawable/s_l_life_logo"
+        android:textSize="33sp"
+        android:drawablePadding="15sp"
+        android:paddingLeft="40sp"
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="0.25"
+        android:paddingTop="5sp"
+        android:paddingBottom="5sp"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:onClick="changeActivity"
+        />
+
+
+</LinearLayout>
