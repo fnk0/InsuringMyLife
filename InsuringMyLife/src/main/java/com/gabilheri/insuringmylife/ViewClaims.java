@@ -31,7 +31,7 @@ public class ViewClaims extends Activity {
     public JSONParser jsonParser = new JSONParser();
 
 
-    public String user_id;
+    public String user_id, claimType;
 
     // Create an Array to hold the Claims
     public JSONArray claims = null;
@@ -57,6 +57,8 @@ public class ViewClaims extends Activity {
 
         SharedPreferences loginPref = getSharedPreferences("loginPref", MODE_PRIVATE);
         user_id = loginPref.getString("email", "");
+
+        claimType = getIntent().getExtras().getString("claimType");
     }
 
     @Override
@@ -101,6 +103,7 @@ public class ViewClaims extends Activity {
         // Initiate the ArrayList to hold the Json data
 
         ClaimsList = new ArrayList<HashMap<String, String>>();
+
         int success = 0;
         // Building parameters for the request
 
@@ -112,6 +115,7 @@ public class ViewClaims extends Activity {
             user_id = loginPref.getString("email", "");
 
             params.add(new BasicNameValuePair("user_id", user_id));
+            params.add(new BasicNameValuePair("claim_type", claimType));
 
             JSONObject jObject = jsonParser.makeHttpRequest(CLAIMS_URL, "POST", params);
 
@@ -126,7 +130,8 @@ public class ViewClaims extends Activity {
                     // Get each element based on it's tag
                     String userID = obj.getString("user_id");
                     String claimNumber = obj.getString("claim_number");
-                    String policeNumber = obj.getString("vehicle_police_number");
+                    String objectId = obj.getString("claim_object_id");
+                    String policeNumber = obj.getString("police_number");
                     String claimYear = obj.getString("claim_year");
                     String claimMonth = obj.getString("claim_month");
                     String claimDay = obj.getString("claim_day");

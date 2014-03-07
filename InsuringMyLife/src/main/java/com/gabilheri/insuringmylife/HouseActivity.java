@@ -32,8 +32,13 @@ public class HouseActivity extends Activity {
                 startActivity(myHouses);
                 break;
             case R.id.getQuote:
+                Intent houseQuote = new Intent(HouseActivity.this, HouseQuote.class);
+                startActivity(houseQuote);
                 break;
             case R.id.existingClaims:
+                Intent claimsIntent = new Intent(HouseActivity.this, ViewClaims.class);
+                claimsIntent.putExtra("claimType", "property");
+                startActivity(claimsIntent);
                 break;
         }
     }

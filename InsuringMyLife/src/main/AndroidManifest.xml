@@ -239,6 +239,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ReportClaims" />
         </activity>
+        <activity
+            android:name="com.gabilheri.insuringmylife.HouseQuote"
+            android:label="@string/title_activity_house_quote"
+            android:parentActivityName="com.gabilheri.insuringmylife.HouseActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="HouseActivity" />
+        </activity>
     </application>
 
 </manifest>

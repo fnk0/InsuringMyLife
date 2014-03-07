@@ -49,6 +49,7 @@ public class CarActivity extends Activity {
                 break;
             case R.id.claimsButton:
                 Intent claimsIntent = new Intent(CarActivity.this, ViewClaims.class);
+                claimsIntent.putExtra("claimType", "vehicle");
                 startActivity(claimsIntent);
                 break;
             case R.id.quoteButton:

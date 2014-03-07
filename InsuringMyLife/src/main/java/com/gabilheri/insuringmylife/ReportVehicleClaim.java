@@ -63,7 +63,7 @@ public class ReportVehicleClaim extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_report_claim);
+        setContentView(R.layout.activity_report_vehicle_claim);
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
         causeSpinner = (Spinner) findViewById(R.id.selectCause);
@@ -73,12 +73,6 @@ public class ReportVehicleClaim extends Activity {
         dateButton = (Button) findViewById(R.id.dateButton);
 
         claimDescription = (EditText) findViewById(R.id.claimDescription);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        new LoadVehicles().execute();
     }
 
 
@@ -100,6 +94,12 @@ public class ReportVehicleClaim extends Activity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        new LoadVehicles().execute();
     }
 
     public void setVehiclesAdapter() {
@@ -246,8 +246,9 @@ public class ReportVehicleClaim extends Activity {
             try {
                 List<NameValuePair> params = new ArrayList<NameValuePair>();
                 params.add(new BasicNameValuePair("user_id", email));
-                params.add(new BasicNameValuePair("claim_vehicle", vehicleID));
-                params.add(new BasicNameValuePair("vehicle_police_number", vehiclePoliceNumber));
+                params.add(new BasicNameValuePair("claim_type", "vehicle"));
+                params.add(new BasicNameValuePair("claim_object_id", vehicleID));
+                params.add(new BasicNameValuePair("police_number", vehiclePoliceNumber));
                 params.add(new BasicNameValuePair("claim_number", Integer.toString(claimNumber)));
                 params.add(new BasicNameValuePair("claim_year", year));
                 params.add(new BasicNameValuePair("claim_month", month));
@@ -268,6 +269,7 @@ public class ReportVehicleClaim extends Activity {
                     Intent afterClaim = new Intent(ReportVehicleClaim.this, AfterClaim.class);
 
                     afterClaim.putExtra("claimID", claimNumber);
+                    afterClaim.putExtra("claimType", "vehicle");
                     startActivity(afterClaim);
                     finish();
                     return json.getString(TAG_MESSAGE);

@@ -1,16 +1,176 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.gabilheri.insuringmylife.ReportHouseClaim">
+    android:background="@color/background"
+    >
 
-    <TextView
-        android:text="@string/hello_world"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context="com.gabilheri.insuringmylife.ReportHouseClaim"
+        tools:ignore="MergeRootFrame"
+        android:orientation="vertical"
+        android:weightSum="1"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        >
 
-</RelativeLayout>
+        <TextView
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:background="@color/red_color"
+            android:text="House Accident"
+            android:textSize="30sp"
+            android:textColor="@android:color/white"
+            android:drawableLeft="@drawable/s_claims_logo2"
+            android:drawablePadding="@dimen/activity_vertical_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingLeft="40sp"
+            android:paddingBottom="5sp"
+            android:paddingTop="5sp"
+            />
+        <TextView
+            android:text="Start a Claim"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:textSize="30sp"
+            android:paddingLeft="@dimen/activity_vertical_margin"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+        <TextView
+            android:text="All fields are required"
+            android:textColor="@android:color/white"
+            android:paddingLeft="@dimen/activity_vertical_margin"
+            android:textSize="15sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_horizontal_margin"
+            />
+
+        <TextView
+            android:text="@string/incident_info"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:paddingLeft="@dimen/activity_vertical_margin"
+            android:textColor="@android:color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            />
+        <TextView
+            android:text="@string/incident_cause"
+            android:paddingLeft="@dimen/activity_vertical_margin"
+            android:textColor="@android:color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:textSize="15sp"
+            />
+        <Spinner
+            android:id="@+id/selectCause"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/select_one"
+            android:entries="@array/accident_causes"
+            android:textAppearance="?android:attr/textAppearanceButton"
+            android:textColor="@android:color/white"
+            android:layout_marginRight="@dimen/activity_vertical_margin"
+            android:layout_marginLeft="@dimen/activity_vertical_margin"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            />
+
+        <TextView
+            android:paddingLeft="@dimen/activity_vertical_margin"
+            android:textColor="@android:color/white"
+            android:text="@string/incident_and_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            />
+
+        <LinearLayout
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:weightSum="1"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_horizontal_margin"
+            >
+
+            <Button
+                android:id="@+id/dateButton"
+                android:text="@string/date"
+                android:background="@drawable/standard_button"
+                android:textColor="@android:color/white"
+                android:layout_marginLeft="@dimen/activity_vertical_margin"
+                android:layout_weight="0.5"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:onClick="showDatePickerDialog"
+                />
+            <Button
+                android:id="@+id/timeButton"
+                android:text="@string/time"
+                android:background="@drawable/standard_button"
+                android:textColor="@android:color/white"
+                android:layout_marginRight="@dimen/activity_vertical_margin"
+                android:layout_marginLeft="@dimen/activity_vertical_margin"
+                android:layout_weight="0.5"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:onClick="showTimePickerDialog"
+                />
+
+        </LinearLayout>
+        <TextView
+            android:text="For which property is this claim?"
+            android:paddingLeft="@dimen/activity_vertical_margin"
+            android:textColor="@android:color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dip"
+            android:textSize="20sp"
+            />
+        <Spinner
+            android:id="@+id/propertyClaim"
+            android:layout_marginRight="@dimen/activity_vertical_margin"
+            android:layout_marginLeft="@dimen/activity_vertical_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_horizontal_margin"
+            />
+        <EditText
+            android:id="@+id/claimDescription"
+            android:layout_marginLeft="@dimen/activity_vertical_margin"
+            android:layout_marginRight="@dimen/activity_vertical_margin"
+            android:background="@drawable/box"
+            android:hint="Description of the Incident"
+            android:inputType="textMultiLine"
+            android:gravity="start"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            android:layout_width="match_parent"
+            android:layout_height="100dip"
+            android:layout_marginBottom="@dimen/activity_horizontal_margin"
+            />
+
+        <Button
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:textColor="@android:color/white"
+            android:text="Submit"
+            android:background="@drawable/standard_button"
+            android:layout_marginLeft="@dimen/activity_vertical_margin"
+            android:layout_marginRight="@dimen/activity_vertical_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="submitClaim"
+            />
+
+    </LinearLayout>
+</ScrollView>

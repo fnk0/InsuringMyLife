@@ -16,6 +16,7 @@ public class House implements  Parcelable {
     public static final String TAG_POLICENUMBER = "police_number";
     public static final String TAG_PAYED = "payed";
     public static final String TAG_USERID = "user_id";
+    public static final String TAG_ZIPCODE = "zip_code";
 
     private String address, city, state, zipCode, id, policeNumber, payed, userId;
 
@@ -120,6 +121,12 @@ public class House implements  Parcelable {
 
     public String getZipCode() {
         return zipCode;
+    }
+
+    @Override
+    public String toString() {
+
+        return getAddress();
     }
 
     @Override
