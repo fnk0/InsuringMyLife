@@ -11,12 +11,13 @@ public class House implements  Parcelable {
 
     public static final String TAG_ADDRESS = "address";
     public static final String TAG_CITY = "city";
-    public static final String TAG_STATE = "zip_code";
+    public static final String TAG_STATE = "state";
     public static final String TAG_ID = "id";
     public static final String TAG_POLICENUMBER = "police_number";
     public static final String TAG_PAYED = "payed";
     public static final String TAG_USERID = "user_id";
     public static final String TAG_ZIPCODE = "zip_code";
+    public static final String TAG_HOUSES = "houses";
 
     private String address, city, state, zipCode, id, policeNumber, payed, userId;
 
@@ -37,12 +38,12 @@ public class House implements  Parcelable {
     }
 
     public House(Parcel in) {
+        id = in.readString();
+        policeNumber = in.readString();
         address = in.readString();
         city = in.readString();
         state = in.readString();
         zipCode = in.readString();
-        id = in.readString();
-        policeNumber = in.readString();
         payed = in.readString();
         userId = in.readString();
     }
@@ -138,14 +139,12 @@ public class House implements  Parcelable {
     public void writeToParcel(Parcel parcel, int i) {
 
         parcel.writeString(getId());
-        parcel.writeString(getZipCode());
-        parcel.writeString(getUserId());
+        parcel.writeString(getPoliceNumber());
         parcel.writeString(getAddress());
         parcel.writeString(getCity());
-        parcel.writeString(getPayed());
-        parcel.writeString(getPoliceNumber());
         parcel.writeString(getState());
-
-
+        parcel.writeString(getZipCode());
+        parcel.writeString(getPayed());
+        parcel.writeString(getUserId());
     }
 }

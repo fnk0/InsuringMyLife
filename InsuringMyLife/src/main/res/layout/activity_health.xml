@@ -17,7 +17,7 @@
         android:text="Life"
         android:textSize="45sp"
         android:textColor="@android:color/white"
-        android:drawableLeft="@drawable/life_icon_small"
+        android:drawableLeft="@drawable/s_l_life_logo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"

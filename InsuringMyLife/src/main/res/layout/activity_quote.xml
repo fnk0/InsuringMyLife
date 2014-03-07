@@ -17,7 +17,7 @@
         <TextView
             android:id="@+id/title"
             android:background="@color/green_life"
-            android:text="Quote"
+            android:text="Vehicle Quote"
             android:textSize="30sp"
             android:textColor="@android:color/white"
             android:layout_width="match_parent"
@@ -322,10 +322,8 @@
             android:background="@drawable/standard_button"
             android:onClick="getQuote"
             android:textColor="@android:color/white"
-            android:textAppearance="?android:attr/textAppearanceButton"
+            android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Get Quote!"
-            android:drawableLeft="@drawable/ic_quote"
-            android:drawableRight="@drawable/ic_quote"
         />
     </LinearLayout>
 </ScrollView>

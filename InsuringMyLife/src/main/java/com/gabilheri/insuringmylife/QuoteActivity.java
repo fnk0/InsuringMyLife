@@ -275,6 +275,7 @@ public class QuoteActivity extends Activity {
 
         Intent intent = new Intent(QuoteActivity.this, QuoteValueActivity.class);
 
+        intent.putExtra("quoteType", Vehicle.TAG_VEHICLES);
         intent.putExtra("quoteValue", startingPrice);
         intent.putExtra("numVehicles", numVehicles);
         intent.putExtra("numDrivers", numDrivers);

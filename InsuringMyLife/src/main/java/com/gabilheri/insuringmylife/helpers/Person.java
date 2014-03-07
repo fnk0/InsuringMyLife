@@ -9,6 +9,7 @@ import android.os.Parcelable;
 public class Person implements Parcelable {
 
     public static final String TAG_ID = "id";
+    public static final String TAG_PERSONS = "person";
     public static final String TAG_POLICENUMBER = "police_number";
     public static final String TAG_USERID = "user_id";
     public static final String TAG_NAME = "name";
@@ -17,7 +18,10 @@ public class Person implements Parcelable {
     public static final String TAG_BIRTHDAY_MONTH = "person_birthday_month";
     public static final String TAG_BIRTHDAY_DAY = "person_birthday_day";
     public static final String TAG_AGE = "person_age";
+    public static final String TAG_RELATIONSHIP = "relationship";
     public static final String TAG_INSURANCE = "has_insurance";
+    public static final String NEW_PERSON_URL = "http://162.243.225.173/InsuringMyLife/new_person.php";
+    public static final String VIEW_PERSON_URL = "http://162.243.225.173/InsuringMyLife/view_person.php";
 
     private String id, policeNumber, userId, name, lastName, birthDay, age, hasInsurance;
 

@@ -13,6 +13,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.gabilheri.insuringmylife.helpers.House;
+import com.gabilheri.insuringmylife.helpers.Person;
 import com.gabilheri.insuringmylife.helpers.Vehicle;
 
 import org.apache.http.NameValuePair;
@@ -28,8 +30,10 @@ public class QuoteValueActivity extends Activity {
 
     private TextView quoteResult;
     private ArrayList<Vehicle> vehicles;
-    private String customerName, residenceType, isCustomer, student, vehicleFinanced, marriageType;
-    private int numVehicles, numDrivers;
+    private ArrayList<House> houses;
+    private ArrayList<Person> persons;
+    private String customerName, residenceType, isCustomer, student, vehicleFinanced, marriageType, houseFinanced, quoteType;
+    private int numVehicles, numDrivers, numProperties;
     private double quoteValue;
     private String agentEmail;
     public JSONParser jsonParser = new JSONParser();
@@ -46,8 +50,20 @@ public class QuoteValueActivity extends Activity {
         customerName = sp.getString("firstName", "") + " " +  sp.getString("lastName", "");
 
         quoteResult = (TextView) findViewById(R.id.quoteValue);
-
         quoteValue = getIntent().getDoubleExtra("quoteValue", 0.00);
+        quoteResult.setText("$ " + quoteValue);
+
+        quoteType = getIntent().getStringExtra("quoteType");
+
+        if(quoteType != null && quoteType.equals(Vehicle.TAG_VEHICLES)) {
+            getVehicleQuote();
+        } else if(quoteType != null && quoteType.equals(House.TAG_HOUSES)) {
+            getHouseQuote();
+        }
+
+    }
+
+    public void getVehicleQuote() {
         numVehicles = getIntent().getIntExtra("numVehicles", 1);
         numDrivers = getIntent().getIntExtra("numDrivers", 1);
         residenceType = getIntent().getStringExtra("residenceType");
@@ -63,9 +79,23 @@ public class QuoteValueActivity extends Activity {
             Log.d("Vehicle " + counter + ":", v.toString());
             counter++;
         }
+    }
 
-        quoteResult.setText("$ " + quoteValue);
+    public void getHouseQuote() {
+        numProperties = getIntent().getIntExtra("numProperties", 1);
+        residenceType = getIntent().getStringExtra("residenceType");
+        isCustomer = getIntent().getStringExtra("isCustomer");
+        student = getIntent().getStringExtra("student");
+        houseFinanced = getIntent().getStringExtra("houseFinanced");
+        marriageType = getIntent().getStringExtra("marriageType");
 
+        houses = getIntent().getParcelableArrayListExtra("houses");
+        int counter = 0;
+
+        for(House h : houses) {
+            Log.d("House " + counter + ":", h.toString());
+            counter++;
+        }
     }
 
     @Override
@@ -76,11 +106,20 @@ public class QuoteValueActivity extends Activity {
 
     public void sendToAgent(View view) {
 
+        if(quoteType != null && quoteType.equals(Vehicle.TAG_VEHICLES)) {
+            sendVehicleInfo();
+        } else if(quoteType != null && quoteType.equals(House.TAG_HOUSES)) {
+            sendPropertyInfo();
+        }
+
+    }
+
+    public void sendVehicleInfo() {
         Intent emailIntent = new Intent(Intent.ACTION_SEND);
 
         emailIntent.setType("message/rfc822");
         emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{agentEmail})
-                   .putExtra(Intent.EXTRA_SUBJECT, "Quote for Insuring My Life Customer: " + customerName);
+                .putExtra(Intent.EXTRA_SUBJECT, "Vehicle Quote for Insuring My Life Customer: " + customerName);
         int counter = 1;
         int counter2 = 0;
         String extra = "The estimate quoted value for " + customerName + " is: $" + quoteValue + "\n";
@@ -108,19 +147,70 @@ public class QuoteValueActivity extends Activity {
 
             extra +=
                     "\n" +
-                    "Driver number: " + counter + "\n" +
-                    "Vehicle ID: " + v.getId() + "\n" +
-                    "Vehicle Police Number: " + v.getPoliceNumber() + "\n" +
-                    "Vehicle Brand: " + v.getBrand() + "\n" +
-                    "Vehicle Model: " + v.getModel() + "\n" +
-                    "Vehicle Year: " + v.getYear() + "\n" +
-                    "Vehicle Color" + v.getColor() + "\n" +
-                    "Vehicle License Plate: " + v.getLicensePlate() + "\n" +
-                    "Vehicle Main Driver: " + v.getMainDriver() + "\n" +
-                    "Main Driver License #: " + v.getDriverLicense() + "\n" +
-                    "Main Driver License State: " + v.getLicenseState() + "\n" +
-                    "Main Driver Birthday: " + v.getDriverBirthday() + "\n" +
-                    "Main Driver Gender: " + v.getDriverGender() + "\n";
+                            "Driver number: " + counter + "\n" +
+                            "Vehicle ID: " + v.getId() + "\n" +
+                            "Vehicle Police Number: " + v.getPoliceNumber() + "\n" +
+                            "Vehicle Brand: " + v.getBrand() + "\n" +
+                            "Vehicle Model: " + v.getModel() + "\n" +
+                            "Vehicle Year: " + v.getYear() + "\n" +
+                            "Vehicle Color" + v.getColor() + "\n" +
+                            "Vehicle License Plate: " + v.getLicensePlate() + "\n" +
+                            "Vehicle Main Driver: " + v.getMainDriver() + "\n" +
+                            "Main Driver License #: " + v.getDriverLicense() + "\n" +
+                            "Main Driver License State: " + v.getLicenseState() + "\n" +
+                            "Main Driver Birthday: " + v.getDriverBirthday() + "\n" +
+                            "Main Driver Gender: " + v.getDriverGender() + "\n";
+            counter++;
+        }
+
+        emailIntent.putExtra(Intent.EXTRA_TEXT, extra);
+
+        try {
+            startActivity(Intent.createChooser(emailIntent, "Send Email"));
+        } catch (ActivityNotFoundException ex) {
+            Toast.makeText(QuoteValueActivity.this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void sendPropertyInfo() {
+        Intent emailIntent = new Intent(Intent.ACTION_SEND);
+
+        emailIntent.setType("message/rfc822");
+        emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{agentEmail})
+                .putExtra(Intent.EXTRA_SUBJECT, "Property Quote for Insuring My Life Customer: " + customerName);
+        int counter = 1;
+        int counter2 = 0;
+        String extra = "The estimate quoted value for " + customerName + " is: $" + quoteValue + "\n";
+
+        extra += "General Information about my request:\n";
+        extra += "Number of Properties: " + numProperties + "\n";
+        extra += "Residence Type: " + residenceType + "\n";
+        extra += "Is current a customer? " + isCustomer + "\n";
+        extra += "Marriage Status: " + marriageType + "\n";
+        extra += "Is a student? " + student + "\n";
+        extra += "Home Financed? " + houseFinanced + "\n\n";
+
+        if(houses.size() != 0) {
+            extra += "Properties Information: \n";
+        }
+
+        // Debugging stuff
+        for(House h : houses) {
+            Log.d("House " + counter2 + ":", h.toString());
+            counter2++;
+        }
+
+        for(House h : houses) {
+
+            extra +=
+                    "\n" +
+                    "Property ID: " + h.getId() + "\n" +
+                    "Property Police Number: " + h.getPoliceNumber() + "\n" +
+                    "Property Address: " + h.getAddress() + "\n" +
+                    "Property City: " + h.getCity() + "\n" +
+                    "Property State: " + h.getState() + "\n" +
+                    "Property Zip Code" + h.getZipCode() + "\n" +
+                    "Property Ownership Status: " + h.getPayed() + "\n" +
             counter++;
         }
 
