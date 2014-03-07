@@ -9,7 +9,7 @@
     <LinearLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         tools:context="com.gabilheri.insuringmylife.HouseActivity"
         tools:ignore="MergeRootFrame"
         android:orientation="vertical"
@@ -72,12 +72,12 @@
             android:layout_marginBottom="@dimen/activity_vertical_margin"
             android:textSize="20sp"
         />
-        <Button
+        <Spinner
             android:id="@+id/selectCause"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/select_one"
-            android:background="@drawable/standard_button"
+
             android:textAppearance="?android:attr/textAppearanceButton"
             android:textColor="@android:color/white"
             android:layout_marginRight="@dimen/activity_vertical_margin"

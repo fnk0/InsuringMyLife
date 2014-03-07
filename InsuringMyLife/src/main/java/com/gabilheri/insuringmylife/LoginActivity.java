@@ -26,7 +26,7 @@ import java.util.List;
 public class LoginActivity extends Activity implements View.OnClickListener {
 
     public EditText userEmail, pass;
-    public Button mSubmit, mRegister;
+    public Button mSubmit, mRegister, mForgot;
 
     // Progress Dialog
     public ProgressDialog pDialog;
@@ -44,8 +44,8 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     private static final String TAG_PASSWORD = "password";
     private static final String TAG_NAME = "name";
     private static final String TAG_LASTNAME = "last_name";
-    private static final String TAG_ZIP = "zip_code"
-;    public boolean userAlreadyLoggedIn = false;
+    private static final String TAG_ZIP = "zip_code";
+    public boolean userAlreadyLoggedIn = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,11 +68,13 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         // Setup buttons
         mSubmit = (Button) findViewById(R.id.login);
         mRegister = (Button) findViewById(R.id.register);
+        mForgot = (Button) findViewById(R.id.forgotUsernamePassword);
 
         // Register listener
 
         mSubmit.setOnClickListener(this);
         mRegister.setOnClickListener(this);
+        mForgot.setOnClickListener(this);
     }
 
     @Override
@@ -88,6 +90,10 @@ public class LoginActivity extends Activity implements View.OnClickListener {
             case R.id.register:
                 Intent i = new Intent(this, RegisterActivity.class);
                 startActivity(i);
+                break;
+            case R.id.forgotUsernamePassword:
+                Intent forgot = new Intent(this, ForgotPassword.class);
+                startActivity(forgot);
                 break;
             default:
                 break;

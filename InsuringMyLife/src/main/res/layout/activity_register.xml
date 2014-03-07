@@ -12,6 +12,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:context=".RegisterActivity"
+        tools:ignore="MergeRootFrame"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         >
         <TextView
             android:id="@+id/title"
@@ -195,7 +198,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Answer Security Question 3"
+            android:hint="Answer Security Question 2"
             android:layout_below="@+id/question2"
             android:layout_centerHorizontal="true"
             android:inputType="textEmailAddress"

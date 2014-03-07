@@ -10,6 +10,8 @@
         <item name="android:spinnerItemStyle">@style/SpinnerStyle</item>
         <item name="android:radioButtonStyle">@style/RadioButtonIcon</item>
         <item name="android:editTextColor">#000</item>
+        <item name="android:textCursorDrawable">@null</item>
+
     </style>
 
     <style name="MyActionBar"

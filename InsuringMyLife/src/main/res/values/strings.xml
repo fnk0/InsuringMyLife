@@ -191,6 +191,15 @@
         <item name="parents">Live with Parents</item>
     </string-array>
 
+    <string-array name="accident_causes">
+        <item name="cause1"> Cause of Accident One</item>
+        <item name="cause2"> Cause of Accident Two</item>
+        <item name="cause3"> Cause of Accident Three</item>
+        <item name="cause4"> Cause of Accident Four</item>
+        <item name="cause5"> Cause of Accident Five</item>
+        <item name="cause6"> Cause of Accident Six</item>
+    </string-array>
+
     <string name="title_activity_view_quizzes">ViewQuizzes</string>
     <string name="title_activity_quizz_result">QuizzResult</string>
     <string name="title_activity_my_agent">MyAgent</string>
@@ -218,5 +227,5 @@
     <string name="title_activity_quote_value">QuoteValueActivity</string>
     <string name="quote_result_agent">Remember that this value is an estimate. For a more accurate value please click on the button send this to agent. Your agent will receive this data and give you a more accurate value. Feel free to add any information that you think is important on the e-mail.</string>
     <string name="title_activity_forgot_password">ForgotPassword</string>
-
+    <string name="forgot_username"> <u> Forgot Username or Password </u> </string>
 </resources>
