@@ -68,7 +68,7 @@
     <Button
         android:id="@+id/getQuote"
         android:background="@drawable/green_life_button"
-        android:text="Existing Claims"
+        android:text="Get Quote"
         android:textColor="@android:color/white"
         android:drawableLeft="@drawable/quote_icon"
         android:textSize="33sp"
