@@ -7,6 +7,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.gabilheri.insuringmylife.helpers.Person;
+
 public class HealthActivity extends Activity {
 
     @Override
@@ -26,13 +28,13 @@ public class HealthActivity extends Activity {
         switch (id) {
 
             case R.id.familyMembers:
-                Intent familyIntent = new Intent(HealthActivity.this, FamilyMembers.class);
+                Intent familyIntent = new Intent(HealthActivity.this, ViewFamilyMembers.class);
                 startActivity(familyIntent);
                 break;
 
             case R.id.existingClaims:
                 Intent claimsHealth = new Intent(HealthActivity.this, ViewClaims.class);
-                claimsHealth.putExtra("claimType", "person");
+                claimsHealth.putExtra("claimType", Person.TAG_PERSONS);
                 startActivity(claimsHealth);
                 break;
 

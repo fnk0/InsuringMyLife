@@ -11,13 +11,19 @@ import android.widget.TextView;
 public class AfterClaim extends Activity {
 
     private TextView claimID;
+    private String claimType;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_after_claim);
-        getActionBar().setDisplayHomeAsUpEnabled(true);
+
+        if(getActionBar() != null) {
+            getActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+        claimType = getIntent().getStringExtra("claimType");
+
         claimID = (TextView) findViewById(R.id.claimID);
         claimID.setText(Integer.toString(getIntent().getIntExtra("claimID", 1612312)));
     }
@@ -32,6 +38,7 @@ public class AfterClaim extends Activity {
 
     public void viewClaims(View view) {
         Intent viewMyClaims = new Intent(AfterClaim.this, ViewClaims.class);
+        viewMyClaims.putExtra("claimType", claimType);
         startActivity(viewMyClaims);
     }
 

@@ -267,7 +267,7 @@
                 android:value="HouseActivity" />
         </activity>
         <activity
-            android:name="com.gabilheri.insuringmylife.FamilyMembers"
+            android:name=".ViewFamilyMembers"
             android:label="@string/title_activity_family_members"
             android:parentActivityName="com.gabilheri.insuringmylife.HealthActivity"
             android:screenOrientation="portrait"
@@ -289,7 +289,7 @@
         <activity
             android:name=".NewFamilyMember"
             android:label="@string/title_activity_new_famiy_member"
-            android:parentActivityName="com.gabilheri.insuringmylife.FamilyMembers"
+            android:parentActivityName=".ViewFamilyMembers"
             android:screenOrientation="portrait"
             >
             <meta-data

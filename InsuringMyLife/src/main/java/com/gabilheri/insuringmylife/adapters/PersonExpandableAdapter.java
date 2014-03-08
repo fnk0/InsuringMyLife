@@ -122,16 +122,14 @@ public class PersonExpandableAdapter extends BaseExpandableListAdapter {
             case 0:
                 return "";
             case 1:
-                return "Cause";
+                return "Police Number:";
             case 2:
-                return "Date";
+                return "Relationship to you:";
             case 3:
-                return "Time";
+                return "Birthday";
             case 4:
-                return "Police Number";
-            case 5:
-                return "Description";
+                return "Age";
         }
-        return "Test";
+        return "";
     }
 }

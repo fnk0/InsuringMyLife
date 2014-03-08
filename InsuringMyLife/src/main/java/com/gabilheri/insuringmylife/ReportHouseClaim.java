@@ -42,7 +42,7 @@ public class ReportHouseClaim extends Activity {
     private String user_id;
     private int claimNumber;
 
-    // Create an Array to hold the properties
+
     public JSONArray properties = null;
 
     // Manage the properties with an Arraylist
@@ -165,7 +165,7 @@ public class ReportHouseClaim extends Activity {
             SharedPreferences loginPref = getSharedPreferences("loginPref", MODE_PRIVATE);
             user_id = loginPref.getString("email", "");
 
-            params.add(new BasicNameValuePair(Vehicle.TAG_USERID, user_id));
+            params.add(new BasicNameValuePair("user_id", user_id));
 
             JSONObject jObject = jsonParser.makeHttpRequest(VIEW_HOUSES_URL, "POST", params);
 
@@ -173,7 +173,7 @@ public class ReportHouseClaim extends Activity {
             properties = jObject.getJSONArray("houses");
 
             if(success == 1) {
-                // loop through all the properties
+
                 for(int i = 0; i < properties.length(); i++) {
                     JSONObject obj = properties.getJSONObject(i);
 
@@ -192,7 +192,7 @@ public class ReportHouseClaim extends Activity {
                     popUpProperties.add(myHouse);
                 }
             } else {
-                String noProperties = "There's no properties yet! Click the Add property button to add some of your awesome house!";
+                String noProperties = "There's no persons yet! Click the Add property button to add some of your awesome house!";
                 Toast.makeText(ReportHouseClaim.this, noProperties , Toast.LENGTH_LONG).show();
             }
         } catch (JSONException e) {

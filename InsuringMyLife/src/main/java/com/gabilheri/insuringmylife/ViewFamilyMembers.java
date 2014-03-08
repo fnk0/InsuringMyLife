@@ -26,7 +26,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class FamilyMembers extends Activity {
+public class ViewFamilyMembers extends Activity {
 
     public ProgressDialog pDialog;
     public JSONParser jsonParser = new JSONParser();
@@ -56,8 +56,8 @@ public class FamilyMembers extends Activity {
     }
 
     public void addFamilyMember(View v) {
-        Intent newMeber = new Intent(FamilyMembers.this, NewFamilyMember.class);
-        startActivity(newMeber);
+        Intent newMember = new Intent(ViewFamilyMembers.this, NewFamilyMember.class);
+        startActivity(newMember);
     }
 
     @Override
@@ -124,29 +124,29 @@ public class FamilyMembers extends Activity {
                     String userID = obj.getString(Person.TAG_USERID);
                     String policeNumber = obj.getString(Person.TAG_POLICENUMBER);
                     String name = obj.getString(Person.TAG_NAME);
+                    String middleI = obj.getString(Person.TAG_MIDDLE_I);
                     String lastName = obj.getString(Person.TAG_LAST_NAME);
                     String birthdayYear = obj.getString(Person.TAG_BIRTHDAY_YEAR);
                     String birthdayMonth = obj.getString(Person.TAG_BIRTHDAY_MONTH);
                     String birthdayDay = obj.getString(Person.TAG_BIRTHDAY_DAY);
                     String age = obj.getString(Person.TAG_AGE);
                     String relationship = obj.getString(Person.TAG_RELATIONSHIP);
-                    String hasInsurace = obj.getString(Person.TAG_INSURANCE);
 
                     String birthday = birthdayMonth + "/" + birthdayDay + "/" + birthdayYear;
 
                     ListRowGroup group = new ListRowGroup(name + " " + lastName, "name");
-                    group.children.add("Full Name: " + name + lastName);
+                    group.children.add("Full Name: " + name + " " + middleI + ". " + lastName);
                     group.children.add(policeNumber);
                     group.children.add(relationship);
-                    group.children.add(birthday + "  -  " + age + " years old.");
-                    group.children.add(hasInsurace);
+                    group.children.add(birthday);
+                    group.children.add(age + " years old.");
 
                     personGroup.append(i, group);
                 }
 
             } else {
                 String noHouses = "There's no Family Members yet!";
-                Toast.makeText(FamilyMembers.this, noHouses, Toast.LENGTH_LONG).show();
+                Toast.makeText(ViewFamilyMembers.this, noHouses, Toast.LENGTH_LONG).show();
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -157,7 +157,7 @@ public class FamilyMembers extends Activity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pDialog = new ProgressDialog(FamilyMembers.this);
+            pDialog = new ProgressDialog(ViewFamilyMembers.this);
             pDialog.setMessage("Loading Family Members...");
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(true);

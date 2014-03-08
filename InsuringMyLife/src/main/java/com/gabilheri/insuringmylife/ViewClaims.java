@@ -166,12 +166,6 @@ public class ViewClaims extends Activity {
         }
     }
 
-    public void addVehicle(View v) {
-
-        Intent i = new Intent(ViewClaims.this, NewVehicle.class);
-        startActivity(i);
-    }
-
     class LoadClaims extends AsyncTask<String, String, String> {
         @Override
         protected void onPreExecute() {
