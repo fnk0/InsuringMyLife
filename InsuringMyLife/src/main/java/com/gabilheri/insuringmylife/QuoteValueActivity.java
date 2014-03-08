@@ -33,7 +33,7 @@ public class QuoteValueActivity extends Activity {
     private ArrayList<House> houses;
     private ArrayList<Person> persons;
     private String customerName, residenceType, isCustomer, student, vehicleFinanced, marriageType, houseFinanced, quoteType;
-    private int numVehicles, numDrivers, numProperties;
+    private int numVehicles, numDrivers, numProperties, numFamilyMembers;
     private double quoteValue;
     private String agentEmail;
     public JSONParser jsonParser = new JSONParser();
@@ -59,6 +59,8 @@ public class QuoteValueActivity extends Activity {
             getVehicleQuote();
         } else if(quoteType != null && quoteType.equals(House.TAG_HOUSES)) {
             getHouseQuote();
+        } else if(quoteType != null && quoteType.equals(Person.TAG_PERSONS)) {
+            getPersonQuote();
         }
 
     }
@@ -98,6 +100,23 @@ public class QuoteValueActivity extends Activity {
         }
     }
 
+    public void getPersonQuote() {
+        numFamilyMembers = getIntent().getIntExtra("numFamilyMembers", 1);
+        residenceType = getIntent().getStringExtra("residenceType");
+        isCustomer = getIntent().getStringExtra("isCustomer");
+        student = getIntent().getStringExtra("student");
+        houseFinanced = getIntent().getStringExtra("houseFinanced");
+        marriageType = getIntent().getStringExtra("marriageType");
+
+        persons = getIntent().getParcelableArrayListExtra(Person.TAG_PERSONS);
+        int counter = 0;
+
+        for(Person p : persons) {
+            Log.d("Person " + counter + ":", p.toString());
+            counter++;
+        }
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -110,6 +129,8 @@ public class QuoteValueActivity extends Activity {
             sendVehicleInfo();
         } else if(quoteType != null && quoteType.equals(House.TAG_HOUSES)) {
             sendPropertyInfo();
+        } else if(quoteType != null && quoteType.equals(Person.TAG_PERSONS)) {
+            sendPersonInfo();
         }
 
     }
@@ -223,6 +244,55 @@ public class QuoteValueActivity extends Activity {
         }
     }
 
+    public void sendPersonInfo() {
+        Intent emailIntent = new Intent(Intent.ACTION_SEND);
+
+        emailIntent.setType("message/rfc822");
+        emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{agentEmail})
+                .putExtra(Intent.EXTRA_SUBJECT, "Health Insurance Quote for Insuring My Life Customer: " + customerName);
+        int counter = 1;
+        int counter2 = 0;
+        String extra = "The estimate quoted value for " + customerName + " is: $" + quoteValue + "\n";
+
+        extra += "General Information about my request:\n";
+        extra += "Number of Family Members: " + numFamilyMembers + "\n";
+        extra += "Residence Type: " + residenceType + "\n";
+        extra += "Is current a customer? " + isCustomer + "\n";
+        extra += "Marriage Status: " + marriageType + "\n";
+        extra += "Is a student? " + student + "\n";
+        extra += "Home Financed? " + houseFinanced + "\n\n";
+
+        if(persons.size() != 0) {
+            extra += "Family Members Information: \n";
+        }
+
+        // Debugging stuff
+        for(Person p : persons) {
+            Log.d("Person " + counter2 + ":", p.toString());
+            counter2++;
+        }
+
+        for(Person p : persons) {
+
+            extra +="\n" +
+                    "Person ID: " + p.getId() + "\n" +
+                    "Police Number: " + p.getPoliceNumber() + "\n" +
+                    "Name: " + p.getName() + " " + p.getMiddleI() + ". " + p.getLastName() + "\n" +
+                    "Birthday: " + p.getBirthDay() + "\n" +
+                    "Age: " + p.getAge() + "\n" +
+                    "Relationship to customer: " + p.getRelationship() + "\n";
+                    counter++;
+        }
+
+        emailIntent.putExtra(Intent.EXTRA_TEXT, extra);
+
+        try {
+            startActivity(Intent.createChooser(emailIntent, "Send Email"));
+        } catch (ActivityNotFoundException ex) {
+            Toast.makeText(QuoteValueActivity.this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
 
     class GetAgentEmail extends AsyncTask<String, String, String> {
 
@@ -271,7 +341,7 @@ public class QuoteValueActivity extends Activity {
     }
 
     public void getAnotherQuote(View view) {
-        Intent intent = new Intent(QuoteValueActivity.this, QuoteActivity.class);
+        Intent intent = new Intent(QuoteValueActivity.this, VehicleQuoteActivity.class);
         startActivity(intent);
     }
 

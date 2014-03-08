@@ -53,7 +53,7 @@ public class CarActivity extends Activity {
                 startActivity(claimsIntent);
                 break;
             case R.id.quoteButton:
-                Intent quoteIntent = new Intent(CarActivity.this, QuoteActivity.class);
+                Intent quoteIntent = new Intent(CarActivity.this, VehicleQuoteActivity.class);
                 startActivity(quoteIntent);
                 break;
             case R.id.agentButton:

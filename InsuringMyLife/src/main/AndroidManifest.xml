@@ -96,7 +96,7 @@
                 android:value="VehiclesActivity" />
         </activity>
         <activity
-            android:name="com.gabilheri.insuringmylife.QuoteActivity"
+            android:name=".VehicleQuoteActivity"
             android:label="@string/title_activity_quote"
             android:parentActivityName="com.gabilheri.insuringmylife.CarActivity"
             android:screenOrientation="portrait" >

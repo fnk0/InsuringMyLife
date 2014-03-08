@@ -27,7 +27,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class QuoteActivity extends Activity {
+public class VehicleQuoteActivity extends Activity {
 
     public ProgressDialog pDialog;
     public JSONParser jsonParser = new JSONParser();
@@ -129,7 +129,7 @@ public class QuoteActivity extends Activity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pDialog = new ProgressDialog(QuoteActivity.this);
+            pDialog = new ProgressDialog(VehicleQuoteActivity.this);
             pDialog.setMessage("Loading information...");
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(true);
@@ -199,7 +199,7 @@ public class QuoteActivity extends Activity {
                 }
             } else {
                 String noVehicles = "There's no vehicles yet! Click the Add vehicle button to add some of your awesome cars!";
-                Toast.makeText(QuoteActivity.this, noVehicles, Toast.LENGTH_LONG).show();
+                Toast.makeText(VehicleQuoteActivity.this, noVehicles, Toast.LENGTH_LONG).show();
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -273,7 +273,7 @@ public class QuoteActivity extends Activity {
             selectedVehicles.add(popUpVehicles.get(s.getSelectedItemPosition()));
         }
 
-        Intent intent = new Intent(QuoteActivity.this, QuoteValueActivity.class);
+        Intent intent = new Intent(VehicleQuoteActivity.this, QuoteValueActivity.class);
 
         intent.putExtra("quoteType", Vehicle.TAG_VEHICLES);
         intent.putExtra("quoteValue", startingPrice);
