@@ -1,8 +1,13 @@
 package com.gabilheri.insuringmylife;
 
 import android.app.Activity;
+import android.app.DialogFragment;
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,6 +18,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import com.gabilheri.insuringmylife.fragments.AaaDialog;
+import com.gabilheri.insuringmylife.fragments.NoInternetDialog;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -44,6 +52,8 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+
         firstNameField = (EditText) findViewById(R.id.firstName);
         lastNameField = (EditText) findViewById(R.id.lastName);
         passwordField = (EditText) findViewById(R.id.password);
@@ -65,31 +75,47 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
     @Override
     protected void onPause() {
         super.onPause();
-        pDialog.dismiss();
+    }
+
+    public boolean getInternetState() {
+
+        ConnectivityManager conMgr =  (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = conMgr.getActiveNetworkInfo();
+
+        if (activeNetwork != null && activeNetwork.isConnected()) {
+            return true;
+        } else {
+            DialogFragment noInternet = new NoInternetDialog();
+            noInternet.show(getFragmentManager(), "noInternet");
+            return false;
+        }
     }
 
     @Override
     public void onClick(View v) {
-        String password = passwordField.getText().toString();
-        String repeatPassword = repeatPasswordField.getText().toString();
-        String email = emailField.getText().toString();
 
-        int counter = 0;
+        if(getInternetState() == true) {
+            String password = passwordField.getText().toString();
+            String repeatPassword = repeatPasswordField.getText().toString();
+            String email = emailField.getText().toString();
 
-        for(int i = 0; i < email.length(); i++) {
-            if(email.charAt(i) == '@') {
-                counter++;
+            int counter = 0;
+
+            for(int i = 0; i < email.length(); i++) {
+                if(email.charAt(i) == '@') {
+                    counter++;
+                }
             }
-        }
 
-        if(!password.equals(repeatPassword)) {
-            Toast.makeText(RegisterActivity.this, "Passwords don't match!", Toast.LENGTH_LONG).show();
-        } else if(password.length() < 6) {
-            Toast.makeText(RegisterActivity.this, "Password should be at least 6 characters long!", Toast.LENGTH_LONG).show();
-        } else if(counter != 1) {
-            Toast.makeText(RegisterActivity.this, "The e-mail does not seen valid!", Toast.LENGTH_LONG).show();
-        } else {
-            new CreateUser().execute();
+            if(!password.equals(repeatPassword)) {
+                Toast.makeText(RegisterActivity.this, "Passwords don't match!", Toast.LENGTH_LONG).show();
+            } else if(password.length() < 6) {
+                Toast.makeText(RegisterActivity.this, "Password should be at least 6 characters long!", Toast.LENGTH_LONG).show();
+            } else if(counter != 1) {
+                Toast.makeText(RegisterActivity.this, "The e-mail does not seen valid!", Toast.LENGTH_LONG).show();
+            } else {
+                new CreateUser().execute();
+            }
         }
 
     }
@@ -181,9 +207,11 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.register, menu);
+        getMenuInflater().inflate(R.menu.initial, menu);
+
+        menu.add(1, 1, 1, "About AAA");
+        menu.add(2, 2, 2, "About Insuring My Life");
         return true;
     }
 
@@ -195,7 +223,17 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
         int id = item.getItemId();
         if (id == R.id.action_settings) {
             return true;
+        } else if(id == 1) {
+            Intent aboutAAA = new Intent(RegisterActivity.this, AboutAAA.class);
+            startActivity(aboutAAA);
+        } else if(id == 2) {
+            Intent aboutIns = new Intent(RegisterActivity.this, AboutInsuringMyLife.class);
+            startActivity(aboutIns);
+        } else if(id == R.id.aaa_logo) {
+            DialogFragment aaaD = new AaaDialog();
+            aaaD.show(getFragmentManager(), "aaa");
         }
+
         return super.onOptionsItemSelected(item);
     }
 }

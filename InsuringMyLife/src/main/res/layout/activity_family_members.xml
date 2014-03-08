@@ -19,7 +19,7 @@
     <Button
         android:id="@+id/addFamilyMember"
         android:textColor="@android:color/white"
-        android:background="@color/orange_color"
+        android:background="@drawable/orange_button"
         android:text="+ Add a New Family Member"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

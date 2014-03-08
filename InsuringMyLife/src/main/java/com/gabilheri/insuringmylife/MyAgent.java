@@ -1,12 +1,16 @@
 package com.gabilheri.insuringmylife;
 
 import android.app.Activity;
+import android.app.DialogFragment;
 import android.app.ProgressDialog;
 import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -18,6 +22,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.gabilheri.insuringmylife.fragments.AaaDialog;
+import com.gabilheri.insuringmylife.fragments.NoInternetDialog;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -69,15 +76,35 @@ public class MyAgent extends Activity {
 
     @Override
     protected void onResume() {
-        new LoadAgent().execute();
         super.onResume();
+
+        if(getInternetState()) {
+            new LoadAgent().execute();
+        }
+
+    }
+
+    public boolean getInternetState() {
+
+        ConnectivityManager conMgr =  (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = conMgr.getActiveNetworkInfo();
+
+        if (activeNetwork != null && activeNetwork.isConnected()) {
+            return true;
+        } else {
+            DialogFragment noInternet = new NoInternetDialog();
+            noInternet.show(getFragmentManager(), "noInternet");
+            return false;
+        }
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.my_agent, menu);
+        getMenuInflater().inflate(R.menu.initial, menu);
+
+        menu.add(1, 1, 1, "About AAA");
+        menu.add(2, 2, 2, "About Insuring My Life");
         return true;
     }
 
@@ -89,7 +116,17 @@ public class MyAgent extends Activity {
         int id = item.getItemId();
         if (id == R.id.action_settings) {
             return true;
+        } else if(id == 1) {
+            Intent aboutAAA = new Intent(MyAgent.this, AboutAAA.class);
+            startActivity(aboutAAA);
+        } else if(id == 2) {
+            Intent aboutIns = new Intent(MyAgent.this, AboutInsuringMyLife.class);
+            startActivity(aboutIns);
+        } else if(id == R.id.aaa_logo) {
+            DialogFragment aaaD = new AaaDialog();
+            aaaD.show(getFragmentManager(), "aaa");
         }
+
         return super.onOptionsItemSelected(item);
     }
 

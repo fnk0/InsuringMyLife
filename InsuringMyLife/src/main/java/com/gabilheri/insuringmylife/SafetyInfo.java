@@ -10,28 +10,20 @@ import android.view.View;
 
 import com.gabilheri.insuringmylife.fragments.AaaDialog;
 
-public class ViewQuizzes extends Activity {
+public class SafetyInfo extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_quizzes);
-
+        setContentView(R.layout.activity_safety_info);
+        getActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
-    public void changeActivity(View view) {
 
-        int id = view.getId();
-
-        if(id == R.id.generalInfo) {
-            Intent intent = new Intent(ViewQuizzes.this, QuizActivity.class);
-            startActivity(intent);
-        } else if(id == R.id.safetyInfo) {
-            Intent safe = new Intent(ViewQuizzes.this, QuizActivity.class);
-            startActivity(safe);
-        }
+    public void goToQuizz(View view) {
+        Intent i = new Intent(SafetyInfo.this, QuizActivity.class);
+        startActivity(i);
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -52,10 +44,10 @@ public class ViewQuizzes extends Activity {
         if (id == R.id.action_settings) {
             return true;
         } else if(id == 1) {
-            Intent aboutAAA = new Intent(ViewQuizzes.this, AboutAAA.class);
+            Intent aboutAAA = new Intent(SafetyInfo.this, AboutAAA.class);
             startActivity(aboutAAA);
         } else if(id == 2) {
-            Intent aboutIns = new Intent(ViewQuizzes.this, AboutInsuringMyLife.class);
+            Intent aboutIns = new Intent(SafetyInfo.this, AboutInsuringMyLife.class);
             startActivity(aboutIns);
         } else if(id == R.id.aaa_logo) {
             DialogFragment aaaD = new AaaDialog();

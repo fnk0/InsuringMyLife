@@ -1,9 +1,13 @@
 package com.gabilheri.insuringmylife;
 
 import android.app.Activity;
+import android.app.DialogFragment;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,6 +19,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import com.gabilheri.insuringmylife.fragments.AaaDialog;
+import com.gabilheri.insuringmylife.fragments.NoInternetDialog;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -119,15 +126,31 @@ public class UpdateProfileActivity extends Activity implements View.OnClickListe
         yearExpSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // The drop down view
         yearExpSpinner.setAdapter(yearExpSpinnerAdapter);
 
-        new LoadProfile().execute();
+        //new LoadProfile().execute();
         updateProfileButton.setOnClickListener(this);
     }
 
+    public boolean getInternetState() {
+
+        ConnectivityManager conMgr =  (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = conMgr.getActiveNetworkInfo();
+
+        if (activeNetwork != null && activeNetwork.isConnected()) {
+            return true;
+        } else {
+            DialogFragment noInternet = new NoInternetDialog();
+            noInternet.show(getFragmentManager(), "noInternet");
+            return false;
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        
         // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.initial, menu);
+
+        menu.add(1, 1, 1, "About AAA");
+        menu.add(2, 2, 2, "About Insuring My Life");
         return true;
     }
 
@@ -136,17 +159,37 @@ public class UpdateProfileActivity extends Activity implements View.OnClickListe
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+        if (id == R.id.action_settings) {
+            return true;
+        } else if(id == 1) {
+            Intent aboutAAA = new Intent(UpdateProfileActivity.this, AboutAAA.class);
+            startActivity(aboutAAA);
+        } else if(id == 2) {
+            Intent aboutIns = new Intent(UpdateProfileActivity.this, AboutInsuringMyLife.class);
+            startActivity(aboutIns);
+        } else if(id == R.id.aaa_logo) {
+            DialogFragment aaaD = new AaaDialog();
+            aaaD.show(getFragmentManager(), "aaa");
+        }
+
         return super.onOptionsItemSelected(item);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+
+        if(getInternetState()) {
+            new LoadProfile().execute();
+        }
     }
 
     @Override
     public void onClick(View view) {
-        new UpdateProfile().execute();
+        if(getInternetState()) {
+            new UpdateProfile().execute();
+        }
     }
 
     class UpdateProfile extends AsyncTask<String, String, String> {

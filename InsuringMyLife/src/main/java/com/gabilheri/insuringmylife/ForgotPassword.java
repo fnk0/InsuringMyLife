@@ -1,8 +1,12 @@
 package com.gabilheri.insuringmylife;
 
 import android.app.Activity;
+import android.app.DialogFragment;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,6 +18,8 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.gabilheri.insuringmylife.fragments.NoInternetDialog;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -87,7 +93,9 @@ public class ForgotPassword extends Activity {
     }
 
     public void getAnswers(View view) {
-        new LoadQuestions().execute();
+        if(getInternetState() == true) {
+            new LoadQuestions().execute();
+        }
     }
 
     public void answerQuestions(View v) {
@@ -104,21 +112,35 @@ public class ForgotPassword extends Activity {
             questionsLayout.removeAllViews();
             getPasswordStuff.setVisibility(View.VISIBLE);
         }
-
-        //TODO IMPLEMENT IF USERS FAILS AND WHAT HAPPENS IF HE FAILS TOO MANY TIMES.
     }
 
     public void resetPassword(View v) {
 
-        String password = passwordField.getText().toString();
-        String repeatPassword = repeatPasswordField.getText().toString();
+        if(getInternetState() == true) {
+            String password = passwordField.getText().toString();
+            String repeatPassword = repeatPasswordField.getText().toString();
 
-        if(!password.equals(repeatPassword)) {
-            Toast.makeText(ForgotPassword.this, "Passwords don't match!", Toast.LENGTH_LONG).show();
-        } else if(password.length() < 6) {
-            Toast.makeText(ForgotPassword.this, "Password should be at least 6 characters long!", Toast.LENGTH_LONG).show();
-        }  else {
-            new UpdatePassword().execute();
+            if(!password.equals(repeatPassword)) {
+                Toast.makeText(ForgotPassword.this, "Passwords don't match!", Toast.LENGTH_LONG).show();
+            } else if(password.length() < 6) {
+                Toast.makeText(ForgotPassword.this, "Password should be at least 6 characters long!", Toast.LENGTH_LONG).show();
+            }  else {
+                new UpdatePassword().execute();
+            }
+        }
+    }
+
+    public boolean getInternetState() {
+
+        ConnectivityManager conMgr =  (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = conMgr.getActiveNetworkInfo();
+
+        if (activeNetwork != null && activeNetwork.isConnected()) {
+            return true;
+        } else {
+            DialogFragment noInternet = new NoInternetDialog();
+            noInternet.show(getFragmentManager(), "noInternet");
+            return false;
         }
     }
 

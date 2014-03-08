@@ -1,0 +1,104 @@
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    >
+
+<LinearLayout
+
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.gabilheri.insuringmylife.SafetyInfo"
+    tools:ignore="MergeRootFrame"
+    android:orientation="vertical"
+    android:background="@color/background"
+    android:weightSum="1"
+    >
+
+    <TextView
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:background="@color/blue"
+        android:text="Safety Information"
+        android:textSize="30sp"
+        android:textColor="@android:color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical|center_horizontal"
+        android:paddingBottom="5sp"
+        android:paddingTop="5sp"
+        />
+    <Space
+        android:layout_weight="0.12"
+        android:layout_width="match_parent"
+        android:layout_height="0dip" />
+
+    <TextView
+        android:text="Some Information Stuff"
+        android:textColor="@android:color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_marginBottom="2dip"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dip"
+        android:background="@android:color/white"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        />
+       <TextView
+           android:padding="@dimen/activity_horizontal_margin"
+           android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum malesuada tristique erat, vitae cursus nulla. Ut consequat imperdiet turpis, non iaculis augue euismod vel. Ut velit nisi, sodales molestie vulputate sit amet, viverra nec ligula. Ut sodales dolor non convallis condimentum. Maecenas a erat metus. Quisque nisi libero, scelerisque ut libero at, tristique posuere elit. Etiam semper iaculis tincidunt. Vivamus non urna in nisi gravida fermentum. Morbi volutpat erat ut congue accumsan. Nam ultrices justo a ante placerat iaculis. Nulla in scelerisque metus. Cras non interdum libero, ac venenatis orci. Nunc porta nibh lectus, at posuere metus ultricies eu. Morbi ullamcorper quis erat at tempor. Phasellus venenatis libero ut leo mollis, et rutrum orci dignissim. Nam at justo commodo, accumsan velit a, vehicula nulla."
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+       />
+
+    <TextView
+        android:text="More Information Stuff"
+        android:textColor="@android:color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginBottom="2dip"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dip"
+        android:background="@android:color/white"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        />
+
+    <TextView
+        android:padding="@dimen/activity_horizontal_margin"
+        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum malesuada tristique erat, vitae cursus nulla. Ut consequat imperdiet turpis, non iaculis augue euismod vel. Ut velit nisi, sodales molestie vulputate sit amet, viverra nec ligula. Ut sodales dolor non convallis condimentum. Maecenas a erat metus. Quisque nisi libero, scelerisque ut libero at, tristique posuere elit. Etiam semper iaculis tincidunt. Vivamus non urna in nisi gravida fermentum. Morbi volutpat erat ut congue accumsan. Nam ultrices justo a ante placerat iaculis. Nulla in scelerisque metus. Cras non interdum libero, ac venenatis orci. Nunc porta nibh lectus, at posuere metus ultricies eu. Morbi ullamcorper quis erat at tempor. Phasellus venenatis libero ut leo mollis, et rutrum orci dignissim. Nam at justo commodo, accumsan velit a, vehicula nulla."
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+    />
+
+    <Button
+        android:id="@+id/takeSafetyQuizz"
+        android:background="@drawable/standard_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Take Safety Info Quizz"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:onClick="goToQuizz"
+        />
+
+</LinearLayout>
+</ScrollView>

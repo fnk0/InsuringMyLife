@@ -1,6 +1,7 @@
 package com.gabilheri.insuringmylife;
 
 import android.app.Activity;
+import android.app.DialogFragment;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.gabilheri.insuringmylife.fragments.AaaDialog;
 import com.gabilheri.insuringmylife.helpers.House;
 import com.gabilheri.insuringmylife.helpers.Person;
 import com.gabilheri.insuringmylife.helpers.Vehicle;
@@ -351,12 +353,13 @@ public class QuoteValueActivity extends Activity {
     }
 
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.quote_value, menu);
+        getMenuInflater().inflate(R.menu.initial, menu);
+
+        menu.add(1, 1, 1, "About AAA");
+        menu.add(2, 2, 2, "About Insuring My Life");
         return true;
     }
 
@@ -368,7 +371,17 @@ public class QuoteValueActivity extends Activity {
         int id = item.getItemId();
         if (id == R.id.action_settings) {
             return true;
+        } else if(id == 1) {
+            Intent aboutAAA = new Intent(QuoteValueActivity.this, AboutAAA.class);
+            startActivity(aboutAAA);
+        } else if(id == 2) {
+            Intent aboutIns = new Intent(QuoteValueActivity.this, AboutInsuringMyLife.class);
+            startActivity(aboutIns);
+        } else if(id == R.id.aaa_logo) {
+            DialogFragment aaaD = new AaaDialog();
+            aaaD.show(getFragmentManager(), "aaa");
         }
+
         return super.onOptionsItemSelected(item);
     }
 

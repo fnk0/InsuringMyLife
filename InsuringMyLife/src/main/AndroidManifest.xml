@@ -32,10 +32,11 @@
         <activity
             android:name="com.gabilheri.insuringmylife.RegisterActivity"
             android:label="@string/title_activity_register"
+            android:parentActivityName="com.gabilheri.insuringmylife.LoginActivity"
             android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.gabilheri.insuringmylife.LoginActivity" />
+                android:value="LoginActivity" />
         </activity>
         <activity
             android:name="com.gabilheri.insuringmylife.InitialActivity"
@@ -54,6 +55,7 @@
         <activity
             android:name="com.gabilheri.insuringmylife.CarActivity"
             android:label="@string/title_activity_car"
+            android:parentActivityName="com.gabilheri.insuringmylife.InitialActivity"
             android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -96,22 +98,13 @@
                 android:value="VehiclesActivity" />
         </activity>
         <activity
-            android:name=".VehicleQuoteActivity"
+            android:name="com.gabilheri.insuringmylife.VehicleQuoteActivity"
             android:label="@string/title_activity_quote"
             android:parentActivityName="com.gabilheri.insuringmylife.CarActivity"
             android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="CarActivity" />
-        </activity>
-        <activity
-            android:name="com.gabilheri.insuringmylife.ForgotLogin"
-            android:label="@string/title_activity_forgot_login"
-            android:parentActivityName="com.gabilheri.insuringmylife.LoginActivity"
-            android:screenOrientation="portrait" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="LoginActivity" />
         </activity>
         <activity
             android:name="com.gabilheri.insuringmylife.QuizActivity"
@@ -171,8 +164,7 @@
             android:name="com.gabilheri.insuringmylife.QuoteValueActivity"
             android:label="@string/title_activity_quote_value"
             android:parentActivityName="com.gabilheri.insuringmylife.CarActivity"
-            android:screenOrientation="portrait"
-            >
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="CarActivity" />
@@ -181,8 +173,7 @@
             android:name="com.gabilheri.insuringmylife.ForgotPassword"
             android:label="@string/title_activity_forgot_password"
             android:parentActivityName="com.gabilheri.insuringmylife.LoginActivity"
-            android:screenOrientation="portrait"
-            >
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="LoginActivity" />
@@ -191,8 +182,7 @@
             android:name="com.gabilheri.insuringmylife.AfterClaim"
             android:label="@string/title_activity_after_claim"
             android:parentActivityName="com.gabilheri.insuringmylife.InitialActivity"
-            android:screenOrientation="portrait"
-            >
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="InitialActivity" />
@@ -201,8 +191,7 @@
             android:name="com.gabilheri.insuringmylife.ViewClaims"
             android:label="@string/title_activity_view_claims"
             android:parentActivityName="com.gabilheri.insuringmylife.CarActivity"
-            android:screenOrientation="portrait"
-            >
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="CarActivity" />
@@ -211,8 +200,7 @@
             android:name="com.gabilheri.insuringmylife.ViewHouses"
             android:label="@string/title_activity_view_houses"
             android:parentActivityName="com.gabilheri.insuringmylife.HouseActivity"
-            android:screenOrientation="portrait"
-            >
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="HouseActivity" />
@@ -221,8 +209,7 @@
             android:name="com.gabilheri.insuringmylife.NewHouse"
             android:label="@string/title_activity_new_house"
             android:parentActivityName="com.gabilheri.insuringmylife.ViewHouses"
-            android:screenOrientation="portrait"
-            >
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ViewHouses" />
@@ -231,7 +218,7 @@
             android:name="com.gabilheri.insuringmylife.ReportClaims"
             android:label="@string/title_activity_report_claims"
             android:parentActivityName="com.gabilheri.insuringmylife.InitialActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="InitialActivity" />
@@ -240,8 +227,7 @@
             android:name="com.gabilheri.insuringmylife.ReportHouseClaim"
             android:label="@string/title_activity_report_house_claim"
             android:parentActivityName="com.gabilheri.insuringmylife.ReportClaims"
-            android:screenOrientation="portrait"
-            >
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ReportClaims" />
@@ -250,8 +236,7 @@
             android:name="com.gabilheri.insuringmylife.ReportHealthClaim"
             android:label="@string/title_activity_report_health_claim"
             android:parentActivityName="com.gabilheri.insuringmylife.ReportClaims"
-            android:screenOrientation="portrait"
-            >
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ReportClaims" />
@@ -260,18 +245,16 @@
             android:name="com.gabilheri.insuringmylife.HouseQuote"
             android:label="@string/title_activity_house_quote"
             android:parentActivityName="com.gabilheri.insuringmylife.HouseActivity"
-            android:screenOrientation="portrait"
-            >
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="HouseActivity" />
         </activity>
         <activity
-            android:name=".ViewFamilyMembers"
+            android:name="com.gabilheri.insuringmylife.ViewFamilyMembers"
             android:label="@string/title_activity_family_members"
             android:parentActivityName="com.gabilheri.insuringmylife.HealthActivity"
-            android:screenOrientation="portrait"
-            >
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="HealthActivity" />
@@ -280,21 +263,51 @@
             android:name="com.gabilheri.insuringmylife.HealthQuote"
             android:label="@string/title_activity_health_quote"
             android:parentActivityName="com.gabilheri.insuringmylife.HealthActivity"
-            android:screenOrientation="portrait"
-            >
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="HealthActivity" />
         </activity>
         <activity
-            android:name=".NewFamilyMember"
+            android:name="com.gabilheri.insuringmylife.NewFamilyMember"
             android:label="@string/title_activity_new_famiy_member"
-            android:parentActivityName=".ViewFamilyMembers"
-            android:screenOrientation="portrait"
-            >
+            android:parentActivityName="com.gabilheri.insuringmylife.ViewFamilyMembers"
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="FamilyMembers" />
+        </activity>
+        <activity
+            android:name="com.gabilheri.insuringmylife.Information"
+            android:label="@string/title_activity_information"
+            android:parentActivityName="com.gabilheri.insuringmylife.InitialActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="InitialActivity" />
+        </activity>
+        <activity
+            android:name="com.gabilheri.insuringmylife.AboutInsuringMyLife"
+            android:label="@string/title_activity_about_insuring_my_life"
+            android:parentActivityName=".InitialActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="Information" />
+        </activity>
+        <activity
+            android:name="com.gabilheri.insuringmylife.SafetyInfo"
+            android:label="@string/title_activity_safety_info"
+            android:parentActivityName="com.gabilheri.insuringmylife.Information" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="Information" />
+        </activity>
+        <activity
+            android:name="com.gabilheri.insuringmylife.InsuInfo"
+            android:label="@string/title_activity_insu_info"
+            android:parentActivityName="com.gabilheri.insuringmylife.Information" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="Information" />
         </activity>
     </application>
 

@@ -9,7 +9,7 @@
     <string name="password">Password</string>
     <string name="login">Login</string>
     <string name="register">Register</string>
-    <string name="title_activity_register">Register</string>
+    <string name="title_activity_register">Insuring My Life: Register</string>
     <string name="title_activity_initial">Insuring My Life</string>
     <string name="logout">Logout</string>
     <string name="drawer_open"> Drawer open</string>
@@ -80,7 +80,7 @@
         <item name="question5">What was your childhood nickname?</item>
     </array>
 
-    <string name="title_activity_new_profile">NewProfileActivity</string>
+    <string name="title_activity_new_profile">Insuring My Life: Update Profile</string>
     <string name="repeat_password">Repeat Password</string>
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>
@@ -93,7 +93,7 @@
     <string name="cc_owner">Credit Card Owner Name</string>
     <string name="new_profile">Add New Profile</string>
     <string name="group_image">group image</string>
-    <string name="title_activity_about_aa">AboutAAA</string>
+    <string name="title_activity_about_aa">Insuring My Life: About AAA</string>
     <string name="about_aaa">About AAA</string>
     <string name="about_aaa_text">        Founded in 1902, AAA is a not-for-profit organization of clubs serving more than 50 million members in the United States and Canada. AAA serves its members through a network of 1,100 offices with more than 45,000 employees. Through affiliations with automobile and touring clubs around the world, AAA provides benefits to members traveling in 130 countries on six continents. AAA exists for its members and will judge everything it does by how well it serves their needs.</string>
     <string name="about_aaa_ok">AAA Oklahoma, the Oklahoma affiliate of AAA, was founded in 1920 with 289 members and has grown to more than 360,000 members statewide. The club\'s 250+ employees operate 12 full service and 32 insurance and membership offices throughout Oklahoma...and more are planned!</string>
@@ -105,7 +105,7 @@
     • The world\’s largest publisher of travel information and one of the world’s largest leisure travel agencies. \n
     • One of the most active advocates for the welfare of the traveling public. \n
     • One of the fastest growing financial products and services organizations in the United States. \n</string>
-    <string name="title_activity_new_vehicle">NewVehicle</string>
+    <string name="title_activity_new_vehicle">Vehicles: New Vehicle</string>
     <string name="police_number">Police Number</string>
     <string name="main_driver">Driver\'s Name</string>
     <string name="year">Year</string>
@@ -113,7 +113,7 @@
     <string name="car_model">Car Model</string>
     <string name="aaa_number">AAA Customer Number</string>
     <string name="update_profile">Update Profile</string>
-    <string name="title_activity_quote">QuoteActivity</string>
+    <string name="title_activity_quote">Vehicles: Get a Quote</string>
     <string name="vehicle_info">Vehicle Information</string>
     <string name="driver_info">Driver Information</string>
     <string name="pick_driver_birthday">Pick Birthday</string>
@@ -121,7 +121,7 @@
     <string name="new_vehicle_driver">New Vehicle and Driver Information</string>
     <string name="drivers_license">Drivers License Number</string>
     <string name="title_activity_forgot_login">Forgot Login / Password</string>
-    <string name="title_activity_quiz">QuizActivity</string>
+    <string name="title_activity_quiz">Quizzes: Quiz</string>
     <string name="q1"> Question Number One! </string>
     <string name="q2"> Question Number Two! </string>
     <string name="q3"> Question Number Three! </string>
@@ -199,11 +199,11 @@
         <item name="cause6"> Cause of Accident Six</item>
     </string-array>
 
-    <string name="title_activity_view_quizzes">ViewQuizzes</string>
-    <string name="title_activity_quizz_result">QuizzResult</string>
-    <string name="title_activity_my_agent">MyAgent</string>
-    <string name="title_activity_health">HealthActivity</string>
-    <string name="title_activity_report_claim">ReportClaim</string>
+    <string name="title_activity_view_quizzes">Insuring My Life: Quizzes</string>
+    <string name="title_activity_quizz_result">Quizzes: Quiz Result</string>
+    <string name="title_activity_my_agent">Insuring My Life: My Agent</string>
+    <string name="title_activity_health">Insuring My Life: Health</string>
+    <string name="title_activity_report_claim">Vehicles: Report Claim</string>
     <string name="date">Date</string>
     <string name="incident_and_time">Incident Date and Time</string>
     <string name="select_one">Select One</string>
@@ -223,20 +223,37 @@
     <string name="address">Address</string>
     <string name="zip_code">Zip Code</string>
     <string name="state">State</string>
-    <string name="title_activity_quote_value">QuoteValueActivity</string>
+    <string name="title_activity_quote_value">Insuring My Life: Quote Result</string>
     <string name="quote_result_agent">Remember that this value is an estimate. For a more accurate value please click on the button send this to agent. Your agent will receive this data and give you a more accurate value. Feel free to add any information that you think is important on the e-mail.</string>
-    <string name="title_activity_forgot_password">ForgotPassword</string>
+    <string name="title_activity_forgot_password">Insuring My Life: Forgot Password</string>
     <string name="forgot_username"><u> Forgot Username or Password </u></string>
-    <string name="title_activity_after_claim">AfterClaim</string>
-    <string name="title_activity_view_claims">ViewClaims</string>
-    <string name="title_activity_view_houses">ViewHouses</string>
-    <string name="title_activity_new_house">NewHouse</string>
-    <string name="title_activity_report_claims">ReportClaims</string>
-    <string name="title_activity_report_house_claim">ReportHouseClaim</string>
-    <string name="title_activity_report_health_claim">ReportHealthClaim</string>
-    <string name="title_activity_house_quote">HouseQuote</string>
-    <string name="title_activity_family_members">FamilyMembers</string>
-    <string name="title_activity_health_quote">HealthQuote</string>
-    <string name="title_activity_new_famiy_member">NewFamiyMember</string>
+    <string name="title_activity_after_claim">Claims: Result</string>
+    <string name="title_activity_view_claims">Insuring My Life: View Claims</string>
+    <string name="title_activity_view_houses">Houses: My Houses</string>
+    <string name="title_activity_new_house">Houses: Add New House</string>
+    <string name="title_activity_report_claims">Insuring My Life: Claims</string>
+    <string name="title_activity_report_house_claim">House: Report House Claim</string>
+    <string name="title_activity_report_health_claim">Health: Report Health Claim</string>
+    <string name="title_activity_house_quote">House: Get a Quote</string>
+    <string name="title_activity_family_members">Health: Family Members</string>
+    <string name="title_activity_health_quote">Health: Get a Quote</string>
+    <string name="title_activity_new_famiy_member">Family Members: Add New Family Member</string>
+    <string name="title_activity_information">Information</string>
+    <string name="title_activity_about_insuring_my_life">AboutInsuringMyLife</string>
+
+    <!-- About me Section Strings -->
+
+    <string name="about_me">Insuring My Life was developed by Marcus Gabilheri for the APP Contest. For this contest I  had to follow the guidelines presented by the winning ideas from phase 1. \n I really enjoyed codding this app and learned a lot. I hope you can enjoy using it as much as I did developing. Thanks</string>
+    <string name="suggestion2"> * Log with recent calculations.</string>
+    <string name="suggestion3"> * More formulas? Tell me the which!</string>
+    <string name="suggestion4"> * Unit converter.</string>
+    <string name="suggestion5"> * Financial calculator.</string>
+    <string name="suggestion6"> * When one of the suggested subjects or any other suggestion reach 50 votes I will start work on it! I will prioritize the subjects with more votes, Thank you!</string>
+    <string name="send_email">Send me an E-Mail</string>
+    <string name="email_logo_image">email logo image</string>
+    <string name="review_">Review Formula Calculator</string>
+    <string name="star_logo">Star Logo</string>
+    <string name="title_activity_safety_info">SafetyInfo</string>
+    <string name="title_activity_insu_info">InsuInfo</string>
 
 </resources>

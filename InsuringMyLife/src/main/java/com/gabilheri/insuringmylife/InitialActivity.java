@@ -1,6 +1,7 @@
 package com.gabilheri.insuringmylife;
 
 import android.app.Activity;
+import android.app.DialogFragment;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -9,14 +10,17 @@ import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.espian.showcaseview.ShowcaseView;
 import com.espian.showcaseview.targets.ViewTarget;
+import com.gabilheri.insuringmylife.fragments.AaaDialog;
 
 import java.util.ArrayList;
 
@@ -24,6 +28,7 @@ public class InitialActivity extends Activity  {
 
     private ArrayList<String> drawerOptions;
     private DrawerLayout optionsDrawerLayout;
+    private Button carButton, healthButton, houseButton, accidenButton;
     private ListView drawerList;
     private ActionBarDrawerToggle drawerToggle;
     private CharSequence drawerTitle;
@@ -41,6 +46,43 @@ public class InitialActivity extends Activity  {
         SharedPreferences loginPref = getSharedPreferences("loginPref", MODE_PRIVATE);
         userName.setText("Hello " + loginPref.getString("name", "a") + " " + loginPref.getString("last_name", "b"));
         title = drawerTitle = getTitle();
+
+        carButton = (Button) findViewById(R.id.carButton);
+        healthButton = (Button) findViewById(R.id.lifeButton);
+        houseButton = (Button) findViewById(R.id.houseButton);
+        accidenButton = (Button) findViewById(R.id.accidentButton);
+
+        carButton.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                view.setBackgroundResource(R.drawable.car_button_pressed);
+                return false;
+            }
+        });
+
+        healthButton.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                view.setBackgroundResource(R.drawable.life_button_pressed);
+                return false;
+            }
+        });
+
+        accidenButton.setOnTouchListener(new View.OnTouchListener(){
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                view.setBackgroundResource(R.drawable.accident_button_pressed);
+                return false;
+            }
+        });
+
+        houseButton.setOnTouchListener(new View.OnTouchListener(){
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                view.setBackgroundResource(R.drawable.house_button_pressed);
+                return false;
+            }
+        });
 
         SharedPreferences tutorialPref = getSharedPreferences("tutorialPref", MODE_PRIVATE);
 
@@ -75,7 +117,7 @@ public class InitialActivity extends Activity  {
 
         drawerOptions = new ArrayList<String>();
 
-        drawerOptions.add("About AAA");
+        drawerOptions.add("Useful Information");
         drawerOptions.add("Update Profile");
         drawerOptions.add("Take a Quiz!");
         drawerOptions.add("Logout");
@@ -89,26 +131,6 @@ public class InitialActivity extends Activity  {
         if(tutorialOn) {
            displayTutorial();
         }
-    }
-
-    public void displayTutorial() {
-        // Displays the showcase view with tutorial
-        View showcasedView = findViewById(R.id.carButton);
-        ViewTarget target = new ViewTarget(showcasedView);
-        target.getPoint();
-        ShowcaseView.insertShowcaseView(target, this, "Icon Selection", "Please select one of the icons shown below");
-
-        /**
-        ActionItemTarget actionTarget = new ActionItemTarget(this, optionsDrawerLayout.getId());
-        actionTarget.getPoint();
-        ShowcaseView.insertShowcaseView(actionTarget, this, "Navigation Drawer", "Slide from your left or click the drawer toggle to open the drawer menu");
-        */
-
-        // Sets the tutorial to OFF so it doesn't shows up all the time to the user
-        SharedPreferences tutorialPref = getSharedPreferences("tutorialPref", MODE_PRIVATE);
-        SharedPreferences.Editor tutorialPrefEditor = tutorialPref.edit();
-        tutorialPrefEditor.putBoolean("tutorialOn", false);
-        tutorialPrefEditor.commit();
     }
 
     public void changeActivity(View view) {
@@ -133,6 +155,8 @@ public class InitialActivity extends Activity  {
         }
     }
 
+
+
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
@@ -145,16 +169,36 @@ public class InitialActivity extends Activity  {
         drawerToggle.onConfigurationChanged(newConfig);
     }
 
-
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.initial, menu);
 
         menu.add(1, 1, 1, "Tutorial");
+        menu.add(2, 2, 2, "About AAA");
+        menu.add(3, 3, 3, "About Insuring My Life");
         return true;
     }
+
+    public void aaaInfo() {
+        DialogFragment goToAAA = new AaaDialog();
+        goToAAA.show(getFragmentManager(), "aaa");
+    }
+
+    public void displayTutorial() {
+        // Displays the showcase view with tutorial
+        View showcasedView = findViewById(R.id.carButton);
+        ViewTarget target = new ViewTarget(showcasedView);
+        target.getPoint();
+        ShowcaseView.insertShowcaseView(target, this, "Icon Selection", "Please select one of the icons shown below");
+
+        // Sets the tutorial to OFF so it doesn't shows up all the time to the user
+        SharedPreferences tutorialPref = getSharedPreferences("tutorialPref", MODE_PRIVATE);
+        SharedPreferences.Editor tutorialPrefEditor = tutorialPref.edit();
+        tutorialPrefEditor.putBoolean("tutorialOn", false);
+        tutorialPrefEditor.commit();
+    }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -170,6 +214,12 @@ public class InitialActivity extends Activity  {
             tutorialPrefEditor.putBoolean("tutorialOn", true);
             tutorialPrefEditor.commit();
             displayTutorial();
+        } else if(id == 2) {
+            Intent aboutAAA = new Intent(InitialActivity.this, AboutAAA.class);
+            startActivity(aboutAAA);
+        } else if(id == 3) {
+            Intent aboutIns = new Intent(InitialActivity.this, AboutInsuringMyLife.class);
+            startActivity(aboutIns);
         }
 
         if(drawerToggle.onOptionsItemSelected(item)) {
@@ -200,11 +250,11 @@ public class InitialActivity extends Activity  {
         } else if(drawerOptions.get(position).equals("Update Profile")) {
             Intent i = new Intent(InitialActivity.this, UpdateProfileActivity.class);
             startActivity(i);
-        } else if(drawerOptions.get(position).equals("About AAA")) {
-            Intent i = new Intent(InitialActivity.this, AboutAAA.class);
+        } else if(drawerOptions.get(position).equals("Useful Information")) {
+            Intent i = new Intent(InitialActivity.this, Information.class);
             startActivity(i);
         } else if(drawerOptions.get(position).equals("Take a Quiz!")) {
-            Intent i = new Intent(InitialActivity.this, QuizActivity.class);
+            Intent i = new Intent(InitialActivity.this, ViewQuizzes.class);
             startActivity(i);
         } else {
 

@@ -28,10 +28,10 @@
 
     <Button
         android:id="@+id/vehiclesButton"
-        android:layout_weight="0.27"
+        android:layout_weight="0.26"
         android:layout_width="match_parent"
         android:layout_height="0dip"
-        android:background="@color/car_button"
+        android:background="@drawable/blue_button"
         android:drawableLeft="@drawable/s_car_logo"
         android:text="My Vehicles"
         android:textColor="@android:color/white"
@@ -44,10 +44,10 @@
         />
     <Button
         android:id="@+id/claimsButton"
-        android:layout_weight="0.27"
+        android:layout_weight="0.26"
         android:layout_width="match_parent"
         android:layout_height="0dip"
-        android:background="@color/red_color"
+        android:background="@drawable/red_button"
         android:drawableLeft="@drawable/s_claims_logo3"
         android:text="@string/existing_claims"
         android:textColor="@android:color/white"
@@ -60,10 +60,10 @@
         />
     <Button
         android:id="@+id/quoteButton"
-        android:layout_weight="0.27"
+        android:layout_weight="0.26"
         android:layout_width="match_parent"
         android:layout_height="0dip"
-        android:background="@color/green_color"
+        android:background="@drawable/green_life_button"
         android:drawableLeft="@drawable/quote_icon"
         android:text="@string/get_quote"
         android:textColor="@android:color/white"
@@ -76,10 +76,10 @@
         />
     <Button
         android:id="@+id/agentButton"
-        android:layout_weight="0.27"
+        android:layout_weight="0.26"
         android:layout_width="match_parent"
         android:layout_height="0dip"
-        android:background="@color/orange_color"
+        android:background="@drawable/orange_button"
         android:drawableLeft="@drawable/s_l_agent_logo"
         android:text="Contact My Agent"
         android:textColor="@android:color/white"

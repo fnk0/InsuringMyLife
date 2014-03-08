@@ -4,7 +4,7 @@
     <item android:state_pressed="true" >
         <shape>
             <solid
-                android:color="@color/action_bar_color"
+                android:color="@color/orange_color_pressed"
                 />
             <padding
                 android:left="10dp"

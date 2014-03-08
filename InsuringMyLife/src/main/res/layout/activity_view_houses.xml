@@ -19,7 +19,7 @@
     <Button
         android:id="@+id/addHouse"
         android:textColor="@android:color/white"
-        android:background="@color/red_color"
+        android:background="@drawable/red_button"
         android:text="+ Add a New Property"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

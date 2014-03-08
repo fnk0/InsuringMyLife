@@ -1,6 +1,7 @@
 package com.gabilheri.insuringmylife;
 
 import android.app.Activity;
+import android.app.DialogFragment;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -14,6 +15,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.gabilheri.insuringmylife.fragments.NoInternetDialog;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -100,11 +103,6 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         }
     }
 
-    public void showNoInternetDialog() {
-        // TODO SHOW DIALOG WITH NO INTERNET INFO
-
-    }
-
     public boolean getInternetState() {
 
        ConnectivityManager conMgr =  (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -113,9 +111,10 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         if (activeNetwork != null && activeNetwork.isConnected()) {
             return true;
         } else {
+            DialogFragment noInternet = new NoInternetDialog();
+            noInternet.show(getFragmentManager(), "noInternet");
             return false;
         }
-
     }
 
 

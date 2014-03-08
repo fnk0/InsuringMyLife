@@ -1,5 +1,6 @@
 package com.gabilheri.insuringmylife;
 
+import android.app.DialogFragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -16,6 +17,8 @@ import android.view.ViewGroup;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+
+import com.gabilheri.insuringmylife.fragments.AaaDialog;
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -46,9 +49,11 @@ public class QuizActivity extends FragmentActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.quiz, menu);
+        getMenuInflater().inflate(R.menu.initial, menu);
+
+        menu.add(1, 1, 1, "About AAA");
+        menu.add(2, 2, 2, "About Insuring My Life");
         return true;
     }
 
@@ -60,7 +65,17 @@ public class QuizActivity extends FragmentActivity {
         int id = item.getItemId();
         if (id == R.id.action_settings) {
             return true;
+        } else if(id == 1) {
+            Intent aboutAAA = new Intent(QuizActivity.this, AboutAAA.class);
+            startActivity(aboutAAA);
+        } else if(id == 2) {
+            Intent aboutIns = new Intent(QuizActivity.this, AboutInsuringMyLife.class);
+            startActivity(aboutIns);
+        } else if(id == R.id.aaa_logo) {
+            DialogFragment aaaD = new AaaDialog();
+            aaaD.show(getFragmentManager(), "aaa");
         }
+
         return super.onOptionsItemSelected(item);
     }
 

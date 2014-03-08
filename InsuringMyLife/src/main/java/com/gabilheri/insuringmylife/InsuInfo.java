@@ -10,26 +10,18 @@ import android.view.View;
 
 import com.gabilheri.insuringmylife.fragments.AaaDialog;
 
-public class ViewQuizzes extends Activity {
+public class InsuInfo extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_quizzes);
-
+        setContentView(R.layout.activity_insu_info);
+        getActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
-    public void changeActivity(View view) {
-
-        int id = view.getId();
-
-        if(id == R.id.generalInfo) {
-            Intent intent = new Intent(ViewQuizzes.this, QuizActivity.class);
-            startActivity(intent);
-        } else if(id == R.id.safetyInfo) {
-            Intent safe = new Intent(ViewQuizzes.this, QuizActivity.class);
-            startActivity(safe);
-        }
+    public void goToQuizz(View view) {
+        Intent intent = new Intent(InsuInfo.this, QuizActivity.class);
+        startActivity(intent);
     }
 
 
@@ -52,10 +44,10 @@ public class ViewQuizzes extends Activity {
         if (id == R.id.action_settings) {
             return true;
         } else if(id == 1) {
-            Intent aboutAAA = new Intent(ViewQuizzes.this, AboutAAA.class);
+            Intent aboutAAA = new Intent(InsuInfo.this, AboutAAA.class);
             startActivity(aboutAAA);
         } else if(id == 2) {
-            Intent aboutIns = new Intent(ViewQuizzes.this, AboutInsuringMyLife.class);
+            Intent aboutIns = new Intent(InsuInfo.this, AboutInsuringMyLife.class);
             startActivity(aboutIns);
         } else if(id == R.id.aaa_logo) {
             DialogFragment aaaD = new AaaDialog();

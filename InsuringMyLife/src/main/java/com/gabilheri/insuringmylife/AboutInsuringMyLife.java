@@ -10,34 +10,32 @@ import android.view.View;
 
 import com.gabilheri.insuringmylife.fragments.AaaDialog;
 
-public class ViewQuizzes extends Activity {
+public class AboutInsuringMyLife extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_quizzes);
-
+        setContentView(R.layout.activity_about_insuring_my_life);
     }
 
-    public void changeActivity(View view) {
+    public void sendEmail(View view) {
 
-        int id = view.getId();
+        Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
 
-        if(id == R.id.generalInfo) {
-            Intent intent = new Intent(ViewQuizzes.this, QuizActivity.class);
-            startActivity(intent);
-        } else if(id == R.id.safetyInfo) {
-            Intent safe = new Intent(ViewQuizzes.this, QuizActivity.class);
-            startActivity(safe);
-        }
+        /* Fill it with Data */
+        emailIntent.setType("plain/text");
+        emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"marcusandreog@gmail.com"});
+        emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Insuring My Life Feedback");
+        emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, "");
+
+        /* Send it off to the Activity-Chooser */
+        startActivity(Intent.createChooser(emailIntent, "Send mail..."));
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.initial, menu);
-
         menu.add(1, 1, 1, "About AAA");
         menu.add(2, 2, 2, "About Insuring My Life");
         return true;
@@ -52,10 +50,10 @@ public class ViewQuizzes extends Activity {
         if (id == R.id.action_settings) {
             return true;
         } else if(id == 1) {
-            Intent aboutAAA = new Intent(ViewQuizzes.this, AboutAAA.class);
+            Intent aboutAAA = new Intent(AboutInsuringMyLife.this, AboutAAA.class);
             startActivity(aboutAAA);
         } else if(id == 2) {
-            Intent aboutIns = new Intent(ViewQuizzes.this, AboutInsuringMyLife.class);
+            Intent aboutIns = new Intent(AboutInsuringMyLife.this, AboutInsuringMyLife.class);
             startActivity(aboutIns);
         } else if(id == R.id.aaa_logo) {
             DialogFragment aaaD = new AaaDialog();

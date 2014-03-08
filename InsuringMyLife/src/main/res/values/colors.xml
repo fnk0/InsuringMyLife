@@ -9,8 +9,11 @@
     <color name="spinner_even">#2F4150</color>
     <color name="car_button">#3498db</color>
     <color name="red_color">#e74c3c</color>
+    <color name="red_pressed">#c0392b</color>
     <color name="green_color">#2ecc71</color>
     <color name="orange_color">#e67e22</color>
+    <color name="orange_color_pressed">#d35400</color>
+    <color name="blue_pressed">#2980b9</color>
     <color name="green_life">#06A689</color>
     <color name="blue_2">#3FC3F0</color>
 
